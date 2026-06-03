@@ -387,6 +387,22 @@ curl "http://127.0.0.1:8000/updates/latest"
 
 ---
 
+## Texas-only extract (2025+)
+
+A separate pipeline lives in **`ONLY_TEXAS_SINCE_2025/`**:
+
+| Document | Contents |
+|----------|----------|
+| [ONLY_TEXAS_SINCE_2025/README.md](ONLY_TEXAS_SINCE_2025/README.md) | Full extraction walkthrough with diagrams |
+| [ONLY_TEXAS_SINCE_2025/DATA_DICTIONARY.md](ONLY_TEXAS_SINCE_2025/DATA_DICTIONARY.md) | Detailed CSV column definitions (Texas files only) |
+
+```bash
+python ONLY_TEXAS_SINCE_2025/pull_texas_since_2025.py
+python ONLY_TEXAS_SINCE_2025/rebuild_csv_from_archive.py   # if CSVs incomplete after resume
+```
+
+---
+
 ## References
 
 - [PWS help](https://cdr.ffiec.gov/public/HelpFiles/PWSInfo.htm)

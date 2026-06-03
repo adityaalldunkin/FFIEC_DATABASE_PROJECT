@@ -396,6 +396,10 @@ A separate pipeline lives in **`ONLY_TEXAS_SINCE_2025/`**:
 | [ONLY_TEXAS_SINCE_2025/README.md](ONLY_TEXAS_SINCE_2025/README.md) | Full extraction walkthrough with diagrams |
 | [ONLY_TEXAS_SINCE_2025/DATA_DICTIONARY.md](ONLY_TEXAS_SINCE_2025/DATA_DICTIONARY.md) | Detailed CSV column definitions (Texas files only) |
 
+**Teammates — download Texas 2025+ CSV data (SharePoint):**
+
+**[Texas FFIEC CSV files](https://cedarframe-my.sharepoint.com/:f:/g/personal/aditya_alldunkin_com/IgCVLkzsCMRsQqXAsv7Ql-A5AW2lhgQIsUy0pHp0Kv9Vkm4?e=jGFMZX)**
+
 ```bash
 python ONLY_TEXAS_SINCE_2025/pull_texas_since_2025.py
 python ONLY_TEXAS_SINCE_2025/rebuild_csv_from_archive.py   # if CSVs incomplete after resume

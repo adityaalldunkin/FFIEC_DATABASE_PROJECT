@@ -8,6 +8,25 @@ Outputs are three **CSV files** for Google Sheets / Excel, plus raw **XBRL** arc
 
 ---
 
+## Shared data for teammates (SharePoint)
+
+**Download the Texas 2025+ CSV exports here:**
+
+**[Texas FFIEC CSV files (SharePoint folder)](https://cedarframe-my.sharepoint.com/:f:/g/personal/aditya_alldunkin_com/IgCVLkzsCMRsQqXAsv7Ql-A5AW2lhgQIsUy0pHp0Kv9Vkm4?e=jGFMZX)**
+
+| File | Description |
+|------|-------------|
+| `texas_institutions.csv` | Texas banks on FFIEC panel per quarter (~1,825 rows) |
+| `texas_filings.csv` | One row per downloaded Call Report XBRL (~1,825 rows) |
+| `texas_xbrl_facts.csv` | Parsed XBRL line items (~2.2M rows, **~208 MB**) |
+| `texas_csv_exports_2025_plus.zip` | All three CSVs in one zip (easier download) |
+
+**Local copies** (on the machine that ran the extract): `ONLY_TEXAS_SINCE_2025/exports/`
+
+**Upload / refresh SharePoint** (maintainers): drag the files from `exports/` or upload `texas_csv_exports_2025_plus.zip` into the folder at the link above. See [UPLOAD_TO_SHAREPOINT.md](./UPLOAD_TO_SHAREPOINT.md).
+
+---
+
 ## Table of contents
 
 1. [What this folder contains](#what-this-folder-contains)
@@ -390,8 +409,8 @@ This reparses all `.xbrl` files under `archive/call/` into complete CSVs.
 
 ## Google Sheets
 
-1. Run `rebuild_csv_from_archive.py` if you want the fullest CSVs.
-2. Upload to Google Drive:
+1. Download CSVs from the [SharePoint folder](https://cedarframe-my.sharepoint.com/:f:/g/personal/aditya_alldunkin_com/IgCVLkzsCMRsQqXAsv7Ql-A5AW2lhgQIsUy0pHp0Kv9Vkm4?e=jGFMZX) (or use local `exports/`).
+2. Or upload to Google Drive:
    - Start with **`texas_filings.csv`** (overview).
    - Use **`texas_institutions.csv`** for bank lists.
    - **`texas_xbrl_facts.csv`** is huge — filter one quarter or one bank first, or use BigQuery / SQLite instead of one sheet.

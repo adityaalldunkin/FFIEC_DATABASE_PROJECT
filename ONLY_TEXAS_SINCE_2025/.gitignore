@@ -1,4 +1,7 @@
 archive/
 exports/
+data/mdrm/MDRM_CSV.csv
+data/mdrm/MDRM.zip
 data/
 *.log
+*.zip

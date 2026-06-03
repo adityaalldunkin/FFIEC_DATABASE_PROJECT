@@ -1,432 +1,497 @@
 # ONLY_TEXAS_SINCE_2025 — Texas Call Reports (2025+)
 
-A **standalone extract** of FFIEC **Call Report** data for **Texas (`TX`)** institutions only, for reporting periods ending in **2025 or later** (five quarters through `3/31/2026`).
-
-Outputs are three **CSV files** for Google Sheets / Excel, plus raw **XBRL** archives.
-
-**Full column documentation:** see [DATA_DICTIONARY.md](./DATA_DICTIONARY.md).
+**Project:** FFIEC regulatory data extract for **Texas banks only**  
+**Data series:** Call Report (FFIEC 031 / 041)  
+**Time range:** Reporting periods ending **2025 or later** (five quarters through Q1 2026)  
+**Status:** **Complete** — 1,825 filings downloaded, parsed, and labeled with the Federal Reserve MDRM dictionary  
 
 ---
 
-## Shared data for teammates (SharePoint)
+## Executive summary
 
-**Download the Texas 2025+ CSV exports here:**
+This folder contains a **standalone pipeline** that:
 
-**[Texas FFIEC CSV files (SharePoint folder)](https://cedarframe-my.sharepoint.com/:f:/g/personal/aditya_alldunkin_com/IgCVLkzsCMRsQqXAsv7Ql-A5AW2lhgQIsUy0pHp0Kv9Vkm4?e=jGFMZX)**
+1. Connects to the official [FFIEC Central Data Repository Public Web Service](https://cdr.ffiec.gov/public/) (REST API).
+2. Filters institutions to **State = TX** on the Panel of Reporters.
+3. Downloads **XBRL Call Report facsimiles** for every Texas bank that **filed** in each included quarter.
+4. Parses XBRL into a fact table (`texas_xbrl_facts.csv`).
+5. Enriches loan-related lines using the **[Federal Reserve MDRM](https://www.federalreserve.gov/apps/mdrm/)** (Micro Data Reference Manual) so codes like `RCON2122` have plain-English **loan product / category names**.
 
-| File | Description |
-|------|-------------|
-| `texas_institutions.csv` | Texas banks on FFIEC panel per quarter (~1,825 rows) |
-| `texas_filings.csv` | One row per downloaded Call Report XBRL (~1,825 rows) |
-| `texas_xbrl_facts.csv` | Parsed XBRL line items (~2.2M rows, **~208 MB**) |
-| `texas_csv_exports_2025_plus.zip` | All three CSVs in one zip (easier download) |
+**No web scraping** — all data comes from FFIEC PWS APIs and the Fed MDRM reference file.
 
-**Local copies** (on the machine that ran the extract): `ONLY_TEXAS_SINCE_2025/exports/`
+| Metric | Result |
+|--------|--------|
+| Reporting periods covered | **5** |
+| Texas institutions (panel rows) | **1,825** (365 per quarter × 5) |
+| XBRL filings downloaded | **1,825** (100% of `has_filed=True`) |
+| Raw archive files | **1,825** `.xbrl` + metadata |
+| Parsed XBRL fact rows | **2,186,590** |
+| Loan summary rows (MDRM-labeled) | **31,396** |
+| Full loan/RC-C rows (MDRM-labeled) | **937,816** |
+| MDRM loan product definitions (catalog) | **24,015** codes |
 
-**Upload / refresh SharePoint** (maintainers): drag the files from `exports/` or upload `texas_csv_exports_2025_plus.zip` into the folder at the link above. See [UPLOAD_TO_SHAREPOINT.md](./UPLOAD_TO_SHAREPOINT.md).
+---
+
+## Teammates: where to get the data
+
+### SharePoint (recommended for non-technical users)
+
+**[Texas FFIEC CSV files — SharePoint folder](https://cedarframe-my.sharepoint.com/:f:/g/personal/aditya_alldunkin_com/IgCVLkzsCMRsQqXAsv7Ql-A5AW2lhgQIsUy0pHp0Kv9Vkm4?e=jGFMZX)**
+
+Upload or download these files from that folder. GitHub does **not** store the large CSVs (see `.gitignore`).
+
+### Local path (after running the pipeline)
+
+```
+/Users/adityarajiv/Documents/ffiec-cdr/ONLY_TEXAS_SINCE_2025/exports/
+```
 
 ---
 
 ## Table of contents
 
-1. [What this folder contains](#what-this-folder-contains)
-2. [How data is extracted (detailed)](#how-data-is-extracted-detailed)
-3. [Architecture diagrams](#architecture-diagrams)
-4. [Quick start](#quick-start)
-5. [Output files](#output-files)
-6. [Resume, sleep, and CSV rebuild](#resume-sleep-and-csv-rebuild)
-7. [Google Sheets](#google-sheets)
-8. [Relationship to main project](#relationship-to-main-project)
+1. [Extraction results by quarter](#extraction-results-by-quarter)
+2. [All output files](#all-output-files)
+3. [Which FFIEC APIs were used](#which-ffiec-apis-were-used)
+4. [How extraction works (step-by-step)](#how-extraction-works-step-by-step)
+5. [Loan types and MDRM labeling](#loan-types-and-mdrm-labeling)
+6. [Project layout](#project-layout)
+7. [Scripts reference](#scripts-reference)
+8. [Architecture diagrams](#architecture-diagrams)
+9. [Setup and credentials](#setup-and-credentials)
+10. [Resume, rebuild, and troubleshooting](#resume-rebuild-and-troubleshooting)
+11. [Google Sheets and analysis tips](#google-sheets-and-analysis-tips)
+12. [Limitations and what this data is not](#limitations-and-what-this-data-is-not)
+13. [Related documentation](#related-documentation)
+14. [References](#references)
 
 ---
 
-## What this folder contains
+## Extraction results by quarter
 
-```
-ONLY_TEXAS_SINCE_2025/
-├── README.md                      ← This file
-├── DATA_DICTIONARY.md             ← Detailed CSV column definitions
-├── pull_texas_since_2025.py       ← Main extraction script
-├── rebuild_csv_from_archive.py    ← Rebuild CSVs from archive (if needed)
-├── exports/
-│   ├── texas_institutions.csv     ← Panel: all TX banks per quarter
-│   ├── texas_filings.csv          ← One row per downloaded XBRL
-│   └── texas_xbrl_facts.csv       ← Parsed line items (large)
-├── archive/call/<period>/         ← Raw .xbrl + .meta.json
-└── data/
-    ├── progress.json              ← Resume checkpoints
-    └── pull.log                   ← Run log
-```
+Every Texas institution on the FFIEC panel with **`HasFiledForReportingPeriod = True`** received a download for that quarter.
 
-**Typical completed run (approximate):**
+| Reporting period | Quarter | TX banks on panel | XBRL files downloaded | Archive folder |
+|------------------|---------|-------------------|------------------------|----------------|
+| `3/31/2025` | Q1 2025 | 377 | 377 | `archive/call/3-31-2025/` |
+| `6/30/2025` | Q2 2025 | 372 | 372 | `archive/call/6-30-2025/` |
+| `9/30/2025` | Q3 2025 | 364 | 364 | `archive/call/9-30-2025/` |
+| `12/31/2025` | Q4 2025 | 360 | 360 | `archive/call/12-31-2025/` |
+| `3/31/2026` | Q1 2026 | 352 | 352 | `archive/call/3-31-2026/` |
+| **Total** | | **1,825** | **1,825** | |
 
-| Asset | Scale |
-|-------|--------|
-| Reporting periods | 5 (`3/31/2025` … `3/31/2026`) |
-| Archived XBRL files | ~3,600 |
-| `texas_institutions.csv` rows | ~1,825 |
-| `texas_xbrl_facts.csv` rows | ~1.2M |
+**Checkpoint file:** `data/progress.json` lists **1,825** completed `period|RSSD` pairs — matches archive and filings counts.
+
+**Institutions per quarter:** ~352–377 (Texas panel size varies slightly each quarter).
 
 ---
 
-## How data is extracted (detailed)
+## All output files
 
-This section explains **exactly** how `pull_texas_since_2025.py` builds the dataset. No web scraping is used — only the official **FFIEC Public Web Service (REST API)**.
+### Core extract (from FFIEC API)
 
-### Step 0 — Prerequisites
+| File | Rows | Size | Description |
+|------|------|------|-------------|
+| [`exports/texas_institutions.csv`](exports/texas_institutions.csv) | 1,825 | ~0.1 MB | Every TX bank on Panel of Reporters per quarter: name, city, RSSD, filing type, `has_filed` |
+| [`exports/texas_filings.csv`](exports/texas_filings.csv) | 1,825 | ~0.4 MB | One row per downloaded XBRL: path, SHA-256, retrieval time, period |
+| [`exports/texas_xbrl_facts.csv`](exports/texas_xbrl_facts.csv) | 2,186,590 | ~208 MB | All parsed XBRL facts (every line item in filings) |
+| [`archive/call/<period>/<rssd>.xbrl`](archive/call/) | 1,825 files | varies | Raw regulatory filings (source of truth) |
+| `archive/call/<period>/<rssd>.xbrl.meta.json` | 1,825 | small | Provenance: SHA-256, timestamp |
 
-| Requirement | Detail |
-|-------------|--------|
-| **Account** | FFIEC CDR [PWS account](https://cdr.ffiec.gov/public/) (Manage My Web Service Account) |
-| **Credentials** | `FFIEC_USER_ID` and `FFIEC_TOKEN` in parent folder `../.env` |
-| **Python** | Parent venv: `requests`, `lxml`, `python-dotenv` (see `../requirements.txt`) |
-| **Network** | Stable connection; Mac should stay awake (~1–3 hours for full TX pull) |
+**Zip for SharePoint:** `texas_csv_exports_2025_plus.zip` (~12 MB compressed) — institutions + filings + facts.
 
-The script imports `FFIECClient` and `parse_xbrl` from the parent package `ffiec_cdr` (`../src/ffiec_cdr/`).
+### Loan / RC-C exports (MDRM-labeled)
 
----
+Generated by `extract_texas_loans.py` using the Federal Reserve `MDRM_CSV.csv` dictionary.
 
-### Step 1 — Authenticate to FFIEC
+| File | Rows | Size | Best for |
+|------|------|------|----------|
+| [`exports/texas_loans_summary.csv`](exports/texas_loans_summary.csv) | 31,396 | ~30 MB | **Google Sheets — start here** (main loan categories per bank/quarter) |
+| [`exports/texas_loans_labeled.csv`](exports/texas_loans_labeled.csv) | 937,816 | ~805 MB | Full Schedule RC-C / loan-related detail with Fed labels |
+| [`exports/texas_loan_products_mdrm_catalog.csv`](exports/texas_loan_products_mdrm_catalog.csv) | 24,015 | ~13 MB | Code book: MDRM definitions for loan/lease lines |
 
-Every HTTP request sends two headers (per [SIS611 spec](https://cdr.ffiec.gov/public/Files/SIS611_-_Retrieve_Public_Data_via_Web_Service.pdf)):
+### Key columns in MDRM-labeled loan files
 
-| Header | Value |
-|--------|--------|
-| `UserID` | Your PWS username |
-| `Authentication` | `Bearer <token>` |
-
-Base URL: `https://ffieccdr.azure-api.us/public/`
-
-The client also sets `User-Agent: FFIEC-CDR-Client/1.0` (required — default `python-requests` may get HTTP 403).
-
----
-
-### Step 2 — Discover reporting periods (2025+)
-
-**API:** `GET RetrieveReportingPeriods`  
-**Header:** `dataSeries: Call`
-
-Returns a JSON array of quarter-end dates, newest first, e.g. `["3/31/2026", "12/31/2025", ...]`.
-
-**Filter in script:**
-
-```python
-MIN_YEAR = 2025
-# Keep periods where year part of MM/DD/YYYY >= 2025
-```
-
-Result for a typical run: **5 periods**
-
-- `3/31/2026`, `12/31/2025`, `9/30/2025`, `6/30/2025`, `3/31/2025`
-
----
-
-### Step 3 — For each period: get Texas panel
-
-**API:** `GET RetrievePanelOfReporters`  
-**Headers:** `dataSeries: Call`, `reportingPeriodEndDate: <period>`
-
-Returns one JSON object per institution expected to file, including:
-
-| API field | CSV column (`texas_institutions`) |
-|-----------|----------------------------------|
-| `ID_RSSD` | `id_rssd` |
-| `Name` | `name` |
-| `State` | `state` |
-| `City` | `city` |
-| `FilingType` | `filing_type` |
-| `HasFiledForReportingPeriod` | `has_filed` |
-
-**Geographic filter (script):**
-
-```python
-texas = [r for r in panel if (r.get("State") or "").upper() == "TX"]
-```
-
-Only institutions with **`State == "TX"`** are kept (~352–372 per quarter).
-
-Each Texas panel row is written to **`texas_institutions.csv`** (one row per bank × quarter).
-
----
-
-### Step 4 — Skip or download each filing
-
-For each Texas institution in the panel:
-
-```mermaid
-flowchart TD
-    A[Institution in TX panel] --> B{Already in progress.json?}
-    B -->|Yes| S[Skip download]
-    B -->|No| C{has_filed == True?}
-    C -->|No| S2[Skip - not filed yet]
-    C -->|Yes| D[RetrieveFacsimile XBRL]
-    D --> E[Save archive/call/period/rssd.xbrl]
-    E --> F[Write texas_filings.csv row]
-    F --> G[parse_xbrl → texas_xbrl_facts.csv rows]
-    G --> H[Update progress.json]
-```
-
-**Resume:** `data/progress.json` stores `"completed": ["3/31/2025|623052", ...]`. Re-running the script **does not re-download** completed pairs.
-
-**API:** `GET RetrieveFacsimile`  
-**Headers:**
-
-| Header | Example |
+| Column | Meaning |
 |--------|---------|
-| `dataSeries` | `Call` |
-| `reportingPeriodEndDate` | `6/30/2025` |
-| `fiIdType` | `ID_RSSD` |
-| `fiId` | `623052` |
-| `facsimileFormat` | `XBRL` (default) |
-
-**Response:** JSON with base64 or byte array → decoded to raw **XBRL XML**.
-
-**Rate limiting:** ~**1.5 seconds** between API calls (FFIEC ~2,500 downloads/hour cap).
-
----
-
-### Step 5 — Archive raw file + metadata
-
-For each download:
-
-| File | Purpose |
-|------|---------|
-| `archive/call/6-30-2025/623052.xbrl` | Exact bytes from FFIEC |
-| `archive/call/6-30-2025/623052.xbrl.meta.json` | `id_rssd`, `period`, `sha256`, `retrieved_at` |
-
-**Integrity:** SHA-256 hash stored in metadata and `texas_filings.sha256`.
+| `id_rssd` | Federal Reserve RSSD ID (join key) |
+| `institution_name` | Bank name |
+| `reporting_period` | Quarter end (`MM/DD/YYYY`) |
+| `mdrm_code` | FFIEC line code (e.g. `RCON2122`, `RCON1480`) |
+| `item_name` | **Official Fed short name** (e.g. `TOTAL LOANS AND LEASES; NET OF UNEARNED INCOME`) |
+| `mdrm_description` | Full Federal Reserve definition (up to 800 characters) |
+| `mdrm_category` | `loan_or_lease`, `schedule_rc_c`, or `loan_related_prefix` |
+| `reporting_form` | e.g. `FFIEC 031`, `FFIEC 041` |
+| `item_type` | `F` = financial line item |
+| `value_num` | Numeric amount (Call Report dollars are typically in **thousands**) |
+| `context_ref` | XBRL period/scenario |
+| `unit_ref` | Usually `USD` |
 
 ---
 
-### Step 6 — Parse XBRL into facts
+## Which FFIEC APIs were used
 
-**Module:** `ffiec_cdr.parser.parse_xbrl`
+FFIEC exposes **7** Public Web Service methods. This Texas extract uses **3** — the minimum set for a **complete Call Report XBRL pull**:
 
-1. Load XML with `lxml` (recover mode for large files).
-2. Iterate all elements in the document.
-3. Skip structural tags (`context`, `unit`, `schemaRef`, …).
-4. For elements with text values, capture:
-   - `concept` (tag name or full QName)
-   - `contextRef` / `unitRef` attributes
-   - `value_text` (string, max 2,000 chars)
-   - `value_num` (parsed float if numeric)
-5. Deduplicate within filing; cap at 50,000 facts per file.
+| # | API method | Used? | Role in this project |
+|---|------------|-------|----------------------|
+| 1 | `RetrieveReportingPeriods` | **Yes** | List Call Report quarters; filter year ≥ 2025 |
+| 2 | `RetrievePanelOfReporters` | **Yes** | All banks expected to file; filter `State == TX` |
+| 3 | `RetrieveFacsimile` | **Yes** | Download **XBRL** facsimile per bank/quarter |
+| 4 | `RetrieveFilersSinceDate` | No | Incremental sync only (not needed for full backfill) |
+| 5 | `RetrieveFilersSubmissionDateTime` | No | Optional submission timestamps |
+| 6 | `RetrieveUBPRReportingPeriods` | No | **UBPR** is a different report (peer ratios) |
+| 7 | `RetrieveUBPRXBRLFacsimile` | No | UBPR XBRL — not Call Report |
 
-Each fact → one row in **`texas_xbrl_facts.csv`**.
+**Formats not downloaded:** PDF and SDF (same API #3 with different `facsimileFormat` header).
 
----
-
-### Step 7 — Logging and progress
-
-| Log | Content |
-|-----|---------|
-| Terminal + `data/pull.log` | Every 10 downloads: `Downloaded N filings, M fact rows` |
-| `data/progress.json` | Completed `period\|rssd` keys after each success |
+**API base URL:** `https://ffieccdr.azure-api.us/public/`  
+**Spec:** [CDR-PDD-SIS-611 PDF](https://cdr.ffiec.gov/public/Files/SIS611_-_Retrieve_Public_Data_via_Web_Service.pdf)
 
 ---
 
-### End-to-end pipeline (system view)
+## How extraction works (step-by-step)
+
+### Phase A — Download (`pull_texas_since_2025.py`)
 
 ```mermaid
-flowchart LR
-    subgraph FFIEC["FFIEC CDR (Azure API)"]
+flowchart TB
+    subgraph API["FFIEC PWS API"]
         P1[RetrieveReportingPeriods]
         P2[RetrievePanelOfReporters]
-        P3[RetrieveFacsimile]
+        P3[RetrieveFacsimile XBRL]
     end
-
-    subgraph Script["pull_texas_since_2025.py"]
-        F1[Filter year >= 2025]
-        F2[Filter State = TX]
-        F3[Filter has_filed]
-        P4[parse_xbrl]
+    subgraph Filters["Filters"]
+        F1[Year >= 2025]
+        F2[State = TX]
+        F3[has_filed = True]
     end
-
-    subgraph Outputs["Outputs"]
+    subgraph Out["Outputs"]
         CSV1[texas_institutions.csv]
         CSV2[texas_filings.csv]
         CSV3[texas_xbrl_facts.csv]
         ARC[archive/*.xbrl]
     end
-
-    P1 --> F1
-    F1 --> P2
-    P2 --> F2
-    F2 --> CSV1
-    F2 --> F3
-    F3 --> P3
-    P3 --> ARC
+    P1 --> F1 --> P2 --> F2 --> CSV1
+    F2 --> F3 --> P3 --> ARC
     P3 --> CSV2
-    P3 --> P4
-    P4 --> CSV3
+    P3 --> Parse[parse_xbrl]
+    Parse --> CSV3
+```
+
+| Step | Action | Detail |
+|------|--------|--------|
+| 0 | Authenticate | Headers `UserID` + `Authentication: Bearer <token>` from `../.env` |
+| 1 | List periods | `RetrieveReportingPeriods` → keep periods with year ≥ 2025 |
+| 2 | Panel per period | `RetrievePanelOfReporters` → filter `State.upper() == "TX"` |
+| 3 | Write institutions | All TX panel rows → `texas_institutions.csv` |
+| 4 | Download filings | For each bank with `HasFiledForReportingPeriod`, call `RetrieveFacsimile` (XBRL) |
+| 5 | Archive | Save raw bytes to `archive/call/<period>/<rssd>.xbrl` + `.meta.json` |
+| 6 | Parse | `ffiec_cdr.parser.parse_xbrl` → append `texas_xbrl_facts.csv` |
+| 7 | Resume | `data/progress.json` stores `period\|rssd` — skips completed pairs on re-run |
+| 8 | Rate limit | ~1.5 seconds between API calls (~2,400/hour, under FFIEC 2,500 cap) |
+
+**Runtime:** ~1–3 hours for full Texas 2025+ pull (depends on network; laptop must stay awake).
+
+### Phase B — MDRM labeling (`extract_texas_loans.py`)
+
+| Step | Action | Detail |
+|------|--------|--------|
+| 1 | Download MDRM | [MDRM.zip](https://www.federalreserve.gov/apps/mdrm/pdf/MDRM.zip) → `data/mdrm/MDRM_CSV.csv` (~91 MB) |
+| 2 | Build lookup | Map `RCON2122` → item name + description + reporting form |
+| 3 | Filter facts | Keep loan/RC-C related rows from `texas_xbrl_facts.csv` |
+| 4 | Export | Write `texas_loans_summary.csv`, `texas_loans_labeled.csv`, `texas_loan_products_mdrm_catalog.csv` |
+
+### Phase C — Rebuild CSVs from archive (if needed)
+
+If `texas_filings.csv` or facts look incomplete after a **restart**, the archive is still complete:
+
+```bash
+python rebuild_csv_from_archive.py
+python extract_texas_loans.py --summary
 ```
 
 ---
 
-### Sequence diagram (one bank, one quarter)
+## Loan types and MDRM labeling
 
-```mermaid
-sequenceDiagram
-    participant S as pull_texas_since_2025.py
-    participant API as FFIEC PWS API
-    participant Disk as archive + exports
+### Important: FFIEC does not use the word "loan" in XBRL tags
 
-    S->>API: RetrievePanelOfReporters(period)
-    API-->>S: Panel JSON (all US banks)
-    Note over S: Keep State == TX only
+Filtering `concept contains "loan"` in `texas_xbrl_facts.csv` returns **zero rows**. Loan data uses **MDRM codes**:
 
-    alt has_filed and not in progress.json
-        S->>API: RetrieveFacsimile(period, RSSD, XBRL)
-        API-->>S: XBRL bytes
-        S->>Disk: Write .xbrl + .meta.json
-        S->>Disk: Append texas_filings row
-        S->>S: parse_xbrl()
-        S->>Disk: Append texas_xbrl_facts rows
-        S->>Disk: Update progress.json
-    else skip
-        Note over S: Already done or not filed
-    end
+| Code | Official MDRM name (loan category) |
+|------|-----------------------------------|
+| `RCON2122` | Total loans and leases |
+| `RCON2145` | Net loans and leases (after allowance) |
+| `RCON2130` | Allowance for loan and lease losses |
+| `RCON1480` | Commercial / nonfarm nonresidential RE loans |
+| `RCON1420` | Real estate loans secured by farmland |
+| `RCON1460` | Multifamily residential RE loans |
+| `RCON1545` | Credit card plans |
+| `RCON1583` | Other consumer loans |
+| `RCON1590` | Agricultural production loans |
+| `RCON1754` | Lease financing receivables |
+| `RCONF158` / `RCONF159` | Construction / land development (Schedule RC-C) |
+
+**Prefix guide:**
+
+- `RCON14*` — real estate–secured loans  
+- `RCON15*` — consumer / credit card  
+- `RCON16*` — other loans  
+- `RCON21*` — totals and allowance  
+- `RCONF1*`, `RCONHK*`, `RCONJ4*` — Schedule RC-C detail lines  
+
+**Lookup any code:** [Federal Reserve MDRM search](https://www.federalreserve.gov/apps/mdrm/data-dictionary)
+
+**Schedule RC-C instructions:** [FDIC RC-C guide](https://www.fdic.gov/bank-financial-reports/031-041-rc-c1-loans-and-leases-december-2024)
+
+### What you get vs. what you do not
+
+| You get | You do not get |
+|---------|----------------|
+| Aggregated balances by **regulatory loan category** per bank per quarter | Individual loan contracts or borrower names |
+| Official Fed **product/category** names via MDRM | Marketing names (“30-year fixed”, etc.) |
+| Past due / allowance lines when present in XBRL | Real-time loan-level servicing data |
+
+See **[LOAN_EXTRACTION_GUIDE.md](./LOAN_EXTRACTION_GUIDE.md)** for analyst workflows.
+
+---
+
+## Project layout
+
 ```
+ONLY_TEXAS_SINCE_2025/
+├── README.md                           ← This file
+├── DATA_DICTIONARY.md                  ← Column definitions for all CSVs
+├── LOAN_EXTRACTION_GUIDE.md            ← How to analyze loan data
+├── UPLOAD_TO_SHAREPOINT.md             ← Maintainer upload steps
+│
+├── pull_texas_since_2025.py            ← Main FFIEC download + parse
+├── extract_texas_loans.py              ← MDRM-labeled loan exports
+├── rebuild_csv_from_archive.py         ← Rebuild core CSVs from archive
+├── mdrm_loader.py                      ← Load Fed MDRM_CSV.csv
+│
+├── scripts/
+│   └── download_mdrm.py              ← One-time MDRM download
+│
+├── exports/                            ← CSV outputs (SharePoint copies)
+│   ├── texas_institutions.csv
+│   ├── texas_filings.csv
+│   ├── texas_xbrl_facts.csv
+│   ├── texas_loans_summary.csv         ← START HERE for loans
+│   ├── texas_loans_labeled.csv
+│   └── texas_loan_products_mdrm_catalog.csv
+│
+├── archive/call/                       ← Raw XBRL (1,825 files)
+│   ├── 3-31-2025/
+│   ├── 6-30-2025/
+│   ├── 9-30-2025/
+│   ├── 12-31-2025/
+│   └── 3-31-2026/
+│
+└── data/
+    ├── progress.json                   ← Resume state (1,825 completed)
+    ├── pull.log                        ← Download log
+    └── mdrm/
+        ├── MDRM.zip                      ← Downloaded from Fed (gitignored)
+        └── MDRM_CSV.csv                  ← 75k+ MDRM definitions (gitignored)
+```
+
+---
+
+## Scripts reference
+
+| Script | Command | Purpose |
+|--------|---------|---------|
+| Main extract | `python pull_texas_since_2025.py` | Full Texas 2025+ download |
+| Test extract | `python pull_texas_since_2025.py --max 5` | Download only 5 filings |
+| PDF format | `python pull_texas_since_2025.py --format PDF` | PDF instead of XBRL (no facts parse) |
+| Rebuild CSVs | `python rebuild_csv_from_archive.py` | Regenerate filings/facts from archive |
+| Download MDRM | `python scripts/download_mdrm.py` | Fetch Fed MDRM dictionary |
+| Loan summary | `python extract_texas_loans.py --summary` | **~31k rows** — main loan categories |
+| Loan full | `python extract_texas_loans.py` | **~938k rows** — all loan/RC-C lines |
+| MDRM catalog | `python extract_texas_loans.py --catalog` | Code book only |
+
+All scripts run from repo root with venv activated:
+
+```bash
+cd /Users/adityarajiv/Documents/ffiec-cdr
+source .venv/bin/activate
+python ONLY_TEXAS_SINCE_2025/<script>.py
+```
+
+Credentials: `../.env` with `FFIEC_USER_ID` and `FFIEC_TOKEN`.
 
 ---
 
 ## Architecture diagrams
 
-### Data model (how CSVs relate)
+### Data model (how tables join)
 
 ```mermaid
 erDiagram
-    TEXAS_INSTITUTIONS ||--o{ TEXAS_FILINGS : "has_filed=True"
+    TEXAS_INSTITUTIONS ||--o{ TEXAS_FILINGS : "has_filed"
     TEXAS_FILINGS ||--|{ TEXAS_XBRL_FACTS : "parses to"
+    TEXAS_XBRL_FACTS ||--o{ TEXAS_LOANS_SUMMARY : "filtered + MDRM"
 
     TEXAS_INSTITUTIONS {
         int id_rssd PK
         string reporting_period PK
         string name
         string state
-        string city
-        string filing_type
         boolean has_filed
     }
-
     TEXAS_FILINGS {
         int id_rssd PK
         string reporting_period PK
         string sha256
         string file_path
-        datetime retrieved_at
     }
-
-    TEXAS_XBRL_FACTS {
+    TEXAS_LOANS_SUMMARY {
         int id_rssd
-        string reporting_period
-        string concept
-        string context_ref
+        string mdrm_code
+        string item_name
         float value_num
     }
 ```
 
-### Folder layout after extraction
+### Sequence: one bank, one quarter
 
-```text
-ONLY_TEXAS_SINCE_2025/
-├── exports/                    ← Upload these to Google Sheets
-│   ├── texas_institutions.csv
-│   ├── texas_filings.csv
-│   └── texas_xbrl_facts.csv    ← Very large
-└── archive/call/
-    ├── 3-31-2025/
-    │   ├── 623052.xbrl
-    │   └── 623052.xbrl.meta.json
-    ├── 6-30-2025/
-    ├── 9-30-2025/
-    ├── 12-31-2025/
-    └── 3-31-2026/
+```mermaid
+sequenceDiagram
+    participant S as pull_texas_since_2025.py
+    participant API as FFIEC API
+    participant Disk as archive + exports
+
+    S->>API: RetrievePanelOfReporters(period)
+    API-->>S: US panel JSON
+    Note over S: Keep State == TX
+
+    alt has_filed and not in progress.json
+        S->>API: RetrieveFacsimile(RSSD, XBRL)
+        API-->>S: XBRL bytes
+        S->>Disk: .xbrl + .meta.json
+        S->>Disk: texas_filings + texas_xbrl_facts rows
+        S->>Disk: progress.json update
+    end
 ```
 
 ---
 
-## Quick start
+## Setup and credentials
+
+### Requirements
+
+| Item | Detail |
+|------|--------|
+| Python | 3.9+ with parent venv (`../requirements.txt`) |
+| FFIEC PWS account | [CDR public site](https://cdr.ffiec.gov/public/) → Manage My Web Service Account |
+| `.env` | `FFIEC_USER_ID`, `FFIEC_TOKEN` in `ffiec-cdr/.env` |
+| Disk space | ~2 GB (archive + CSVs + MDRM) |
+| Network | Stable; Mac awake during download |
+
+### First-time setup
 
 ```bash
 cd /Users/adityarajiv/Documents/ffiec-cdr
+python3 -m venv .venv
 source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env   # add FFIEC credentials
+```
 
-# Full Texas 2025+ extract
+### Full pipeline (from scratch)
+
+```bash
+# 1. Download Texas Call Reports
 python ONLY_TEXAS_SINCE_2025/pull_texas_since_2025.py
 
-# Test (5 downloads)
-python ONLY_TEXAS_SINCE_2025/pull_texas_since_2025.py --max 5
+# 2. Rebuild core CSVs if needed (after interrupted run)
+python ONLY_TEXAS_SINCE_2025/rebuild_csv_from_archive.py
 
-# PDF instead of XBRL (no texas_xbrl_facts rows)
-python ONLY_TEXAS_SINCE_2025/pull_texas_since_2025.py --format PDF
+# 3. MDRM loan exports
+python ONLY_TEXAS_SINCE_2025/scripts/download_mdrm.py   # once
+python ONLY_TEXAS_SINCE_2025/extract_texas_loans.py --summary
+python ONLY_TEXAS_SINCE_2025/extract_texas_loans.py      # optional full loan file
+
+# 4. Upload exports/ to SharePoint for teammates
 ```
 
 Keep Mac awake:
 
 ```bash
-caffeinate -dims   # second terminal tab
+caffeinate -dims
 ```
 
 ---
 
-## Output files
+## Resume, rebuild, and troubleshooting
 
-| File | Description |
-|------|-------------|
-| [DATA_DICTIONARY.md](./DATA_DICTIONARY.md) | **Column-level documentation** for all three CSVs |
-| `exports/texas_institutions.csv` | Texas panel universe per quarter |
-| `exports/texas_filings.csv` | Downloaded filings manifest |
-| `exports/texas_xbrl_facts.csv` | Parsed XBRL facts (line items) |
+| Issue | Solution |
+|-------|----------|
+| Laptop slept mid-download | Re-run `pull_texas_since_2025.py` — skips completed entries in `progress.json` |
+| `texas_filings.csv` incomplete but archive full | Run `rebuild_csv_from_archive.py` |
+| Filter "loan" returns nothing | Use `texas_loans_summary.csv` (MDRM labels), not raw facts |
+| HTTP 403 from API | Custom `User-Agent` required (handled in parent `FFIECClient`) |
+| Token expired | Renew at FFIEC PWS account (every 90 days) |
+| CSVs not on GitHub | By design — use SharePoint link above |
 
----
-
-## Resume, sleep, and CSV rebuild
-
-### If the laptop sleeps
-
-The download **pauses**. Wake the Mac and re-run:
+**Verify completeness:**
 
 ```bash
-python ONLY_TEXAS_SINCE_2025/pull_texas_since_2025.py
+# Should show 1825 for each period
+ls ONLY_TEXAS_SINCE_2025/archive/call/*/  | wc -l
+python -c "import json; print(len(json.load(open('ONLY_TEXAS_SINCE_2025/data/progress.json'))['completed']))"
 ```
-
-Completed banks are **skipped** via `progress.json`.
-
-### If CSVs look incomplete
-
-Restarting the script **rewrites** CSV files but **skips** re-downloads — so `texas_filings.csv` / `texas_xbrl_facts.csv` may only list the **last session’s** new downloads while **`archive/`** has everything.
-
-**Fix:** rebuild from archive:
-
-```bash
-python ONLY_TEXAS_SINCE_2025/rebuild_csv_from_archive.py
-```
-
-This reparses all `.xbrl` files under `archive/call/` into complete CSVs.
 
 ---
 
-## Google Sheets
+## Google Sheets and analysis tips
 
-1. Download CSVs from the [SharePoint folder](https://cedarframe-my.sharepoint.com/:f:/g/personal/aditya_alldunkin_com/IgCVLkzsCMRsQqXAsv7Ql-A5AW2lhgQIsUy0pHp0Kv9Vkm4?e=jGFMZX) (or use local `exports/`).
-2. Or upload to Google Drive:
-   - Start with **`texas_filings.csv`** (overview).
-   - Use **`texas_institutions.csv`** for bank lists.
-   - **`texas_xbrl_facts.csv`** is huge — filter one quarter or one bank first, or use BigQuery / SQLite instead of one sheet.
+### Recommended import order
+
+1. **`texas_loans_summary.csv`** — loan categories with readable `item_name`  
+2. **`texas_institutions.csv`** — bank names and cities  
+3. **`texas_filings.csv`** — filing inventory  
+4. **`texas_loan_products_mdrm_catalog.csv`** — look up any `mdrm_code`  
+5. **`texas_xbrl_facts.csv`** or **`texas_loans_labeled.csv`** — only if you need full detail (very large)
+
+### Example analyses
+
+| Question | How |
+|----------|-----|
+| Total loans per bank | Filter `mdrm_code = RCON2122`, pivot by `institution_name` |
+| C&I exposure | Filter `mdrm_code = RCON1480` |
+| Credit cards | Filter `mdrm_code = RCON1545` |
+| Quarter-over-quarter | Same `id_rssd`, compare `reporting_period` |
+| Loan-to-assets | Join `RCON2122` / `RCON2170` (assets) on same bank/period |
+
+**Amounts:** Confirm units in MDRM (typically **thousands of dollars** for dollar lines).
 
 ---
 
-## Relationship to main project
+## Limitations and what this data is not
 
-| Item | Location |
-|------|----------|
-| Shared API client | `../src/ffiec_cdr/client.py` |
-| Credentials | `../.env` |
-| National backfill | `../scripts/backfill_all.py` |
-| National exports | `../exports/` |
+| Topic | Note |
+|-------|------|
+| Geography | **Texas only** (`State = TX` on panel) |
+| Time | **2025+ quarters only** (not full history) |
+| Report type | **Call Report** only (not UBPR, not Y-9C) |
+| Format | **XBRL** only in this extract (not PDF/SDF) |
+| Loan granularity | **Regulatory categories**, not individual loans |
+| GitHub | Code + docs only; **data on SharePoint** |
+| FFIEC rate limit | ~2,500 API calls/hour — script uses 1.5s delay |
 
-This folder is **independent** — national and Texas extracts do not share `archive/` or CSV paths.
+---
+
+## Related documentation
+
+| Document | Contents |
+|----------|----------|
+| [DATA_DICTIONARY.md](./DATA_DICTIONARY.md) | Every column in every CSV |
+| [LOAN_EXTRACTION_GUIDE.md](./LOAN_EXTRACTION_GUIDE.md) | Loan analysis for non-technical users |
+| [UPLOAD_TO_SHAREPOINT.md](./UPLOAD_TO_SHAREPOINT.md) | How to refresh SharePoint files |
+| [../README.md](../README.md) | Parent `ffiec-cdr` platform (national scope) |
 
 ---
 
@@ -434,5 +499,24 @@ This folder is **independent** — national and Texas extracts do not share `arc
 
 - [FFIEC CDR Public site](https://cdr.ffiec.gov/public/)
 - [PWS help](https://cdr.ffiec.gov/public/HelpFiles/PWSInfo.htm)
-- [SIS611 API PDF](https://cdr.ffiec.gov/public/Files/SIS611_-_Retrieve_Public_Data_via_Web_Service.pdf)
+- [SIS611 API specification (PDF)](https://cdr.ffiec.gov/public/Files/SIS611_-_Retrieve_Public_Data_via_Web_Service.pdf)
+- [Federal Reserve MDRM](https://www.federalreserve.gov/apps/mdrm/)
+- [MDRM download (CSV zip)](https://www.federalreserve.gov/apps/mdrm/pdf/MDRM.zip)
 - [Manage Facsimiles (manual UI)](https://cdr.ffiec.gov/public/ManageFacsimiles.aspx)
+- [FDIC Schedule RC-C instructions](https://www.fdic.gov/bank-financial-reports/031-041-rc-c1-loans-and-leases-december-2024)
+
+---
+
+## Changelog (project milestones)
+
+| Date | Milestone |
+|------|-----------|
+| 2026-06-02 | Initial Texas extract script; first XBRL downloads |
+| 2026-06-02–03 | Full backfill: **1,825** filings across 5 quarters |
+| 2026-06-03 | `rebuild_csv_from_archive.py`; CSVs aligned with archive |
+| 2026-06-03 | Federal Reserve **MDRM** integration; loan-labeled exports |
+| 2026-06-03 | SharePoint distribution link added for teammates |
+
+---
+
+*Maintainer: PayPro LLC / FFIEC_DATABASE_PROJECT. For API token issues, use the email on your FFIEC PWS account.*

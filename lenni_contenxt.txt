@@ -1,0 +1,694 @@
+LENNI
+■
+The Complete Concept Guide
+Everything about Lenni — the company, the products, the brand, the market, and the operating functions
+An ALL Dunkin family enterprise
+Compiled from the Lenni AI Context library (Accounting, HR, and Marketing / Brand reference files)
+Source material dated May 2026  ·  Document compiled June 2026
+
+Contents
+
+
+
+How to read this document
+This guide consolidates everything captured in Lenni’s internal AI Context library into one reference, written for someone who needs to understand Lenni from zero — what the company is, who it serves, how it talks, how it is built, and how its operating functions run. It draws on every file currently in the Lenni knowledge folders: the master Lenni Overview, the ALL Dunkin Overview placeholder, the Accounting Context and Accounting + Claude files, the HR Context and HR + Claude files, and the umbrella Lenni Brand Reference.
+The single most important thing to understand first
+The source material captures Lenni at a moment of strategic expansion. The older, foundational documents describe Lenni as one product — a digital hub for Texas community banks. The newer brand reference re-frames Lenni as an umbrella operating company with two named sub-products: Convey by Lenni (the community-bank product) and Envoy by Lenni (a professional-to-professional layer). Section 2 explains this evolution in full. Wherever the two framings differ, this guide flags it explicitly rather than papering over it.
+
+1. Executive snapshot
+Lenni is a Texas technology company, founded in 2026 by Doak C. Dunkin, the third generation of a family business that has spent roughly fifty years inside community banking. It sits under the ALL Dunkin family-enterprise umbrella and is explicitly not a product of Dunkin & Associates (the family’s flagship insurance-to-banks business) — it is its own standalone company.
+At its foundation, Lenni’s product is the digital handshake for community banks: a white-labeled borrower-and-lender hub that slots in between a community bank’s website and its existing Loan Origination System (LOS), putting a real lender at the front of every online loan inquiry. The bank keeps every page, workflow, Core, and LOS it already has. Lenni occupies the gap where a missing branch visit used to live.
+The fast facts
+Question
+Answer
+What is it?
+A white-labeled borrower-and-lender hub that puts a real lender at the front of a community bank’s online loan inquiries. “The digital handshake for community banks.”
+Who is it for?
+Texas community banks, $500M–$2B in assets. Primary buyer: the Chief Lending Officer (CLO) / SVP of Lending.
+Business model
+White-labeled SaaS, monthly subscription. One bank per market, first right of refusal.
+Pricing
+Originally floated ~$500/mo for 5 users; revised target after the FrogSlayer kickoff to $2,500–$5,000/month base, with bolt-ons over time. One bank already said yes to $5–6K/mo.
+Founder
+Doak C. Dunkin — third generation of Dunkin & Associates. Founded Lenni in 2026.
+Parent
+ALL Dunkin (family enterprise / “an idea,” not a registered operating company). Lenni LLC is the registered Texas entity.
+Engineering partner
+FrogSlayer — building V1 under a $55K fixed-fee SOW (4–6 weeks; up to 8 with SMS-registration risk). Kickoff 2026-05-13.
+Stage (May 2026)
+Pre-revenue. V1 build in flight; target production-ready 2026-05-31. 2–3 pilot banks targeted live by end of 2026.
+Funding
+No external VC. Family-funded through ALL Dunkin — stability over velocity.
+Name in writing
+Just “Lenni” everywhere in body copy. “Lenni LLC” only in legal contracts.
+
+The one-sentence voice rule
+The banker is the subject of every sentence. The bank is the hero; Lenni is the tool. This single principle governs all Lenni writing — Lenni is never the protagonist.
+
+2. The strategic evolution: from one product to an umbrella brand
+This is the concept most likely to confuse a first-time reader, so it comes first. The Lenni documents were written across a short window in May 2026, and during that window the strategy widened. Understanding both framings — and how they relate — is essential.
+Framing A — the foundational view (the “Lenni Overview”)
+In the foundational documents, Lenni is a single product aimed at one market: Texas community banks. Its category descriptor is “the digital handshake for community banks.” Its signature voice pattern is built from banking nouns (“Open your digital branch”), and its metaphor system is Branch → Desk → Handshake. Everything points at one buyer (the CLO) and one outcome (more funded loans).
+Framing B — the umbrella view (the “Lenni Brand Reference”)
+In the brand reference, Lenni becomes the umbrella operating brand for ALL Dunkin’s technology work, serving independent professional service firms broadly — not just banks. The community-bank product is renamed and absorbed as a sub-product, and a second sub-product is introduced:
+Layer
+Brand
+What it is
+Family enterprise
+ALL Dunkin
+Texas family enterprise across technology, finance, real estate, infrastructure. Four generations of two families (Dunkin since 1945; Roberts since the 1950s).
+Operating company
+Lenni
+The ALL Dunkin technology operating brand. Builds products that keep independent professional firms in front of their highest-value clients as those clients adopt AI.
+Sub-product 1
+Convey by Lenni
+The white-labeled borrower-and-lender hub for community banks — i.e. the original “Lenni” product. Front door for new borrowers plus a persistent channel for existing customers on complex transactions.
+Sub-product 2
+Envoy by Lenni
+The context layer between professionals — banker-to-attorney, banker-to-CPA, professional-to-professional — on complex work.
+
+How to reconcile the two
+	•	“Lenni” the company = the umbrella operating brand under ALL Dunkin.
+	•	The community-bank product that the foundational docs call “Lenni” is, in the newer architecture, Convey by Lenni. A migration note confirms it: “Convey was previously known as Lenni.”
+	•	“The digital handshake for community banks” is demoted from Lenni’s master tagline to Convey’s product-level category descriptor. It is “never deployed at the umbrella level.”
+	•	Two voice systems now coexist: the umbrella voice (“Serve your clients where they are”) and the Convey / community-bank voice (“Open your digital branch”). Section 8 documents both.
+Throughout this guide, when a concept comes from the foundational community-bank view, it applies most directly to Convey by Lenni today. When it comes from the umbrella brand reference, it applies to Lenni-the-company. Both are presented because both are live in the source material and the business is mid-transition.
+The lockup (naming) convention
+	•	Always write [Sub-product] by Lenni on first reference (e.g., “Convey by Lenni”).
+	•	Body copy may use the sub-product alone after first mention (e.g., “Convey”).
+	•	Hero copy, deck covers, and contract language always include “by Lenni.”
+
+3. ALL Dunkin — the family enterprise above Lenni
+ALL Dunkin is the family-business umbrella that holds the Dunkin portfolio. In Doak’s own words: “All Dunkin is not an actual company. It’s really more of an idea.” It is the strategic frame, the values system, and the family-business heritage that every portfolio company inherits.
+The portfolio
+	•	Dunkin & Associates — the ~50-year-old insurance-to-banks business (originally Dial-Dunkin Associates). The flagship.
+	•	Lenni — the white-labeled digital hub for community banks. Explicitly its own standalone business under the umbrella, not a product of Dunkin & Associates.
+	•	Private Lending (ALL Dunkin’s in-house lending arm) — Lenni’s day-one test customer.
+	•	Additional family ventures (construction, oil and gas, pipeline) sit alongside but are not operating companies the AI work touches today.
+Why ALL Dunkin matters to every Lenni decision
+	•	Three-generation lineage of Texas community banking. Dial Dunkin → Doak M. Dunkin → Doak C. Dunkin. Fifty years of family commitment. Not marketing language — the actual proof point that earns Lenni standing with bank executives.
+	•	Insider, not outsider. Lenni is built by people who have run community banks, sold to community banks, and served on industry boards (IBAT). ALL Dunkin’s posture is peer, not vendor.
+	•	Family-business operating values. Long-term, relationship-first, conservative on commitments, intentional about who they work with. These cascade into how Lenni sells (one bank per market; selection, not pitching), how it builds (no custom features — every feature serves every bank), and how it shows up (banker-peer voice, no hype).
+Document status note
+The ALL Dunkin Overview in the source library is a placeholder. The full ALL Dunkin brand guide is being built in a separate ALL Dunkin CEO project and will later sync down into every portfolio company’s folders. Until then, the Lenni Overview is the operational source of truth. The placeholder also notes a richer four-generation, two-family framing (Dunkin + Roberts) that appears fully in the brand reference — see Section 9.
+
+4. What Lenni is — and what it is not
+Lenni is the conversation that wraps around the loan application. It is the digital equivalent of walking into a branch and sitting across the desk from a real lender. Defining it by negation is just as important as defining it positively, because almost every banker will try to map it onto a category they already know.
+Lenni IS
+Lenni is NOT
+The conversation that wraps around the application
+A Loan Origination System (LOS)
+A white-labeled SaaS deployed in 2–3 weeks with no LOS or Core integration
+An underwriting engine
+The digital equivalent of sitting across the desk from a real lender
+A chatbot
+A layer that sits in front of the bank’s existing systems
+A digital banking suite (Q2, Banno serve existing customers; Lenni serves loan prospects)
+Sold under a monthly subscription (target $2,500–$5,000/mo base)
+A rip-and-replace of anything the bank already has
+
+Where Lenni fits in the loan flow
+Lenni sits in front of the bank’s existing systems, never inside them. No rip-and-replace, no migration. The bank keeps everything it already paid for.
+Traditional in-branch
+Status-quo online
+With Lenni
+Branch Visit → Application → LOS → Core
+Application → LOS → Core (no human at the front)
+Lenni → 
+Application → LOS → Core
+
+In the umbrella framing, the same mechanic generalizes to any professional firm: “Every Lenni product sits inside the firm’s workflow — never as a replacement for the systems already in place.” Four characteristics define every Lenni product: relationship-first, slot-in (not rip-and-replace), fast deployment (2–3 weeks), and private by design — Lenni doesn’t read the data.
+
+5. Why Lenni exists — the gap
+When a customer walks into a branch, a lender greets them, answers questions, and walks them through the application. That human moment is the community bank’s competitive edge. The instant the customer chooses to apply online instead, the lender disappears and the customer is alone with a form. Lenni puts the lender back at the front of the online experience — same conversation, same guidance, no change to the bank’s LOS or Core.
+The numbers that make the gap defensible
+	•	267 of ~360 Texas community banks (~74%) have no online consumer loan application at all — not even a web form.
+	•	45 present only a PDF at the “Apply” link.
+	•	The remainder use an LOS-vendor online application (MeridianLink, Encino, FIS, Jack Henry SilverLake).
+	•	Zero have direct messaging with a real lender. Commercial applications online are effectively zero.
+	•	2 commercial real-estate (CRE) leads in one week came to a real community banker from nothing but a “Contact Us” form — demand exists; banks aren’t capturing it.
+
+The volume bet, in dollars
+	•	5+ incremental loans per month per bank — Lenni’s conservative floor, defensible at loan committee.
+	•	$500K+ average loan size when CRE is in the mix.
+	•	Five incremental CRE loans/month → $1M+ in year-one net interest income, before origination fees, deposits, or cross-sell.
+	•	Deployed in 2–3 weeks, with no integration beyond a button on a webpage.
+	•	First Financial Bank anecdote: one top loan officer is expected to fund $20M/month.
+
+6. Who Lenni is for
+Primary buyer
+Texas community banks, $500M–$2B in assets, selling to the Chief Lending Officer (CLO) or SVP of Lending. There are roughly 360 community banks in Texas.
+Secondary and wrong-fit buyers
+Secondary buyers
+Wrong-fit buyers
+Out-of-state community banks
+Large national banks with in-house digital lending
+Credit unions (Doak’s stated preference: avoid)
+Banks already on modern borrower portals (nCino, Blend, SimpleNexus)
+Adjacent vertical: private lenders
+Banks mid-core-conversion
+
+The five buying personas in a community-bank deal
+	•	CEO — “Will my bank still matter in ten years?”
+	•	Chief Lending Officer — “Will my lenders use this?”
+	•	CFO — “Can I defend this number to the board?”
+	•	CIO / CTO — “What’s the risk to the stack?”
+	•	Compliance Officer — “Does this create regulatory exposure?”
+The V1 user (who actually uses the product)
+The small centralized consumer-lending desk at most community banks — not the field / relationship loan officer (the “chamber-event guy”), who isn’t chained to a desk. The centralized team is.
+The borrower personas
+	•	The established incumbent who has been doing real-estate deals forever.
+	•	The next-generation business owner ready to buy their building, flip houses, or subdivide property.
+These are “hustlers” — not mortgage shoppers in a DR Horton neighborhood. Community banks live on portfolio real-estate and commercial loans, not retail conforming mortgages.
+Umbrella-level audience (the Lenni-the-company view)
+The brand reference widens the audience to independent professional service firms, 2–200 people, Texas-headquartered, with high-value client books at risk from AI-augmented competition. Secondary current targets include boutique law firms, regional CPA firms with CAS practices, and independent wealth advisors / RIAs. Cut from scope: solo practitioners (economics don’t work), large firms (200+, competition not customer), credit unions, and international firms.
+
+7. The product: current state, roadmap, and scope
+Current state (May 2026)
+	•	V1 build with FrogSlayer in flight. $55K fixed-fee SOW, 4–6 weeks (8 with SMS carrier risk). Kickoff 2026-05-13.
+	•	Day-one test customer: Private Lending (ALL Dunkin’s in-house lending arm).
+	•	First pilot banks: 2–3 targeted live by end of 2026, with ~10 more in active sales cycle by year end.
+	•	Selling season: 2026-08-01 through end of October 2026. Banks go silent from Christmas through New Year.
+	•	Pricing direction: $500/mo/5 users floated → revised to $2,500–$5,000/mo base after FrogSlayer pushed back on user-count caps. One bank already said yes to $5–6K/mo without flinching.
+The product roadmap (V1 → V2 → V3)
+Version
+What it is
+Delivery
+V1
+Direct messaging hub. Borrower ↔ assigned lender chat, in-app. Catches the bank up to last year.
+FrogSlayer; target production-ready 2026-05-31.
+V2
+MD-file (markdown) gateway. Banks upload underwriting guidelines; borrowers submit MD-complete loan packets from inside their AI assistant. Lenni parses, maps to bank intake, triggers compliance prompts, and opens borrower-lender chat instantly.
+FrogSlayer + Addy. Next.
+V3
+MCP connector. Lenni mediates between bank profiles / MD repositories and AI agents directly. Claude acts as the lender-in-Lenni inside a bank-facing UI; no borrower-side UI needed. “Must win this race.”
+FrogSlayer; kickoff after V2 validation.
+
+The Texas Community Bank Index (a parallel headless workstream)
+Addy is building Lenni’s headless dataset of every Texas community bank: products, geographies, FDIC/FFIEC loan-portfolio mappings, news signals, and MD-gateway links. It is published openly at the public Lenni endpoint (domain TBD: lenni.io vs lenny.io). The strategic bet is visibility beats secrecy: when borrowers in Claude or ChatGPT ask “who should I look at for this loan?”, Lenni’s headless index becomes the source AI agents reach for.
+V1 scope — in and out
+In scope for V1
+Out of scope for V1
+Mobile-friendly web (not a native app)
+LOS integration; credit pulls; underwriting decisioning
+Borrower account creation + chat + application + documents
+DocuSign integration; identity verification (Plaid / Persona — research only)
+Multi-user group chat on the bank side
+Per-loan-product applications; document-checklist templates
+White-label theme; hours-of-operation surfacing
+Custom features per bank; compliance / audit export tooling
+Multi-application support (with caveats); document upload
+Billing inside the product; SSO; cross-bank borrower view
+Email-based magic-link login (SMS scaffolded, launching on email)
+AI in-app for V1
+
+8. Brand voice — the operational rules
+Voice is unusually load-bearing at Lenni: the brand is sold banker-to-banker, and a single off-key word can break the peer posture. There are two coexisting voice systems — the community-bank / Convey voice and the Lenni umbrella voice. They share DNA (concrete nouns, declarative, the customer is the hero) but differ in signature pattern and taglines.
+8.1 The signature line patterns
+Community-bank / Convey pattern:
+[concrete community-banking noun] + [active verb] + online
+	•	Open your digital branch.
+	•	The handshake goes online.
+	•	Real lenders. Real conversations. Online.
+	•	Online lending with a lender in it.
+Lenni umbrella pattern:
+[Active verb] + your clients + where they are.
+	•	Serve your clients where they are.
+	•	Meet them there.
+	•	Stay where your clients are.
+8.2 The voice rules
+Community-bank / Convey — six rules:
+	•	The banker is the subject of every sentence. The bank is the hero; Lenni is the tool.
+	•	Concrete nouns only. Lender, branch, desk, handshake, conversation, community, neighbor, paper trail. Never abstractions like experience, journey, transformation, solution, platform.
+	•	Declarative, not defensive. We open things; we don’t prevent loss. Avoid “doesn’t have to,” “won’t lose,” “stay” framings.
+	•	“Online” is the modifier, never the headline. It is the where, not the what.
+	•	The Desk and The Handshake are bank-facing only. Never use these terms with borrowers; borrower-facing copy is plain (“talk to a real lender”).
+	•	Time trust: don’t promise instant; promise honest. Visible business hours, not fake 24/7.
+Lenni umbrella — seven rules:
+	•	The firm is the actor; the client is where the firm goes. Lenni is never the protagonist.
+	•	Concrete professional-service nouns beat abstract tech nouns. Client, firm, professional, banker, attorney, CPA, conversation, handshake, file, engagement beat platform, system, solution, journey.
+	•	Declarative beats defensive. Say where the firm goes with Lenni; never what the firm “won’t lose.”
+	•	Speak about relevance, not heritage. Family lineage belongs on the About page and in contract preambles — never in hero copy or campaigns.
+	•	Meet the client; don’t replace the firm. Lenni is the bridge, never the destination.
+	•	AI augments the professional; it does not replace them. The firm’s professionals stay the irreplaceable element.
+	•	No PE vocabulary, ever. Inherited from ALL Dunkin. Never “portfolio company,” “dry powder,” “LP/GP.”
+8.3 Banned words
+Any draft using these goes back for revision. The two lists overlap heavily; the umbrella list adds private-equity and a few extra terms.
+Banned across all Lenni copy
+Additional bans at the umbrella level
+digital age · modern · future · era · transformation · revolution · next-gen · tech-forward · AI-powered · seamless · leverage · robust · cutting-edge · innovative · disruptive · solution (filler) · platform (filler) · experience (noun) · journey · ecosystem
+portfolio company · dry powder · value-add · LP / GP / IRR / MOIC · diversified holdings · multi-strategy · alternative assets · entrepreneur · passionate · synergies · world-class · best-in-class · stakeholder · software (as umbrella self-descriptor) · small (as audience modifier — use “independent”) · family-built (banned from hero; allowed on About)
+Single exception: “digital handshake” is permitted — but only as the Convey product category descriptor, never at the umbrella level.
+8.4 Love-list (swap toward these when stuck)
+lender · branch · desk · handshake · conversation · community · neighbor · paper trail · online · real · working · local · file · thread · the right answer · plainly · when · where · how soon
+Umbrella additions: client · firm · independent · serve · meet · stay · keep · relevant · professional · practice · advisor · partner · AI-augmented · augments · amplifies · multiplies · in your hands · expertise · earned · operate / operator
+8.5 Locked taglines
+Community-bank / Convey surfaces (deploy as-is):
+Surface
+Locked line
+Primary tagline (homepage, master brand)
+Open your digital branch.
+Category descriptor
+The digital handshake for community banks.
+Sales / differentiation (decks, RFPs)
+Online lending with a lender in it.
+Conference / event subhead
+Your community is online. Your lender should be too.
+Surface line (ads, social, swag)
+Real lenders. Real conversations. Online.
+Campaign theme
+The handshake goes online.
+
+Lenni umbrella surfaces (deploy as-is):
+Surface
+Locked line
+Primary tagline (lenni.io)
+Serve your clients where they are.
+Category descriptor
+Built for high-value professional relationships.
+Sales / differentiation
+Your best clients are working with AI. Meet them there.
+Conference / event subhead
+Your clients moved to the AI age. Serve them there.
+Surface line (ads, social, swag)
+Where your clients are.
+Campaign theme
+Stay where your clients are.
+
+Hero stacks
+Community-bank hero: “Open your digital branch. / The handshake goes online.”
+Umbrella hero: “Serve your clients where they are. / Built for high-value professional relationships.”
+8.6 Metaphor architecture (community-bank / Convey)
+Use in this order, never out of order:
+Tier
+Term
+Role
+Macro
+Branch
+The bank’s strategic asset — the container the relationship lives in.
+Middle
+The Desk
+The Lenni-created space where the lender meets the borrower. Bank-facing only.
+Outcome
+The Handshake
+The closed loan. The bank delivers it; Lenni helps the bank get there.
+
+8.7 Five voice attributes & four pillars (umbrella)
+Five voice attributes: Plainspoken (Texas vernacular, no jargon); Peer-to-peer (one professional to another); Declarative (confident, not hedging); Concrete (real nouns, real numbers); Quietly serious (lets the work be the proof).
+Four pillars that cascade across every product:
+	•	Private by design. Lenni doesn’t read the data. The firm owns every conversation.
+	•	Time trust. Honest time commitments; never fake 24/7.
+	•	Earn the seat. Every firm relationship is earned; Lenni doesn’t assume a place at the table.
+	•	AI-augmented, not AI-replaced. The professional is multiplied, never substituted.
+8.8 Sound like / don’t sound like
+Sound like
+Don’t sound like
+Frost Bank — Texas heritage as confidence; banker-to-banker register; institutional restraint
+Bank of America corporate marketing — bureaucratic, defensive, committee-cleared
+H-E-B — Texas warmth; neighbor-not-customer; plainspoken
+Generic enterprise SaaS (Salesforce / Oracle / SAP) — “empower teams to leverage AI-powered insights”
+John Deere — working-people specificity; a family of products for independent operators
+Crypto / Web3 / hype-fintech — manifesto energy, founder-as-prophet
+Berkshire Hathaway shareholder letters — plainspoken about complex math; operator voice; generational frame
+
+
+8.9 Annotated example — bad vs. good (cold email)
+Bad: “Lenni leverages AI-powered digital transformation to revolutionize the way professional services firms engage their clients.”  — Lenni is the protagonist; “leverages / AI-powered / digital transformation / revolutionize” all banned; no concrete nouns.
+Good: “Quick note — your best clients are working with AI. Your firm will need to meet them there. That’s what we build at Lenni. Worth 15 minutes?”  — The firm and client are the subjects; concrete and active; voice DNA echoed; no banned words.
+
+9. The founder and the family lineage
+The lineage is not decoration — it is the proof point that earns Lenni a seat at a community banker’s table. There are two depths of the story in the source material: the three-generation banking version (foundational) and the four-generation, two-family version (brand reference).
+The three-generation banking line
+	•	Dial Dunkin — founded the firm; ran a Texas community bank himself.
+	•	Doak M. Dunkin — led the firm; ran his own community bank; served IBAT.
+	•	Doak C. Dunkin — spent four years at SWBC selling to ~1,400 community banks and credit unions; came home to the family business in 2014; took over in 2020; founded Lenni in 2026.
+My grandfather started this firm by helping community bankers stay competitive. My father did the same. I spent four years selling to community banks at SWBC and watched the same problem hit every one of them — they were losing borrowers to the click, and they didn’t have the tools to keep them. Lenni is what I came home to build.
+— Doak C. Dunkin, third generation, Dunkin & Associates
+The four-generation, two-family enterprise (brand reference)
+The umbrella story names both the Dunkin lineage (finance / banking, since 1945) and the Roberts lineage (infrastructure, since the 1950s). Two prior family-business exits anchor it: Harlingen National Bank → Texas Regional Bank Shares (1999), and Pumpco → MasTec / NYSE: MTZ (2009).
+Gen
+Person
+Lineage
+Credentials
+1
+D.B. Dunkin (dec.)
+Dunkin
+Founded Harlingen National Bank, Texas, 1945
+1
+W.D. Roberts (dec.)
+Roberts
+Texas pipeline construction since the 1950s
+2
+Doak M. Dunkin
+Dunkin
+Joined family firm 1968; ran his own community bank; served on IBAT
+2
+Dial M. Dunkin
+Dunkin
+CEO Harlingen National Bank 1977; led sale to Texas Regional Bank Shares 1999
+2
+Alan & Robyn Roberts
+Roberts
+Founded Pumpco Pipeline Construction 1983; sold to MasTec (NYSE: MTZ) 2009; retired 2022
+3
+Doak C. Dunkin
+Dunkin
+4 yrs SWBC; joined Dunkin & Associates 2014; took over 2020; founded Lenni 2026
+3
+Jennifer Roberts Dunkin
+Roberts → Dunkin
+Joint operator of the combined ALL Dunkin family enterprise
+
+Rules for telling the story
+	•	Short version where space is tight; medium on the About page and proposal preambles; long for press kit / keynote.
+	•	Both Roberts AND Dunkin lineages are named in medium and long versions, always.
+	•	Honor deceased family dignifiedly — names as founders, no false embellishment.
+	•	The story earns its seat; it never leads a cold pitch. Always close forward-looking — on what the firm becomes, not what it would lose.
+
+10. Competitive positioning
+Never disparage alternatives. Frame each as a different problem in a different slot. The posture is banker-peer, not crypto-promo.
+Community-bank framing
+Versus
+Frame
+Chatbots (e.g., Gila)
+Different audience (prospects, not customers) and goal (origination, not service). Coexists.
+LOS / application engines (Blend, MeridianLink, nCino)
+They are application engines. Lenni is the conversation that wraps around the application; it feeds completed applications in, never replaces them.
+Digital banking suites (Q2, Banno)
+They serve existing customers (checking, transfers, bill pay). Lenni serves loan-shopping prospects.
+LOS replacement projects
+12–24 months, millions of dollars, may not fix borrower experience. Lenni installs the missing layer in 2–3 weeks.
+Doing nothing
+The borrower already moved online. Doing nothing means losing them to bigger banks and fintechs.
+
+Umbrella framing (Lenni works WITH, not against)
+Lenni is complementary to the tools firms already run — practice management (Clio, Drake, MeridianLink, nCino), CRMs (Salesforce, HubSpot, Wealthbox, Redtail), email/phone/e-signature, and AI assistants (ChatGPT, Claude, Gemini). The battlecards:
+Alternative
+Lenni’s answer
+DIY tech build
+61% of firms abandon at least one AI project — the skills aren’t on the bench. Lenni costs less than one hire and is live in 2–3 weeks.
+Big enterprise vendors
+Built for firms ten times your size; customization takes a year. Lenni is built for the independent firm specifically.
+Generic AI tools (ChatGPT, Claude, Gemini standalone)
+Great for individuals, bad for the firm’s client conversation — they don’t sit in the workflow, share context, or keep a paper trail.
+Vertical SaaS (Clio, Drake, MeridianLink)
+Manages the firm’s internal practice. Doesn’t bridge the firm to its clients in AI-augmented moments. Lenni sits alongside.
+Hire a digital marketing agency
+Captures online presence; doesn’t change what happens after “contact us.” Lenni is what makes the click pay off.
+Sell the firm / merge
+Last resort. Lenni exists so independent firms don’t have to choose this option.
+
+Differentiation, one sentence: Lenni is how independent professional firms stay in front of their highest-value clients in the AI age.
+
+11. Pricing and the economic story
+Pricing
+	•	Original float: ~$500/month for 5 users, plus $100/user beyond.
+	•	Revised target (post-FrogSlayer kickoff): $2,500–$5,000/month base, with bolt-ons over time. FrogSlayer pushed back on user-count caps, so V1 has no user-count caps (don’t create a barrier to usage).
+	•	Proof point: one bank already said yes to $5–6K/month without flinching.
+	•	Pricing philosophy: “Below having to budget for it next year” — small enough that a bank can sign without going through its formal budgeting cycle.
+	•	Per-bank config: monthly base fee (tier-dependent), implementation included (no setup fee in the V1 standard offering), optional bolt-ons (KYC, custom integrations later), and a 10–15% discount allowed for annual prepay or first-mover.
+The lead economic story (umbrella)
+Retention of high-value relationships in the AI age. Every Lenni product protects the firm’s earned book of business as those clients move into AI-augmented work. Lenni’s cost is small; the cost of losing one high-value client to a more AI-fluent competitor is not.
+The cost of Lenni is a fraction of what one high-value client returns to your firm in a year. The risk of being absent from your clients’ AI conversation compounds.
+— The CFO sentence (verbatim)
+Anchor numbers and stats
+Community-bank set:
+	•	267 of ~360 Texas community banks have no online loan application; zero have direct messaging with a real lender.
+	•	2 CRE leads in one week from a “Contact Us” form; 5+ incremental loans/month/bank is the volume bet.
+	•	$500K+ average loan size with CRE in the mix; $1M+ year-one net interest income from 5 incremental CRE loans/month.
+	•	Three generations, fifty years. ~945 bank accounts and ~800 banker contacts in the Monday.com pipeline; ~39 live deal opportunities at last review.
+Umbrella / professional-services set:
+	•	79% of professional-services firms say AI is already changing pricing conversations with clients (Grant Thornton 2026) — the strongest single stat.
+	•	61% of professional-services firms have abandoned at least one AI project due to lack of internal skills (Grant Thornton 2026).
+	•	42% of SMBs (50–499 employees) use AI in at least one process — up from 23% in 2024. Professional-services AI adoption 30.3% in 2025 (Federal Reserve).
+	•	Median revenue per professional at CAS practices: $156,250 (AICPA 2024). Top boutique law firms: $2.9M–$5M revenue per lawyer (Am Law 2026).
+Capital posture
+No external VC capital — Lenni is family-funded via ALL Dunkin. A funded competitor recently raised ~$12M (focused on bank-internal AI transformation, not the borrower side). ALL Dunkin operates from stability, not VC velocity.
+
+12. Compliance and trust posture
+Lenni’s compliance pitch is built for community-bank scrutiny. Doak’s philosophy: “If we show up with a phone book, we won’t have problems. If we show up with a one-sheet ‘we’re compliant,’ we’re fucked.” Build the thick package; lean on FrogSlayer’s SOC 2 posture for V1; pursue Lenni’s own attestation post-launch.
+The five-point posture
+	•	Lenni doesn’t underwrite — every credit decision stays with the bank’s lenders.
+	•	Encryption everywhere — TLS 1.2+ in transit, AES-256 at rest, managed keys.
+	•	SOC 2 in progress — Type I in ~6 months, Type II in ~18, leveraging FrogSlayer’s existing controls.
+	•	Audit trail by default — every consent, message, document, and system event is timestamped and immutable.
+	•	Bank owns the data — the bank is the data controller; Lenni is the service provider. MSA + DPA spell it out.
+
+Compliance tags and open items
+Tags: GLBA service provider · FTC Safeguards Rule · 10DLC registered · TCPA-compliant SMS · E-SIGN compliant
+Open items: KYC requirements (research-only in V1); MSA / Privacy-attorney validation; full audit-export tooling for exam packages (manual in V1).
+Certification nuance: FrogSlayer holds SOC 2 Type II, but Lenni-the-product cannot inherit it directly; Lenni will need its own. In the interim, the bank-compliance pitch leans on FrogSlayer’s posture.
+At the umbrella level the same posture generalizes: “privaCy by design — Lenni doesn’t read the firm’s client data (no mining, no training, no analysis)”; the firm is the data controller; the MSA and DPA name Lenni the service provider. Several of these claims (the “doesn’t read the data” claim, exact encryption protocols, audit-trail mechanics, and umbrella-level MSA/DPA language) are flagged as needing engineering / legal sign-off before external publishing.
+
+13. The sales philosophy — one bank per market
+Lenni operates on a one-bank-per-market model. Each market zone (roughly a 25-mile radius around a population center) gets one Lenni partner. If the #1 bank in that zone passes, Lenni moves to #2, and so on. This is not a manufactured pressure tactic — it is how the product works. Each deployment is white-labeled; signing two competing banks in the same market would undermine both. The exclusivity is real.
+We are not selling. We are selecting.
+— The core sales mindset
+Every outreach, call, and demo communicates: we chose you, we did our research, we think you’re the right bank for this market — but we won’t wait forever; if you’re not interested, your competitor across town will be. Respectful, never aggressive, time-bound, and real. The selling season runs roughly August 1 through the end of October; banks go quiet from Christmas through New Year.
+
+14. People and partnerships
+Lenni / ALL Dunkin team
+Person
+Role
+Doak C. Dunkin
+Founder / CEO. Third-generation Dunkin family. Owns product, brand/positioning, executive sales, live-customer management, and the financial model.
+Drake Best
+Full-cycle sales lead. FFIEC research, Monday.com pipeline, bank outreach. Joined ALL Dunkin at the start of 2026 (drake@alldunkin.com).
+Catherine
+Sales enablement; FDIC/FFIEC research; underwriting-guideline MD drafting; vertical intake questionnaires. Onboarding partner for new hires.
+Addy
+Engineering. Building the Texas Community Bank Index, MD gateway, bank-profile schema, and headless endpoints. Onboarding from 2026-05-20.
+Royce
+Operations / HR. Coordinates onboarding, payroll, and staged access for new hires.
+ALL Dunkin back-office
+Existing team handling billing and ongoing operational support.
+
+FrogSlayer — the V1 engineering partner
+FrogSlayer is building V1 under a $55K fixed-fee SOW and holds SOC 2 Type II. Key people:
+Person
+Role
+Ross Morel
+Project lead / scope owner
+Shaun Maier
+Technical lead / compliance and infrastructure
+Tim Scott
+Workflow scribe and scoping voice
+Jacob
+Product / delivery
+Brad Sattem
+Technical contributor
+
+15. Brand colors, naming, and file conventions
+The color system
+Lenni Navy #203048 is the principal color across the entire brand family. The accent color is unique per brand layer, and the volume steps down as you walk up the stack from product to parent (“the parent whispers, the umbrella speaks, the sub-products assert”).
+Brand
+Navy (principal)
+Accent (unique)
+ALL Dunkin
+#203048
+Slate Blue-Gray ~#889AAE
+Lenni umbrella
+#203048
+Texas Sage #5C8A4B
+Convey by Lenni
+#203048
+Texas Gold #C19A4B
+Envoy by Lenni
+#203048
+Crimson Brick #C0392B
+
+	•	Lenni Navy #203048 (RGB 32, 48, 72) — primary; headlines, body text, master logo, navigation. Carries ~95% of visual weight.
+	•	Lenni Sage #5C8A4B (RGB 92, 138, 75) — accent only; the dot, buttons, highlights. Never used for large surfaces.
+Color-drift note
+Earlier brand docs cite slightly different values (Navy #1E3048 / Green #7ED957, and a prior lime-leaning Lenni green #87C65B). The May 2026 canonical values are Navy #203048 and Sage #5C8A4B. Existing logo files need re-rendering with the new sage.
+Naming conventions
+	•	“Lenni” everywhere in body copy (website, proposals, decks, social bios, footers, email signatures, scripts).
+	•	“Lenni LLC” only in legal contracts (signature blocks, master agreements, NDAs, Texas SOS forms). The entity is registered as Lenni LLC — it replaced the earlier “Lenni Solutions” working name in May 2026.
+File-naming and archiving
+	•	All saved deliverables use YY.MM.DD.Name.ext, where the date is the file’s creation date. Spaces are allowed in the name (e.g., 26.05.19.Lenni Overview.md).
+	•	When a deliverable is superseded, the old version moves into the Archive/ subfolder of its parent AI Context folder; the latest version stays at the top with the most recent date prefix.
+
+16. The Accounting function
+Accounting keeps Lenni’s books cleanly separated from Dunkin & Associates. As of May 2026 Lenni is pre-revenue; first pilot-bank revenue is expected late 2026. Billing is handled by the ALL Dunkin back-office team — it is not built into the Lenni product (a deliberate V1 scope decision). The product does not process payments, track invoices, or do AR aging; all of that lives in QuickBooks Online (QBO) or whatever GL the team standardizes on.
+What Accounting owns
+Area
+Status / notes
+General ledger / books
+TBD — likely QuickBooks Online (QBO MCP tools available)
+Billing to customer banks
+Manual, ALL Dunkin back-office; not in the product in V1
+AR / AP
+Set up once first bank signs; AP covers FrogSlayer, software subs, attorney fees
+Payroll / contractor payments
+Royce coordinates HR/payroll; Addy onboarding 2026-05-20+
+Entity / tax
+Lenni LLC (Texas); CPA TBD
+Financial reporting & forecasting
+Not started; Doak holds the model. Build cadence as revenue arrives
+Audit support (SOC 2-adjacent)
+Coordinated with Legal/Compliance; SOC 2 Type I target ~6 months
+
+The invoice flow per bank
+	•	Contract signs in DocuSign with monthly subscription terms.
+	•	Lenni creates the customer record in QBO.
+	•	Monthly invoice generates per contract terms.
+	•	Bank pays (TBD method — ACH likely).
+	•	AR aging tracked in QBO; Doak / Accounting follows up on overdue.
+Cadence (to be established)
+Cadence
+Activity
+Daily
+Inbox triage for invoices and expense receipts
+Weekly
+AP review; invoices to pay this week
+Monthly
+Customer invoicing; AR aging review; expense categorization; monthly close (1–2 day target)
+Quarterly
+Sales tax / state filings; board-ready financial summary; cash-flow review
+Annually
+Tax filing; insurance renewal; vendor contract reviews; annual report
+
+Known costs and vendors
+	•	FrogSlayer: $55K fixed-fee V1 build (post-V1 TBD).
+	•	Software (“under $100/month” per the playbook estimate): Monday.com (~$25/user/mo), Microsoft 365, DocuSign / PandaDoc, Calendly (free tier).
+	•	Other: domains (lenni.com + lenni.io / lenny.io), E&O + cyber insurance (annual), attorney fees, cloud hosting (V1+), KYC vendor (~$1/check, V2+), SMS carrier / 10DLC (per-bank, per-message).
+How Accounting works with Claude
+Lenni’s Cowork environment has the full QuickBooks Online MCP suite wired in — balance sheet, P&L, AR/AP aging, sales by customer/product, customers, products, invoices, estimates, payment links, payroll, peer benchmarking, cash-flow generator, and profile updates. Paired with the finance skill suite (financial-statements, close-management, journal-entry, reconciliation, variance-analysis, audit-support, sox-testing), Claude can stand up the books, run a monthly close, pull financials, and prepare a year-end tax package.
+Never put this in a Claude prompt (Accounting)
+Full bank account / routing / card numbers · SSNs of contractors or employees · login credentials (QBO MCP handles auth) · customer-bank payment credentials · privileged CPA / attorney communications. Always safe: Lenni’s own structure and tier pricing, customer counts, ARR/MRR aggregates, the vendor list, generic accounting questions, and QBO-MCP-mediated data.
+
+17. The HR function
+HR at Lenni is early-stage and small. The team as of May 2026: Doak (Founder/CEO), Drake (Sales), Catherine (sales enablement / research), and Addy (Engineering, onboarding from 2026-05-20). Royce coordinates HR / operations. Most HR infrastructure is borrowed from the ALL Dunkin back-office for V1; dedicated infrastructure stands up as Lenni scales.
+The ALL Dunkin / Lenni HR boundary
+	•	ALL Dunkin parent handles: payroll mechanics, benefits administration, basic HR infrastructure, back-office operations.
+	•	Lenni-specific handles: hiring decisions for Lenni roles, role definition, performance management, and any Lenni-specific policy layer.
+	•	Royce sits at the boundary — routing Lenni hires through ALL Dunkin’s machinery: payroll, access, orientation.
+Hiring priorities
+Near-term (in flight): Addy (Engineering, onboarding 2026-05-20+); Catherine already onboarded. 
+Future (post-V1 traction): a second engineer once V2/V3 accelerates; a second salesperson once pipeline conversion validates; a customer-success / implementation lead once 2–3 banks are live; dedicated Lenni accounting / finance ops once revenue scales.
+Onboarding pattern
+Milestone
+What happens
+Day 1
+Accounts, equipment, intro to ALL Dunkin back-office (HR, billing, IT)
+Week 1
+AI Context files reviewed; tools onboarded; first deliverable scoped
+30 days
+First solo project completed
+60 days
+Integrated into the weekly rhythm
+90 days
+Full ownership of a defined area
+
+Compensation and performance posture
+	•	Family-funded, not VC — long-term, conservative, relationship-first. Market-rate base for role, geography (Texas), and experience.
+	•	Equity / phantom equity / profit share is TBD; not VC-style stock options. Bonuses are performance-based; benefits inherited from the ALL Dunkin parent.
+	•	Performance cadence (to build as the team scales): weekly 1:1s, quarterly structured check-ins, annual reviews with goal-setting and comp adjustments, calibration when more than one person shares a level.
+How HR works with Claude
+The human-resources skill suite (onboarding, interview-prep, draft-offer, org-planning, performance-review, policy-lookup, comp-analysis, people-report, recruiting-pipeline) is the core toolkit, with M365/Outlook, Slack, and DocuSign as supporting tools. Most current Claude work is onboarding-specific.
+Never put this in a Claude prompt (HR)
+Specific employee comp tied to a name · performance details / PIP status · medical information · demographic data about a person · personal contact info · disciplinary or privileged employment matters · unfinalized termination decisions · SSNs, government IDs, immigration status. The Claude environment is a tool, not a system of record — use it for patterns, not records, and anonymize when in doubt.
+
+18. Stakeholder personas (umbrella) and category strategy
+The brand reference provides ten deployable persona statements; when drafting role-specific content, lead with the role’s deepest concern. The ten roles, grouped:
+Group
+Roles and their core question
+Executive / Owner
+(1) Owner / Managing Partner / CEO — “Will my firm still matter in five years?”  (2) Finance Partner / CFO — “Can I defend this investment to my partners?”
+Daily Operations
+(3) Practice Lead — “Will my professionals actually use this?”  (4) Daily-Use Professional — “Will this make my work easier or harder?”  (5) Marketing / BD Lead — “Will this help us grow the book?”
+Risk, IT, Governance
+(6) IT / Operations Lead — “What’s the risk to our stack?”  (7) Compliance / General Counsel — “Does this create regulatory or legal exposure?”  (8) Chairman / Board — “Are we still the firm we say we are?”
+External
+(9) Client of the firm — “Will I still get the professional I came for?”  (10) Referrer / External Partner — “Should I still send clients to this firm?”
+
+Category strategy (3-year arc)
+Year
+Primary layer
+What ships
+Year 1 (2026–27)
+Demand interception + brand-bid SEM
+Five intercept landing pages, three “vs.” pages, sales objection handlers, first case studies
+Year 2 (2027–28)
+Category teaching starts
+Founder thought-leadership; conference talks; category-naming essays
+Year 3+ (2028+)
+Category matures
+“Staying relevant in your clients’ AI conversation” enters industry vocabulary
+
+Layer-2 intercept reframes turn a buyer’s search into a Lenni headline — e.g., “AI for law firms / CPA firms / community banks” becomes “AI isn’t your product. Your clients are.” and “Client portal for [firm-type]” becomes “A portal is a place. Lenni is a conversation.” The unifying line: “Your practice-management software runs the firm. Lenni runs the conversation.”
+
+19. Open items, flags, and things still in motion
+The source material is candid about what is unsettled. Pulling these together in one place:
+Brand / product migration
+	•	Communication plan to the existing pipeline (Convey was previously known as Lenni).
+	•	Sales-team training on the new umbrella + sub-product architecture.
+	•	Deck, proposal, and contract template updates; website migration (lenni.io umbrella → convey.lenni.io product).
+	•	Legal-entity confirmation: Lenni LLC is the parent; Convey may or may not be its own entity. Domain decision (lenni.io vs lenny.io) still open.
+	•	Existing logo files need re-rendering with the new sage #5C8A4B.
+Engineering / legal sign-offs needed before external claims
+	•	“Lenni doesn’t read the data” — verify the product touches content only for features the firm explicitly enables; nothing for training/mining/analysis.
+	•	Exact encryption protocols (TLS in transit, AES at rest) — confirm with engineering.
+	•	Umbrella-level MSA / DPA “firm-as-data-controller” language — confirm with legal.
+	•	Audit-trail mechanics (timestamps, immutability, export) — confirm with engineering.
+Accounting / HR build-out
+	•	Stand up Lenni LLC’s books in QBO; set the chart of accounts; engage a CPA; build the monthly-close checklist and reporting package.
+	•	Define the customer billing workflow end-to-end and the Sales→Accounting handoff after a contract signs.
+	•	Build a Lenni-specific employee-handbook addendum; define the comp framework; decide on any Lenni-specific equity layer; standardize onboarding and off-boarding.
+
+20. Glossary of Lenni terms
+Term
+Meaning
+ALL Dunkin
+The family-enterprise umbrella (“more of an idea”) above Lenni and Dunkin & Associates.
+Convey by Lenni
+The community-bank borrower-and-lender hub — the product formerly called “Lenni.”
+Envoy by Lenni
+The professional-to-professional context layer (banker-to-attorney, etc.).
+Dunkin & Associates
+The ~50-year-old insurance-to-banks flagship; the family’s original firm.
+The Desk
+The Lenni-created space where lender meets borrower. Bank-facing metaphor only.
+The Handshake
+The closed loan — the outcome the bank delivers with Lenni’s help.
+The Branch
+Macro metaphor: the bank’s strategic asset, the container the relationship lives in.
+LOS
+Loan Origination System (e.g., MeridianLink, nCino) — Lenni sits in front of it, never replaces it.
+Core
+The bank’s core banking system — downstream of the LOS; untouched by Lenni.
+CLO
+Chief Lending Officer — Lenni’s primary buyer.
+MD gateway
+V2 capability: banks upload markdown underwriting guidelines; borrowers submit MD-complete packets.
+MCP connector
+V3 capability: Lenni mediates between bank profiles and AI agents directly.
+Texas Community Bank Index
+Addy’s open headless dataset of every Texas community bank.
+FrogSlayer
+The engineering partner building V1 ($55K fixed-fee SOW; holds SOC 2 Type II).
+First right of refusal
+The one-bank-per-market exclusivity model — “we are not selling, we are selecting.”
+CRE
+Commercial real estate — the high-value loan category Lenni’s economics lean on.
+
+21. Source files this guide is built from
+Everything above is drawn directly from the nine markdown files currently in Lenni’s AI Context library (the Services, Sample Website, and Archive subfolders are present but empty). The Lenni Overview and ALL Dunkin Overview are duplicated identically across the Accounting and HR folders.
+File
+What it provides
+26.05.19.Lenni Overview.md
+Master overview: product, market, roadmap, voice, colors, naming, compliance, sales philosophy, people. The operational source of truth.
+26.05.19.ALL Dunkin Overview.md
+Placeholder for the family-enterprise brand guide; portfolio and inheritance logic.
+26.05.19.Accounting Context.md
+Accounting ownership, financial profile, entity/tax, billing, vendors, cadence, open items.
+26.05.19.Accounting + Claude.md
+How Accounting uses Claude + the QBO MCP and finance skills; example prompts; data guardrails.
+26.05.19.HR Context.md
+Team roster, hiring priorities, onboarding, comp/performance posture, the AD/Lenni boundary.
+26.05.19.HR + Claude.md
+How HR uses Claude + the human-resources skills; example prompts; sensitive-data guardrails.
+Lenni_AI_Brand_Reference.md
+The umbrella brand: architecture (Lenni / Convey / Envoy), voice DNA, taglines, personas, stats, colors, founder story, category strategy.
+
+Compiled from the Lenni AI Context library. Source material last updated 2026-05-19 (brand reference v1.0, May 2026). Where the foundational and umbrella framings diverge, both are presented and flagged.

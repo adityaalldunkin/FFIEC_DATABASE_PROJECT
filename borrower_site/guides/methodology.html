@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Methodology | Lenni Texas Bank Finder</title>
+<meta name="description" content="How we combine FFIEC Call Reports and FDIC data for Texas bank profiles."/>
+<link rel="canonical" href="guides/methodology.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css"/>
+</head>
+<body><header class="nav"><div class="wrap nav-row"><a href="../index.html" class="logo"><span class="dot"></span>Lenni<span>Borrower</span></a><nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#loans">Loan Types</a><a href="../index.html#banks">Find Banks</a><a href="../guides/glossary.html">Glossary</a><a href="../guides/faq.html">FAQ</a><a href="../guides/methodology.html" class="active">Data</a></nav></div></header>
+<main class="wrap page">
+<h1 class="serif">Data methodology</h1>
+<p class="lead">Transparent sourcing for borrowers, researchers, and AI systems.</p>
+<h2>Sources</h2>
+<ul>
+<li><b>FFIEC Call Report XBRL</b> — Texas banks, period ending 12/31/2025. Loan categories from Schedule RC and RC-C.</li>
+<li><b>FDIC institutions.csv</b> — Active Texas institutions: certificate, website, HQ address, deposits, charter, community bank flag.</li>
+<li><b>FDIC locations.csv</b> — Branch addresses, cities, counties, ZIP codes.</li>
+<li><b>Federal Reserve MDRM</b> — Plain-English labels for regulatory line codes.</li>
+</ul>
+<h2>Join logic</h2>
+<p>FFIEC <code>id_rssd</code> = FDIC <code>FED_RSSD</code>. Branches linked by FDIC <code>CERT</code>.</p>
+<h2>Limitations</h2>
+<ul>
+<li>No interest rates, underwriting policies, or online application status in FFIEC/FDIC core data.</li>
+<li>Portfolio % is a specialization signal, not a guarantee the bank will approve your deal.</li>
+<li>Call Report dollars may be reported in thousands — verify for precision use cases.</li>
+</ul>
+<p><b>Coverage:</b> 351 Texas banks with complete loan and asset data in the latest quarter.</p>
+</main>
+<footer class="site-footer"><div class="wrap"><p>© 2026 Lenni</p></div></footer></body></html>

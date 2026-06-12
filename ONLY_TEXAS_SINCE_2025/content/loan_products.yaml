@@ -1,0 +1,963 @@
+parents:
+- slug: multifamily
+  key: mf
+  name: Multifamily (5+ units)
+  cat: Apartment & multifamily lending
+  short: Acquisition, refinance, and bridge financing for apartment buildings of five or more units.
+  learn: Multifamily loans finance apartment properties with five or more units. Texas community banks
+    report balances on Schedule RC-C line RCON1460. Banks with a high multifamily share actively lend
+    on value-add, bridge, and permanent apartment deals.
+  lines: RCON1460 — real estate loans secured by multifamily (5+) residential properties
+  mdrm:
+  - RCON1460
+  keywords:
+  - apartment
+  - multifamily
+  - units
+  faq:
+  - q: What is a multifamily loan?
+    a: Financing for apartment buildings with 5+ units, repaid from rental income.
+  - q: How do I find a multifamily lender in Texas?
+    a: Use portfolio share — banks with 10%+ multifamily concentration specialize in this asset class.
+  - q: Do community banks do apartment bridge loans?
+    a: Many Texas community banks in the $500M–$2B range actively lend on multifamily; check each bank's
+      portfolio mix.
+  subtypes:
+  - slug: acquisition
+    title: Apartment acquisition loan
+    one_liner: Purchase financing for stabilized or light value-add apartment properties of five or more
+      units.
+    keywords:
+    - acquisition
+    - buy apartment
+    - purchase multifamily
+    who_its_for: Sponsors buying an existing apartment community — stabilized, value-add, or lease-up
+      — who plan to hold and operate for cash flow.
+    how_banks_underwrite: Community banks underwrite multifamily acquisitions on in-place or projected
+      net operating income, occupancy, and sponsor experience. LTV typically reflects rent roll quality,
+      market, and hold strategy.
+    what_to_prepare:
+    - Rent roll and trailing 12-month operating statement
+    - Current occupancy and lease expiration schedule
+    - Purchase contract or LOI
+    - Sponsor resume with prior multifamily deals
+    - Property condition summary or Phase I environmental
+    how_to_approach:
+      opening: We're acquiring a [unit count]-unit apartment community in [city]. In-place occupancy is
+        [X]% with [brief NOI story]. We're seeking acquisition financing and can walk through the rent
+        roll.
+      questions:
+      - What LTV do you advance on stabilized multifamily in this market?
+      - Do you underwrite to in-place or stabilized pro forma rents?
+      - Is this a relationship loan or one-off transaction?
+    faq:
+    - q: Acquisition vs bridge?
+      a: Acquisition can be permanent or short-term bridge if you plan a value-add business plan before
+        refinancing.
+    related_subtypes:
+    - refinance
+    - bridge
+    - value-add-rehab
+    not_this_product: Not a single-family home loan or a Fannie/Freddie agency mortgage.
+  - slug: refinance
+    title: Multifamily refinance
+    one_liner: Replace existing apartment debt with new bank financing — rate/term or cash-out.
+    keywords:
+    - refinance
+    - refi apartment
+    - rate and term
+    who_its_for: Owners of 5+ unit apartments seeking to lower rate, extend maturity, or pull equity from
+      appreciated assets.
+    how_banks_underwrite: Banks review current NOI, debt service coverage, and how long you've owned the
+      asset. Cash-out refis require stronger coverage and often lower LTV than rate-and-term.
+    what_to_prepare:
+    - Current loan payoff statement
+    - T-12 and current rent roll
+    - Most recent appraisal or broker opinion of value
+    - Explanation of use of proceeds if cash-out
+    how_to_approach:
+      opening: We own a [unit count]-unit property in [city] currently financed at [rate/maturity]. We'd
+        like to explore a refinance to [goal].
+      questions:
+      - Do you offer fixed-rate permanent multifamily loans?
+      - What DSCR do you require on a cash-out refinance?
+      - Is there a prepayment penalty on your loans?
+    faq:
+    - q: Can I refinance a bridge loan?
+      a: Yes — permanent takeout refinancing is the typical exit for bridge loans after stabilization.
+    related_subtypes:
+    - acquisition
+    - permanent-takeout
+    not_this_product: Not a residential mortgage on a 1–4 unit property.
+  - slug: bridge
+    title: Apartment bridge loan
+    one_liner: Short-term financing between acquisition and permanent refinance or sale.
+    keywords:
+    - bridge
+    - transitional
+    - value-add bridge
+    who_its_for: Sponsors with a defined business plan — light rehab, lease-up, or repositioning — and
+      a clear exit within 12–36 months.
+    how_banks_underwrite: 'Bridge lenders focus on exit feasibility: stabilized NOI at takeout, sponsor
+      track record, and LTV on as-is or as-stabilized value. Interest-only periods are common.'
+    what_to_prepare:
+    - Business plan with timeline and budget
+    - Rent roll (current and pro forma)
+    - Sponsor track record
+    - Exit strategy — perm lender or sale
+    - Contract or LOI if acquisition
+    how_to_approach:
+      opening: We're [acquiring/refinancing] a [unit count]-unit asset in [city] with a [timeline]-month
+        value-add plan. Exit is permanent financing at [target DSCR/LTV].
+      questions:
+      - What is your typical bridge term and extension options?
+      - Do you fund interest reserves?
+      - Which permanent lenders do you work with for takeout?
+    faq:
+    - q: How long is a typical apartment bridge?
+      a: Often 12–36 months, with extensions if the business plan needs more time.
+    related_subtypes:
+    - value-add-rehab
+    - permanent-takeout
+    - acquisition
+    not_this_product: Not long-term permanent debt — bridge is interim financing.
+  - slug: value-add-rehab
+    title: Multifamily value-add / rehab
+    one_liner: Financing for renovations, unit upgrades, and repositioning of apartment communities.
+    keywords:
+    - value-add
+    - rehab
+    - renovation
+    - reposition
+    who_its_for: Operators improving rents, occupancy, or amenities at an existing 5+ unit property with
+      a documented capex plan.
+    how_banks_underwrite: Banks separate hard and soft costs, review contractor bids, and may hold reserves
+      for draws. Underwriting blends current and projected rents with sensitivity on lease-up pace.
+    what_to_prepare:
+    - Detailed capex budget and timeline
+    - Before/after rent comps
+    - Contractor bids or GMP contract
+    - Current and pro forma rent roll
+    - Draw schedule
+    how_to_approach:
+      opening: We're implementing a $[amount] renovation program at a [unit count]-unit property in [city]
+        to achieve [rent/occupancy target].
+      questions:
+      - Do you finance capex with the acquisition or as a separate facility?
+      - How are construction draws inspected and funded?
+      - What LTV on as-stabilized value?
+    faq:
+    - q: Is this the same as bridge?
+      a: Often paired — many value-add deals use bridge financing that converts or refinances at stabilization.
+    related_subtypes:
+    - bridge
+    - permanent-takeout
+    not_this_product: Not cosmetic-only work with no material rent impact.
+  - slug: permanent-takeout
+    title: Multifamily permanent takeout
+    one_liner: Long-term loan that replaces construction or bridge financing after stabilization.
+    keywords:
+    - permanent
+    - takeout
+    - stabilized
+    who_its_for: Sponsors exiting bridge or construction loans once the property hits agreed occupancy
+      and NOI targets.
+    how_banks_underwrite: Permanent lenders underwrite stabilized NOI, require updated appraisal, and
+      offer fixed or floating amortizing structures. DSCR and debt yield drive proceeds.
+    what_to_prepare:
+    - Stabilized rent roll (90+ days at target occupancy)
+    - Updated appraisal
+    - Payoff letter for interim lender
+    - Historical operating statements
+    - Insurance and tax bills
+    how_to_approach:
+      opening: The property has reached [occupancy]% occupancy and [$] NOI. We're seeking permanent financing
+        to replace our bridge loan.
+      questions:
+      - What fixed-rate terms do you offer on stabilized multifamily?
+      - Minimum DSCR and amortization?
+      - Prepayment flexibility?
+    faq:
+    - q: When can I apply for takeout?
+      a: Typically when you hit lender-defined stabilization — often 90%+ occupancy and T-12 at pro forma
+        rents.
+    related_subtypes:
+    - refinance
+    - bridge
+    not_this_product: Not interim bridge debt — this is long-term permanent financing.
+- slug: investor-cre
+  key: inv
+  name: Investor CRE (income property)
+  cat: Non-owner-occupied commercial real estate
+  short: Office, retail, industrial, and mixed-use held as investments and leased to tenants.
+  learn: Investor CRE is repaid primarily from tenant rent. Mapped from RCONF161 (other nonfarm nonresidential)
+    and related commercial real estate lines. This is often the largest commercial bucket for Texas regionals.
+  lines: RCONF161, RCONF162 — income-producing commercial real estate
+  mdrm:
+  - RCONF161
+  - RCONF162
+  keywords:
+  - investor cre
+  - income property
+  - commercial
+  faq:
+  - q: What is investor CRE?
+    a: Commercial property you lease to tenants — office, retail, industrial, not your own business.
+  - q: CRE vs multifamily?
+    a: Multifamily is a CRE subtype; investor CRE here includes office, retail, and industrial income
+      property.
+  subtypes:
+  - slug: office
+    title: Investor office building loan
+    one_liner: Financing for office properties leased to business tenants.
+    keywords:
+    - office
+    - office building
+    - class a office
+    who_its_for: Investors acquiring or refinancing multi-tenant or single-tenant office with lease income
+      as primary repayment source.
+    how_banks_underwrite: Banks stress tenant credit, lease rollover, and market vacancy. Single-tenant
+      deals hinge on remaining lease term and tenant financials.
+    what_to_prepare:
+    - Rent roll and lease abstracts
+    - Tenant financials or public credit ratings
+    - Operating statements
+    - Environmental Phase I
+    - Market vacancy/submarket data
+    how_to_approach:
+      opening: We're financing a [SF] office asset in [city] with [tenant count] tenants and [WALT] years
+        weighted average lease term.
+      questions:
+      - How do you underwrite near-term lease expirations?
+      - Minimum debt yield or DSCR for office in this market?
+      - Do you lend on single-tenant credit?
+    faq:
+    - q: Is medical office different?
+      a: Often underwritten similarly but with attention to tenant mix and reimbursement risk.
+    related_subtypes:
+    - retail
+    - mixed-use
+    not_this_product: Not owner-occupied office where your business is the tenant.
+  - slug: retail
+    title: Investor retail / strip center loan
+    one_liner: Financing for retail pads, strip centers, and shopping centers leased to retailers.
+    keywords:
+    - retail
+    - strip center
+    - shopping center
+    who_its_for: Investors in neighborhood retail, strip centers, or power centers where rent from merchants
+      repays debt.
+    how_banks_underwrite: Underwriting focuses on tenant sales (where available), co-tenancy clauses,
+      and e-commerce exposure. Anchors and inline shop mix matter.
+    what_to_prepare:
+    - Rent roll with cotenancy summaries
+    - Tenant sales reports if available
+    - CAM reconciliation
+    - Site plan and tenant mix chart
+    - Competition/market study
+    how_to_approach:
+      opening: We're acquiring a [count]-tenant retail center in [city]; [anchor] represents [%] of NOI.
+      questions:
+      - How do you view small-shop vs anchor-heavy centers?
+      - Typical LTV for unstabilized retail?
+      - Do you finance pad sites on long-term ground leases?
+    faq:
+    - q: NNN vs gross leases?
+      a: NNN shifts expenses to tenants; banks still underwrite net rent to the borrower.
+    related_subtypes:
+    - nnn
+    - mixed-use
+    not_this_product: Not inventory financing for retail businesses.
+  - slug: industrial
+    title: Investor industrial / warehouse loan
+    one_liner: Financing for warehouses, distribution, and light industrial leased to operators.
+    keywords:
+    - industrial
+    - warehouse
+    - distribution
+    - logistics
+    who_its_for: Investors in bulk warehouse, flex, or last-mile distribution assets along Texas logistics
+      corridors.
+    how_banks_underwrite: Banks favor clear height, dock count, truck courts, and creditworthy logistics
+      tenants. E-commerce and 3PL demand supports many Texas deals.
+    what_to_prepare:
+    - Rent roll and lease terms
+    - Building specs (clear height, docks, power)
+    - Tenant industry and credit
+    - Environmental report
+    - Appraisal with comp rents
+    how_to_approach:
+      opening: We're financing a [SF] industrial building in [city] leased to [tenant type] with [term]
+        remaining.
+      questions:
+      - Do you lend on spec industrial or only stabilized?
+      - Typical amortization for industrial?
+      - How do you treat rollover in year 1–2?
+    faq:
+    - q: Flex vs bulk warehouse?
+      a: Both can qualify; underwriting differs on tenant use and re-leasing risk.
+    related_subtypes:
+    - nnn
+    - mixed-use
+    not_this_product: Not owner-occupied industrial where the borrower's business operates inside.
+  - slug: mixed-use
+    title: Mixed-use income property loan
+    one_liner: Financing for properties combining retail, office, and/or residential income streams.
+    keywords:
+    - mixed-use
+    - live-work
+    - retail plus residential
+    who_its_for: Investors in urban mixed-use with multiple income components — common in Texas downtown
+      and infill projects.
+    how_banks_underwrite: Banks may segment income by component, apply different vacancy assumptions,
+      and require experienced sponsors for complex operating structures.
+    what_to_prepare:
+    - Component-level rent rolls
+    - Operating agreements or HOA docs if applicable
+    - Zoning confirmation
+    - Separate utility and CAM structures
+    - Stabilization timeline by component
+    how_to_approach:
+      opening: Our mixed-use asset in [city] includes [components] with [%] of NOI from [primary component].
+      questions:
+      - Do you underwrite residential and commercial components together?
+      - Experience required for mixed-use?
+      - Construction vs permanent for partial lease-up?
+    faq:
+    - q: Is multifamily above retail mixed-use?
+      a: Yes — common structure; may map to multifamily or mixed CRE depending on bank.
+    related_subtypes:
+    - retail
+    - office
+    not_this_product: Not a single-use property without income diversification.
+  - slug: nnn
+    title: NNN / single-tenant net lease loan
+    one_liner: Financing for properties leased NNN to investment-grade or credit tenants.
+    keywords:
+    - nnn
+    - net lease
+    - single tenant
+    - sale leaseback
+    who_its_for: Investors seeking bond-like cash flow from long-term NNN leases to corporate or franchise
+      tenants.
+    how_banks_underwrite: Underwriting is tenant-credit driven — lease term, rent escalations, and corporate
+      guarantee matter more than building ops.
+    what_to_prepare:
+    - Master lease and guaranty
+    - Tenant financial statements or public filings
+    - Rent schedule and escalation chart
+    - Assignment/sublease restrictions
+    - Store/unit economic performance if franchise
+    how_to_approach:
+      opening: We're acquiring a NNN [property type] leased to [tenant] for [years] remaining at [cap
+        rate] going-in.
+      questions:
+      - Do you lend on non-investment-grade tenants?
+      - Minimum remaining lease term?
+      - How do you treat rent steps in DSCR?
+    faq:
+    - q: Sale-leaseback?
+      a: Corporate sells property and leases back — often structured as NNN with corporate credit.
+    related_subtypes:
+    - retail
+    - industrial
+    not_this_product: Not gross-lease multi-tenant centers without credit anchor.
+- slug: owner-occupied-cre
+  key: own
+  name: Owner-Occupied CRE
+  cat: Business-occupied commercial property
+  short: Financing for the building your own business operates from.
+  learn: Owner-occupied CRE is underwritten on operating business cash flow. Reported as RCONF160. Community
+    banks often pair these with SBA 504 for lower down payments.
+  lines: RCONF160 — loans secured by owner-occupied nonfarm nonresidential properties
+  mdrm:
+  - RCONF160
+  keywords:
+  - owner occupied
+  - my business building
+  faq:
+  - q: What is owner-occupied CRE?
+    a: A loan to buy or refinance the building where your business operates (51%+ occupancy by your business).
+  - q: SBA 504 for owner-occupied?
+    a: Many Texas community banks participate in SBA 504 alongside conventional owner-occupied CRE.
+  subtypes:
+  - slug: purchase
+    title: Owner-occupied property purchase
+    one_liner: Buy the building your business will occupy.
+    keywords:
+    - buy my building
+    - owner occupied purchase
+    - warehouse for my business
+    who_its_for: Business owners tired of leasing who want to build equity in their operating facility.
+    how_banks_underwrite: Banks blend business financials with real estate value. Your company must demonstrate
+      ability to carry debt from operations, not just rent savings.
+    what_to_prepare:
+    - 3 years business tax returns and YTD financials
+    - Personal financial statement of owners
+    - Purchase contract
+    - Business plan if expansion-driven
+    - Environmental Phase I
+    how_to_approach:
+      opening: Our [business type] is purchasing the [SF] facility we operate from in [city]. Occupancy
+        will be 100% owner-occupied.
+      questions:
+      - What down payment do you require?
+      - Do you take assignment of existing leases if partial tenant?
+      - Term and amortization options?
+    faq:
+    - q: 51% occupancy rule?
+      a: Most lenders require your business to occupy at least 51% of the building.
+    related_subtypes:
+    - sba-504-paired
+    - refinance
+    not_this_product: Not pure investment property leased to third parties.
+  - slug: refinance
+    title: Owner-occupied refinance
+    one_liner: Refinance debt on a building your business already owns and occupies.
+    keywords:
+    - refinance my building
+    - owner occupied refi
+    who_its_for: Established businesses with equity in their facility seeking better terms or cash-out
+      for operations.
+    how_banks_underwrite: Underwriting uses business cash flow and updated appraisal. Cash-out may fund
+      equipment or working capital with clear use of proceeds.
+    what_to_prepare:
+    - Business financials
+    - Current loan statement
+    - Appraisal or BPO
+    - Explanation of cash-out use
+    - Entity organizational documents
+    how_to_approach:
+      opening: We've operated from this [city] facility for [years] and want to refinance [$] at improved
+        terms.
+      questions:
+      - Rate/fixed-term options?
+      - Cash-out maximum LTV?
+      - Prepayment penalties on existing vs new loan?
+    faq:
+    - q: Can I pull equity for equipment?
+      a: Some banks allow cash-out for business purposes if coverage remains strong.
+    related_subtypes:
+    - purchase
+    - sba-504-paired
+    not_this_product: Not investment property refinance.
+  - slug: sba-504-paired
+    title: Owner-occupied + SBA 504
+    one_liner: Lower down payment structure pairing bank first mortgage with SBA 504 second.
+    keywords:
+    - sba 504
+    - sba owner occupied
+    - 10 percent down
+    who_its_for: Growing businesses buying owner-occupied real estate who want to preserve cash for operations.
+    how_banks_underwrite: Bank provides senior lien (often 50%); SBA 504 debenture funds up to 40%; borrower
+      contributes ~10%. Bank and CDC coordinate closing.
+    what_to_prepare:
+    - SBA eligibility worksheet
+    - Business historical and pro forma financials
+    - Project cost breakdown
+    - Environmental and appraisal per SBA
+    - Personal guarantees from 20%+ owners
+    how_to_approach:
+      opening: We're acquiring a [$] owner-occupied facility and exploring SBA 504 alongside your bank's
+        first mortgage.
+      questions:
+      - Are you an SBA preferred lender?
+      - Typical timeline for 504 projects?
+      - Which CDC partners do you use in Texas?
+    faq:
+    - q: What can 504 finance?
+      a: Owner-occupied real estate and certain equipment — not working capital.
+    related_subtypes:
+    - purchase
+    not_this_product: Not for pure investment real estate or speculative development.
+- slug: commercial-construction
+  key: con
+  name: Commercial Construction
+  cat: Ground-up & land development
+  short: Ground-up construction and major renovation for commercial and multifamily projects.
+  learn: Construction loans fund development draws and convert to permanent financing at completion. Mapped
+    from RCONF158 (1–4 family construction) and RCONF159 (other construction & land development).
+  lines: RCONF158, RCONF159 — construction and land development
+  mdrm:
+  - RCONF158
+  - RCONF159
+  keywords:
+  - construction
+  - ground up
+  - development
+  faq:
+  - q: What is a commercial construction loan?
+    a: Short-term financing that funds building phases; converts to permanent loan at completion.
+  subtypes:
+  - slug: ground-up
+    title: Ground-up commercial construction
+    one_liner: Finance new construction of commercial or multifamily buildings.
+    keywords:
+    - ground up
+    - new construction
+    - build commercial
+    who_its_for: Developers with entitled land, general contractor, and pre-leasing or presales strategy.
+    how_banks_underwrite: Banks review budget, GC contract, draw schedule, and exit (perm loan or sale).
+      Personal guarantees and completion risk are standard.
+    what_to_prepare:
+    - Construction budget and sources/uses
+    - GC contract or GMP
+    - Plans and specs
+    - Entitlements and permits
+    - Pre-leasing or absorption study
+    how_to_approach:
+      opening: We're building a [type/SF] project in [city] with [$] total cost and [exit strategy].
+      questions:
+      - What LTC/LTV do you advance?
+      - Interest reserve requirements?
+      - Who handles inspections on draws?
+    faq:
+    - q: Spec vs pre-leased?
+      a: Pre-leased reduces risk; spec requires stronger sponsor liquidity.
+    related_subtypes:
+    - major-rehab
+    - land-development
+    not_this_product: Not minor tenant improvements only.
+  - slug: major-rehab
+    title: Major commercial renovation
+    one_liner: Substantial renovation or adaptive reuse of existing commercial buildings.
+    keywords:
+    - major rehab
+    - adaptive reuse
+    - renovation commercial
+    who_its_for: Owners repositioning outdated office, retail, or industrial with large capex programs.
+    how_banks_underwrite: Banks review renovation scope, contractor qualifications, stabilization timeline,
+      and as-complete value. Draws align with capex milestones.
+    what_to_prepare:
+    - Budget tied to building systems and code compliance
+    - Contractor credentials
+    - Stabilization timeline
+    - As-is and as-complete appraisals
+    - Zoning for new use if conversion
+    how_to_approach:
+      opening: We're renovating a [SF] [property type] in [city] with a [$] capex plan over [months] months.
+      questions:
+      - Do you fund TI allowances for incoming tenants?
+      - How is interest handled during construction?
+      - Permanent loan commitment at outset?
+    faq:
+    - q: Construction vs bridge?
+      a: Major rehab often uses construction facility with perm takeout at completion.
+    related_subtypes:
+    - ground-up
+    - land-development
+    not_this_product: Not cosmetic refresh without material scope.
+  - slug: land-development
+    title: Land development & lot loans
+    one_liner: Finance horizontal development — roads, utilities, plats — for commercial or residential
+      lots.
+    keywords:
+    - land development
+    - lot loan
+    - horizontal development
+    who_its_for: Developers preparing entitled land for sale to builders or vertical developers.
+    how_banks_underwrite: Banks look at absorption, lot takedown pace, and infrastructure completion.
+      Shorter tenors until lots sell.
+    what_to_prepare:
+    - Plat and entitlement docs
+    - Development budget by phase
+    - Market study for lot absorption
+    - Environmental and geotech
+    - Offtake or builder interest letters
+    how_to_approach:
+      opening: We're developing [lot count] lots in [city/subdivision] with phase 1 infrastructure cost
+        of [$].
+      questions:
+      - Advance rate on raw vs improved lots?
+      - Do you require presales?
+      - Interest reserve and maturity?
+    faq:
+    - q: Raw land vs improved lots?
+      a: Raw land is higher risk; improved platted lots are easier to finance.
+    related_subtypes:
+    - lot-loans
+    - ground-up
+    not_this_product: Not long-term hold of unentitled land without development plan.
+  - slug: lot-loans
+    title: Residential / commercial lot loans
+    one_liner: Short-term loans on individual or small groups of developed lots pending vertical construction.
+    keywords:
+    - lot loan
+    - finished lots
+    - builder lot
+    who_its_for: Builders or developers holding finished lots before vertical starts or takedown.
+    how_banks_underwrite: Proceeds usually tied to lot count, pricing, and builder track record. Maturity
+      aligns with build start or sale.
+    what_to_prepare:
+    - Lot inventory schedule
+    - Appraisal or lot pricing
+    - Builder financials
+    - Sales contracts if any
+    - Development agreement
+    how_to_approach:
+      opening: We hold [count] finished lots in [subdivision] and need a facility until vertical construction
+        starts in [quarter].
+      questions:
+      - Per-lot or blanket advance?
+      - Release prices when lots sell?
+      - Cross-default with construction loan?
+    faq:
+    - q: Lot loan vs land development?
+      a: Lot loans are on finished lots; land dev finances infrastructure to create lots.
+    related_subtypes:
+    - land-development
+    - ground-up
+    not_this_product: Not permanent financing for completed buildings.
+- slug: ci-business
+  key: ci
+  name: Commercial & Industrial (C&I)
+  cat: Business lending
+  short: Operating lines, equipment, and term loans for businesses.
+  learn: C&I lending funds business operations from cash flow. Reported as RCON1766. Core product for
+    most Texas community banks — working capital, equipment, acquisitions.
+  lines: RCON1766 — commercial and industrial loans
+  mdrm:
+  - RCON1766
+  keywords:
+  - business loan
+  - c&i
+  - commercial industrial
+  faq:
+  - q: What is a C&I loan?
+    a: Commercial & industrial — business loans repaid from operating cash flow, not real estate rent.
+  subtypes:
+  - slug: working-capital-line
+    title: Working capital line of credit
+    one_liner: Revolving credit for inventory, payroll, and seasonal cash needs.
+    keywords:
+    - working capital
+    - line of credit
+    - revolver
+    - loc
+    who_its_for: Operating businesses with fluctuating cash conversion cycles — distributors, manufacturers,
+      services.
+    how_banks_underwrite: Banks set borrowing base on receivables and inventory, review quarterly financials,
+      and require personal guarantees from owners.
+    what_to_prepare:
+    - AR/AP aging
+    - Inventory listing
+    - 3 years financials + YTD P&L
+    - Debt schedule
+    - Personal financial statements
+    how_to_approach:
+      opening: Our [business] needs a [$] revolver to support [seasonal growth/inventory]. Revenues are
+        [$] with [margin] EBITDA.
+      questions:
+      - Borrowing base formula?
+      - Covenant package?
+      - Annual cleanup requirement?
+    faq:
+    - q: Secured vs unsecured LOC?
+      a: Most community bank LOCs are secured by AR/inventory and guaranteed.
+    related_subtypes:
+    - equipment
+    - acquisition-finance
+    not_this_product: Not real estate acquisition — see owner-occupied CRE.
+  - slug: equipment
+    title: Equipment financing
+    one_liner: Term loans or leases for machinery, vehicles, and business equipment.
+    keywords:
+    - equipment loan
+    - machinery
+    - fleet
+    who_its_for: Capex-heavy businesses upgrading trucks, plant equipment, or technology with useful life
+      matching loan term.
+    how_banks_underwrite: Banks match term to asset life, may take a security interest in equipment, and
+      underwrite from cash flow plus collateral liquidation value.
+    what_to_prepare:
+    - Equipment quotes or invoices
+    - Useful life and depreciation schedule
+    - Business cash flow
+    - Insurance requirements
+    - Down payment source
+    how_to_approach:
+      opening: We're purchasing [$] in [equipment type] to [capacity/revenue goal].
+      questions:
+      - Fixed vs floating rate?
+      - Advance rate on new vs used equipment?
+      - Master security agreement terms?
+    faq:
+    - q: Lease vs loan?
+      a: Banks may offer both; loans build equity, leases preserve capital.
+    related_subtypes:
+    - working-capital-line
+    - acquisition-finance
+    not_this_product: Not real property — see C&I vs CRE.
+  - slug: acquisition-finance
+    title: Business acquisition financing
+    one_liner: Fund the purchase of a business or partner buyout.
+    keywords:
+    - acquisition
+    - buy a business
+    - partner buyout
+    who_its_for: Buyers acquiring operating companies where historical EBITDA supports new debt.
+    how_banks_underwrite: Banks stress due diligence quality, customer concentration, and management transition.
+      Seller notes and SBA may supplement bank debt.
+    what_to_prepare:
+    - CIM or offering memo
+    - 3 years seller financials
+    - Quality of earnings report
+    - Purchase agreement
+    - Buyer experience and equity injection
+    how_to_approach:
+      opening: We're acquiring [business name/industry] for [$] with [$] seller financing and [$] equity.
+      questions:
+      - Typical leverage multiples for this industry?
+      - SBA 7(a) participation?
+      - Standby requirements for seller note?
+    faq:
+    - q: Asset vs stock purchase?
+      a: Lenders prefer asset deals for cleaner collateral; stock deals need stronger guarantees.
+    related_subtypes:
+    - abl
+    - working-capital-line
+    not_this_product: Not startup with no operating history unless SBA.
+  - slug: abl
+    title: Asset-based lending (ABL)
+    one_liner: Larger facilities secured by receivables, inventory, and sometimes equipment.
+    keywords:
+    - abl
+    - asset based
+    - borrowing base
+    who_its_for: Mid-market borrowers needing more leverage than traditional cash-flow loans allow.
+    how_banks_underwrite: Structured borrowing base with field exams, dominion of accounts, and tight
+      reporting. More common at larger regionals.
+    what_to_prepare:
+    - Detailed borrowing base certificate
+    - Field exam readiness
+    - Customer concentration analysis
+    - Collateral appraisals
+    - Cash management setup
+    how_to_approach:
+      opening: We need a [$] ABL facility against [AR/inventory] for [growth/restructuring].
+      questions:
+      - Advance rates by collateral type?
+      - Field exam frequency?
+      - Minimum availability covenants?
+    faq:
+    - q: ABL vs LOC?
+      a: ABL is structured for higher advances with stricter collateral monitoring.
+    related_subtypes:
+    - working-capital-line
+    - acquisition-finance
+    not_this_product: Not unsecured relationship lending.
+- slug: residential-14
+  key: res
+  name: 1–4 Family Residential
+  cat: Residential mortgage portfolio
+  short: Single-family and small residential rental portfolios on bank balance sheets.
+  learn: 1–4 family residential loans (RCON1403) differ from multifamily. Some Texas community banks are
+    residential-heavy; others focus on commercial.
+  lines: RCON1403 — loans secured by 1–4 family residential properties
+  mdrm:
+  - RCON1403
+  keywords:
+  - single family
+  - 1-4 family
+  - residential portfolio
+  faq:
+  - q: Is this a mortgage for my home?
+    a: These are loans on bank balance sheets — portfolio lending. For a personal mortgage, contact the
+      bank directly.
+  subtypes:
+  - slug: portfolio-rental
+    title: Residential rental portfolio loan
+    one_liner: Finance a basket of 1–4 unit rentals held for income.
+    keywords:
+    - rental portfolio
+    - single family rentals
+    - sfr portfolio
+    who_its_for: Investors building or refinancing portfolios of small residential rentals.
+    how_banks_underwrite: Banks review aggregate NOI, geographic dispersion, and property management.
+      Blanket loans may cross-collateralize properties.
+    what_to_prepare:
+    - Rent roll across properties
+    - Property list with values and debt
+    - Operating statements
+    - Management agreement if third-party
+    - Insurance schedule
+    how_to_approach:
+      opening: We hold [count] rentals in [markets] generating [$] NOI and seek [refinance/acquisition]
+        financing.
+      questions:
+      - Blanket vs individual property loans?
+      - Minimum property count?
+      - LTV on portfolio basis?
+    faq:
+    - q: Portfolio vs multifamily?
+      a: 1–4 unit properties per loan; multifamily is 5+ units on one site.
+    related_subtypes:
+    - investor-flip
+    - second-lien
+    not_this_product: Not agency owner-occupied primary residence mortgages.
+  - slug: investor-flip
+    title: Investor fix-and-flip (1–4 unit)
+    one_liner: Short-term financing for purchase and renovation of houses for resale.
+    keywords:
+    - fix and flip
+    - house flip
+    - rehab loan
+    who_its_for: Experienced investors with documented flip track record and defined rehab budgets.
+    how_banks_underwrite: Lenders use as-is and ARV appraisals, limit leverage, and require quick exit.
+      Some banks avoid this; others have dedicated programs.
+    what_to_prepare:
+    - Purchase contract
+    - Rehab budget and contractor bid
+    - Comparable sales for ARV
+    - Track record of prior flips
+    - Liquidity reserves
+    how_to_approach:
+      opening: We're acquiring a [bed/bath] in [city] with [$] rehab and [month] timeline to list at [$]
+        ARV.
+      questions:
+      - Advance on ARV?
+      - Draw inspection process?
+      - Geographic limits?
+    faq:
+    - q: Do community banks do flips?
+      a: Select banks do; many prefer rental or commercial. Check portfolio mix.
+    related_subtypes:
+    - portfolio-rental
+    not_this_product: Not long-term owner-occupied primary residence.
+  - slug: second-lien
+    title: Residential second lien / HELOC (portfolio)
+    one_liner: Second mortgage or HELOC held in bank portfolio (not sold to agencies).
+    keywords:
+    - second lien
+    - heloc
+    - home equity
+    who_its_for: Homeowners or investors tapping equity behind a first mortgage when the bank keeps the
+      loan.
+    how_banks_underwrite: Underwriting combines CLTV, FICO, and income. Portfolio lenders have flexible
+      guidelines vs agency rules.
+    what_to_prepare:
+    - First mortgage statement
+    - Appraisal or AVM
+    - Income documentation
+    - Purpose of funds
+    - Insurance declaration
+    how_to_approach:
+      opening: We have [$] first mortgage balance and seek [$] second lien for [purpose].
+      questions:
+      - Maximum CLTV?
+      - Fixed vs variable?
+      - Do you allow investment property HELOC?
+    faq:
+    - q: Portfolio vs agency?
+      a: Portfolio loans stay on bank books with bank-specific guidelines.
+    related_subtypes:
+    - portfolio-rental
+    not_this_product: Not agency-conforming first mortgage origination.
+- slug: ag-farmland
+  key: oth
+  name: Agricultural & Farmland
+  cat: Ag & rural lending
+  short: Farmland, ranch, and agricultural production credit.
+  learn: Farmland (RCON1420) and ag production (RCON1590) lines are critical in rural Texas markets.
+  lines: RCON1420, RCON1590 — farmland and agricultural production
+  mdrm:
+  - RCON1420
+  - RCON1590
+  keywords:
+  - farmland
+  - ag
+  - ranch
+  - farm
+  faq:
+  - q: Who lends on farmland in Texas?
+    a: Rural community banks with high ag/farmland portfolio share — common in West and South Texas.
+  subtypes:
+  - slug: farmland-purchase
+    title: Farmland purchase loan
+    one_liner: Acquire cropland, pasture, or ranch land for agricultural use.
+    keywords:
+    - farmland purchase
+    - buy farm
+    - ranch purchase
+    who_its_for: Farmers expanding operations or investors buying income-producing ag land.
+    how_banks_underwrite: Banks review soil productivity, water rights, lease income if tenant-farmed,
+      and operator experience.
+    what_to_prepare:
+    - Appraisal with land productivity
+    - Water rights documentation
+    - Lease agreements if leased out
+    - Operator resume
+    - Environmental and mineral rights review
+    how_to_approach:
+      opening: We're purchasing [acres] in [county] for [crop/livestock] operation.
+      questions:
+      - LTV on dryland vs irrigated?
+      - Do you finance recreational land?
+      - Amortization vs balloon?
+    faq:
+    - q: Investor vs operator?
+      a: Operators get better terms; passive investors may need stronger lease or guaranty.
+    related_subtypes:
+    - operating-line
+    - ranch
+    not_this_product: Not urban development land without ag use.
+  - slug: operating-line
+    title: Agricultural operating line
+    one_liner: Seasonal credit for seed, fertilizer, livestock feed, and harvest expenses.
+    keywords:
+    - ag operating
+    - crop input
+    - livestock operating
+    who_its_for: Producers financing annual production cycles with repayment after harvest or sale.
+    how_banks_underwrite: Revolving lines tied to crop/livestock plan, insurance, and marketing. FSA guarantees
+      may be available.
+    what_to_prepare:
+    - Crop/livestock plan
+    - Crop insurance
+    - Historical production records
+    - Marketing contracts if any
+    - Equipment and land schedule
+    how_to_approach:
+      opening: Our [operation type] needs a [$] operating line for [crop season/livestock cycle].
+      questions:
+      - Advance timing vs planting?
+      - Crop insurance requirements?
+      - FSA guarantee eligibility?
+    faq:
+    - q: Operating vs equipment?
+      a: Operating lines fund inputs; equipment loans fund durable assets.
+    related_subtypes:
+    - farmland-purchase
+    - ranch
+    not_this_product: Not long-term real estate term debt.
+  - slug: ranch
+    title: Ranch & livestock financing
+    one_liner: Credit for ranch operations, grazing land, and livestock.
+    keywords:
+    - ranch
+    - livestock
+    - cattle
+    - grazing
+    who_its_for: Ranchers financing land, herds, and operating needs across West and Central Texas.
+    how_banks_underwrite: Banks understand carrying capacity, water, fencing, and livestock cycles. Collateral
+      includes land and herd where applicable.
+    what_to_prepare:
+    - Ranch appraisal and grazing capacity
+    - Livestock inventory
+    - Water and lease documentation
+    - Brand/registration records
+    - Operating budget
+    how_to_approach:
+      opening: We run a [head count] [cattle/other] operation on [acres] in [region] and need [purpose]
+        financing.
+      questions:
+      - Finance herd separately from land?
+      - Drought or disaster provisions?
+      - Experience required for new operators?
+    faq:
+    - q: Pure ranch vs farm?
+      a: Similar underwriting; ranch emphasizes grazing, livestock, and water.
+    related_subtypes:
+    - farmland-purchase
+    - operating-line
+    not_this_product: Not hobby farms without commercial scale.

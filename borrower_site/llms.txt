@@ -1,0 +1,66 @@
+# Lenni Texas Community Bank Index
+> 351 Texas banks · FFIEC 12/31/2025 · FDIC branches & websites
+
+## Main pages
+- index.html — interactive bank finder
+- guides/glossary.html — MDRM loan term definitions
+- guides/faq.html — borrower FAQ
+- guides/methodology.html — data sources
+
+## Loan type pages
+- loan-types/multifamily.html — Multifamily (5+ units)
+- loan-types/multifamily/acquisition.html — Apartment acquisition loan
+- loan-types/multifamily/refinance.html — Multifamily refinance
+- loan-types/multifamily/bridge.html — Apartment bridge loan
+- loan-types/multifamily/value-add-rehab.html — Multifamily value-add / rehab
+- loan-types/multifamily/permanent-takeout.html — Multifamily permanent takeout
+- loan-types/investor-cre.html — Investor CRE (income property)
+- loan-types/investor-cre/office.html — Investor office building loan
+- loan-types/investor-cre/retail.html — Investor retail / strip center loan
+- loan-types/investor-cre/industrial.html — Investor industrial / warehouse loan
+- loan-types/investor-cre/mixed-use.html — Mixed-use income property loan
+- loan-types/investor-cre/nnn.html — NNN / single-tenant net lease loan
+- loan-types/owner-occupied-cre.html — Owner-Occupied CRE
+- loan-types/owner-occupied-cre/purchase.html — Owner-occupied property purchase
+- loan-types/owner-occupied-cre/refinance.html — Owner-occupied refinance
+- loan-types/owner-occupied-cre/sba-504-paired.html — Owner-occupied + SBA 504
+- loan-types/commercial-construction.html — Commercial Construction
+- loan-types/commercial-construction/ground-up.html — Ground-up commercial construction
+- loan-types/commercial-construction/major-rehab.html — Major commercial renovation
+- loan-types/commercial-construction/land-development.html — Land development & lot loans
+- loan-types/commercial-construction/lot-loans.html — Residential / commercial lot loans
+- loan-types/ci-business.html — Commercial & Industrial (C&I)
+- loan-types/ci-business/working-capital-line.html — Working capital line of credit
+- loan-types/ci-business/equipment.html — Equipment financing
+- loan-types/ci-business/acquisition-finance.html — Business acquisition financing
+- loan-types/ci-business/abl.html — Asset-based lending (ABL)
+- loan-types/residential-14.html — 1–4 Family Residential
+- loan-types/residential-14/portfolio-rental.html — Residential rental portfolio loan
+- loan-types/residential-14/investor-flip.html — Investor fix-and-flip (1–4 unit)
+- loan-types/residential-14/second-lien.html — Residential second lien / HELOC (portfolio)
+- loan-types/ag-farmland.html — Agricultural & Farmland
+- loan-types/ag-farmland/farmland-purchase.html — Farmland purchase loan
+- loan-types/ag-farmland/operating-line.html — Agricultural operating line
+- loan-types/ag-farmland/ranch.html — Ranch & livestock financing
+
+## Top banks by assets
+- banks/682563-frost-bank.html — FROST BANK, San Antonio TX, $53.1B assets
+- banks/664756-prosperity-bank.html — PROSPERITY BANK, El Campo TX, $38.5B assets
+- banks/2618780-texas-capital-bank.html — TEXAS CAPITAL BANK, Dallas TX, $31.3B assets
+- banks/470050-first-financial-bank.html — FIRST FINANCIAL BANK, Abilene TX, $15.4B assets
+- banks/652874-nexbank.html — NEXBANK, Dallas TX, $13.9B assets
+- banks/637451-plainscapital-bank.html — PLAINSCAPITAL BANK, University Park TX, $12.8B assets
+- banks/3579589-stellar-bank.html — STELLAR BANK, Houston TX, $10.8B assets
+- banks/1001152-international-bank-of-commerce.html — INTERNATIONAL BANK OF COMMERCE, Laredo TX, $9.8B assets
+- banks/353555-amarillo-national-bank.html — AMARILLO NATIONAL BANK, Amarillo TX, $9.6B assets
+- banks/412751-woodforest-national-bank.html — WOODFOREST NATIONAL BANK, The Woodlands TX, $9.2B assets
+- banks/361167-southside-bank.html — SOUTHSIDE BANK, Tyler TX, $8.5B assets
+- banks/474759-sunflower-bank-national-association.html — SUNFLOWER BANK, NATIONAL ASSOCIATION, Dallas TX, $8.5B assets
+- banks/599764-american-national-bank-of-texas-the.html — AMERICAN NATIONAL BANK OF TEXAS, THE, Terrell TX, $6.9B assets
+- banks/766164-tbk-bank-ssb.html — TBK BANK, SSB, Dallas TX, $6.4B assets
+- banks/474254-broadway-national-bank.html — BROADWAY NATIONAL BANK, San Antonio TX, $5.9B assets
+- banks/3630323-third-coast-bank.html — THIRD COAST BANK, Humble TX, $5.3B assets
+- banks/26765-vantage-bank-texas.html — VANTAGE BANK TEXAS, San Antonio TX, $4.9B assets
+- banks/913753-inwood-national-bank.html — INWOOD NATIONAL BANK, Dallas TX, $4.5B assets
+- banks/613950-first-national-bank-texas-dba-first-convenience-bank.html — FIRST NATIONAL BANK TEXAS DBA FIRST CONVENIENCE BANK, Killeen TX, $4.5B assets
+- banks/822556-texas-exchange-bank.html — TEXAS EXCHANGE BANK, Crowley TX, $4.5B assets

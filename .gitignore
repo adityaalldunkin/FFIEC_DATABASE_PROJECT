@@ -11,3 +11,20 @@ exports/
 *.egg-info/
 dist/
 build/
+
+# macOS / editor noise
+.DS_Store
+.mplconfig/
+
+# Large raw data (keep locally or on SharePoint — do not push to GitHub)
+texas_loans_labeled.csv
+ONLY_TEXAS_SINCE_2025/exports/
+ONLY_TEXAS_SINCE_2025/data/
+
+# Optional: uncomment if you host these CSVs outside git (SharePoint/S3)
+# locations.csv
+# institutions.csv
+# texas_loan_products_mdrm_catalog.csv
+
+# Duplicate / generated one-offs (rebuild with build_borrower_site.py)
+2026-06-07-lenni-borrower-experience (1).html

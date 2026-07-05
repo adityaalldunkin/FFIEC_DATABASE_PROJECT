@@ -1,0 +1,5377 @@
+{
+  "generated_at": "2026-07-05T20:43:52.203097+00:00",
+  "provider": "rules",
+  "comparison": {
+    "baseline": {
+      "cases": 28,
+      "critical_accuracy_pct": 75.5,
+      "field_accuracy_pct": 88.5,
+      "product_match_pct": 82.1,
+      "avg_latency_ms": 0.12,
+      "perfect_cases": 16,
+      "critical_failures": [
+        "E04",
+        "E07",
+        "E08",
+        "E09",
+        "E11",
+        "E13",
+        "E15",
+        "E20",
+        "E22",
+        "E25",
+        "E28"
+      ]
+    },
+    "routing": {
+      "cases": 28,
+      "critical_accuracy_pct": 75.5,
+      "field_accuracy_pct": 89.4,
+      "product_match_pct": 82.1,
+      "avg_latency_ms": 0.12,
+      "perfect_cases": 17,
+      "critical_failures": [
+        "E04",
+        "E07",
+        "E08",
+        "E09",
+        "E11",
+        "E13",
+        "E15",
+        "E20",
+        "E22",
+        "E25",
+        "E28"
+      ]
+    },
+    "routing_wins": [
+      "E16"
+    ],
+    "baseline_wins": [],
+    "ties": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05",
+      "E06",
+      "E07",
+      "E08",
+      "E09",
+      "E10",
+      "E11",
+      "E12",
+      "E13",
+      "E14",
+      "E15",
+      "E17",
+      "E18",
+      "E19",
+      "E20",
+      "E21",
+      "E22",
+      "E23",
+      "E24",
+      "E25",
+      "E26",
+      "E27",
+      "E28"
+    ],
+    "per_case": [
+      {
+        "id": "E01",
+        "description": "MF value-add bridge Fort Worth",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 5,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "value_add",
+          "city": "Fort Worth",
+          "metro": "Dallas\u2013Fort Worth",
+          "price_n": 4200000.0,
+          "units": 40,
+          "property_type": "Multifamily",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type."
+        },
+        "routing_slots": {
+          "intent": "value_add",
+          "city": "Fort Worth",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "parent_key": "mf",
+          "price_n": 4200000.0,
+          "property_type": "Multifamily",
+          "units": 40,
+          "metro": "Dallas\u2013Fort Worth"
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E02",
+        "description": "Land hold Brenham",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 5,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "con",
+          "intent": "hold",
+          "city": "Brenham",
+          "metro": "College Station",
+          "price_n": 849000.0,
+          "acres": 12.4,
+          "property_type": "Land / lot",
+          "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+        },
+        "routing_slots": {
+          "intent": "hold",
+          "city": "Brenham",
+          "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building.",
+          "parent_key": "con",
+          "price_n": 849000.0,
+          "property_type": "Land / lot",
+          "metro": "College Station",
+          "acres": 12.4
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E03",
+        "description": "C&I working capital Houston",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "ci",
+          "intent": "acquire",
+          "city": "Houston",
+          "metro": "Houston",
+          "price_n": 2000000.0,
+          "property_type": "C&I / Business",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "ci",
+          "price_n": 2000000.0,
+          "property_type": "C&I / Business",
+          "metro": "Houston",
+          "city": "Houston",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E04",
+        "description": "Owner-occupied Waco manufacturer",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "own",
+          "intent": "acquire",
+          "city": "Waco",
+          "metro": "Waco",
+          "price_n": 3100000.0,
+          "property_type": "Owner-occupied CRE",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "own",
+          "price_n": 3100000.0,
+          "property_type": "Owner-occupied CRE",
+          "metro": "Waco",
+          "city": "Waco",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E05",
+        "description": "Industrial investor refinance Houston",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 4,
+        "routing_fields": 4,
+        "baseline_slots": {
+          "parent_key": "inv",
+          "intent": "refinance",
+          "city": "Houston",
+          "metro": "Houston",
+          "price_n": 8500000.0,
+          "property_type": "Investor CRE",
+          "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+        },
+        "routing_slots": {
+          "intent": "refinance",
+          "parent_key": "inv",
+          "price_n": 8500000.0,
+          "property_type": "Investor CRE",
+          "metro": "Houston",
+          "city": "Houston",
+          "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E06",
+        "description": "Multifamily acquisition Austin stabilized",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 5,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "acquire",
+          "city": "Austin",
+          "metro": "Austin",
+          "price_n": 2800000.0,
+          "units": 24,
+          "property_type": "Multifamily",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "city": "Austin",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+          "parent_key": "mf",
+          "price_n": 2800000.0,
+          "property_type": "Multifamily",
+          "units": 24,
+          "metro": "Austin"
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E07",
+        "description": "Ground-up construction Dallas",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "inv",
+          "intent": "build",
+          "city": "Dallas",
+          "metro": "Dallas\u2013Fort Worth",
+          "price_n": 5000000.0,
+          "property_type": "Investor CRE",
+          "summary": "This reads as a construction project. Expect equity in first and a clear takeout plan."
+        },
+        "routing_slots": {
+          "intent": "build",
+          "parent_key": "inv",
+          "price_n": 5000000.0,
+          "property_type": "Investor CRE",
+          "metro": "Dallas\u2013Fort Worth",
+          "city": "Dallas",
+          "summary": "This reads as a construction project. Expect equity in first and a clear takeout plan."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E08",
+        "description": "Farmland ranch purchase",
+        "multi_turn": false,
+        "baseline_critical": 0,
+        "routing_critical": 0,
+        "baseline_fields": 2,
+        "routing_fields": 2,
+        "baseline_slots": {
+          "parent_key": "con",
+          "intent": "acquire",
+          "city": "Amarillo",
+          "metro": "Amarillo",
+          "price_n": 2200000.0,
+          "acres": 500.0,
+          "property_type": "Land / lot",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+          "city": "Amarillo",
+          "parent_key": "con",
+          "price_n": 2200000.0,
+          "property_type": "Land / lot",
+          "metro": "Amarillo",
+          "acres": 500.0
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E09",
+        "description": "Duplex residential (1-4)",
+        "multi_turn": false,
+        "baseline_critical": 0,
+        "routing_critical": 0,
+        "baseline_fields": 2,
+        "routing_fields": 2,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "acquire",
+          "city": "San Antonio",
+          "metro": "San Antonio",
+          "price_n": 425000.0,
+          "property_type": "Multifamily",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "mf",
+          "price_n": 425000.0,
+          "property_type": "Multifamily",
+          "metro": "San Antonio",
+          "city": "San Antonio",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E10",
+        "description": "SBA business loan Dallas",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "ci",
+          "intent": "acquire",
+          "city": "Dallas",
+          "metro": "Dallas\u2013Fort Worth",
+          "price_n": 750000.0,
+          "property_type": "C&I / Business",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "ci",
+          "price_n": 750000.0,
+          "property_type": "C&I / Business",
+          "metro": "Dallas\u2013Fort Worth",
+          "city": "Dallas",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E11",
+        "description": "Multifamily refinance San Antonio",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 4,
+        "routing_fields": 4,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "acquire",
+          "city": "San Antonio",
+          "metro": "San Antonio",
+          "price_n": 6500000.0,
+          "units": 60,
+          "property_type": "Multifamily",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "city": "San Antonio",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+          "parent_key": "mf",
+          "price_n": 6500000.0,
+          "property_type": "Multifamily",
+          "units": 60,
+          "metro": "San Antonio"
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E12",
+        "description": "Land development College Station",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "con",
+          "intent": "develop",
+          "city": "College Station",
+          "metro": "College Station",
+          "acres": 40.0,
+          "property_type": "Land / lot",
+          "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+        },
+        "routing_slots": {
+          "intent": "develop",
+          "parent_key": "con",
+          "property_type": "Land / lot",
+          "metro": "College Station",
+          "city": "College Station",
+          "acres": 40.0,
+          "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E13",
+        "description": "Office NNN investor El Paso",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "inv",
+          "intent": "hold",
+          "city": "El Paso",
+          "metro": "El Paso",
+          "price_n": 3400000.0,
+          "property_type": "Investor CRE",
+          "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+        },
+        "routing_slots": {
+          "intent": "hold",
+          "parent_key": "inv",
+          "price_n": 3400000.0,
+          "property_type": "Investor CRE",
+          "metro": "El Paso",
+          "city": "El Paso",
+          "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E14",
+        "description": "Bridge transitional MF Dallas",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 5,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "bridge",
+          "city": "Dallas",
+          "metro": "Dallas\u2013Fort Worth",
+          "price_n": 4200000.0,
+          "units": 48,
+          "property_type": "Multifamily",
+          "summary": "This reads as transitional \u2014 short-term financing until stabilization or sale."
+        },
+        "routing_slots": {
+          "intent": "bridge",
+          "city": "Dallas",
+          "summary": "This reads as transitional \u2014 short-term financing until stabilization or sale.",
+          "parent_key": "mf",
+          "price_n": 4200000.0,
+          "property_type": "Multifamily",
+          "units": 48,
+          "metro": "Dallas\u2013Fort Worth"
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E15",
+        "description": "Owner occupied purchase Tyler",
+        "multi_turn": false,
+        "baseline_critical": 0,
+        "routing_critical": 0,
+        "baseline_fields": 2,
+        "routing_fields": 2,
+        "baseline_slots": {
+          "parent_key": "inv",
+          "intent": "acquire",
+          "city": "Tyler",
+          "metro": "East Texas",
+          "price_n": 1900000.0,
+          "property_type": "Investor CRE",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "inv",
+          "price_n": 1900000.0,
+          "property_type": "Investor CRE",
+          "metro": "East Texas",
+          "city": "Tyler",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E16",
+        "description": "MULTI-TURN correction land to MF",
+        "multi_turn": true,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 4,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "value_add",
+          "city": "Fort Worth",
+          "metro": "Dallas\u2013Fort Worth",
+          "price_n": 849000.0,
+          "acres": 12.0,
+          "property_type": "Multifamily",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "units": 40
+        },
+        "routing_slots": {
+          "intent": "value_add",
+          "city": "Fort Worth",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "parent_key": "mf",
+          "price_n": 4200000.0,
+          "property_type": "Multifamily",
+          "metro": "Dallas\u2013Fort Worth",
+          "acres": 12.0,
+          "units": 40
+        },
+        "routing_disagreements": 1,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E17",
+        "description": "MULTI-TURN add location then price",
+        "multi_turn": true,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 5,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "value_add",
+          "metro": "Lubbock",
+          "units": 32,
+          "property_type": "Multifamily",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "city": "Lubbock",
+          "price_n": 2100000.0
+        },
+        "routing_slots": {
+          "intent": "value_add",
+          "parent_key": "mf",
+          "property_type": "Multifamily",
+          "units": 32,
+          "metro": "Lubbock",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "city": "Lubbock",
+          "price_n": 2100000.0
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E18",
+        "description": "MULTI-TURN CI then clarify amount",
+        "multi_turn": true,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "ci",
+          "intent": "acquire",
+          "city": "Austin",
+          "metro": "Austin",
+          "property_type": "C&I / Business",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+          "price_n": 1500000.0
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "ci",
+          "property_type": "C&I / Business",
+          "metro": "Other Texas",
+          "city": "Austin",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+          "price_n": 1500000.0
+        },
+        "routing_disagreements": 1,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E19",
+        "description": "MULTI-TURN intent change acquire to refinance",
+        "multi_turn": true,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "inv",
+          "intent": "refinance",
+          "city": "Houston",
+          "metro": "Houston",
+          "price_n": 5000000.0,
+          "property_type": "Investor CRE",
+          "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+        },
+        "routing_slots": {
+          "intent": "refinance",
+          "parent_key": "inv",
+          "price_n": 2000000.0,
+          "property_type": "Investor CRE",
+          "metro": "Other Texas",
+          "city": "Houston",
+          "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+        },
+        "routing_disagreements": 2,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E20",
+        "description": "MULTI-TURN owner-occupy clarification",
+        "multi_turn": true,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "own",
+          "intent": "hold",
+          "city": "Waco",
+          "metro": "Waco",
+          "price_n": 2000000.0,
+          "property_type": "Owner-occupied CRE",
+          "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+        },
+        "routing_slots": {
+          "intent": "hold",
+          "parent_key": "own",
+          "price_n": 2000000.0,
+          "property_type": "Owner-occupied CRE",
+          "metro": "Other Texas",
+          "city": "Waco",
+          "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+        },
+        "routing_disagreements": 1,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E21",
+        "description": "Raw land lot loan Midland",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 5,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "con",
+          "intent": "acquire",
+          "city": "Midland",
+          "metro": "Midland\u2013Odessa",
+          "price_n": 320000.0,
+          "acres": 5.0,
+          "property_type": "Land / lot",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+          "city": "Midland",
+          "parent_key": "con",
+          "price_n": 320000.0,
+          "property_type": "Land / lot",
+          "metro": "Midland\u2013Odessa",
+          "acres": 5.0
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E22",
+        "description": "Multifamily perm takeout",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "acquire",
+          "metro": "Other Texas",
+          "price_n": 11000000.0,
+          "units": 80,
+          "property_type": "Multifamily",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "mf",
+          "price_n": 11000000.0,
+          "property_type": "Multifamily",
+          "units": 80,
+          "metro": "Other Texas",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E23",
+        "description": "Retail strip investor CRE",
+        "multi_turn": false,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 4,
+        "routing_fields": 4,
+        "baseline_slots": {
+          "parent_key": "inv",
+          "intent": "acquire",
+          "city": "Plano",
+          "metro": "Dallas\u2013Fort Worth",
+          "price_n": 6200000.0,
+          "property_type": "Investor CRE",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "inv",
+          "price_n": 6200000.0,
+          "property_type": "Investor CRE",
+          "metro": "Dallas\u2013Fort Worth",
+          "city": "Plano",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E24",
+        "description": "MULTI-TURN conflicting signals (should clarify or resolve to latest)",
+        "multi_turn": true,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 5,
+        "routing_fields": 5,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "value_add",
+          "city": "Bryan",
+          "metro": "College Station",
+          "acres": 20.0,
+          "property_type": "Multifamily",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "price_n": 1800000.0,
+          "units": 16
+        },
+        "routing_slots": {
+          "intent": "value_add",
+          "parent_key": "mf",
+          "property_type": "Multifamily",
+          "metro": "College Station",
+          "city": "Bryan",
+          "acres": 20.0,
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "price_n": 1800000.0,
+          "units": 16
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E25",
+        "description": "Equipment term loan C&I",
+        "multi_turn": false,
+        "baseline_critical": 0,
+        "routing_critical": 0,
+        "baseline_fields": 2,
+        "routing_fields": 2,
+        "baseline_slots": {
+          "parent_key": "con",
+          "intent": "acquire",
+          "city": "Fort Worth",
+          "metro": "Dallas\u2013Fort Worth",
+          "price_n": 900000.0,
+          "property_type": "Construction / land",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "con",
+          "price_n": 900000.0,
+          "property_type": "Construction / land",
+          "metro": "Dallas\u2013Fort Worth",
+          "city": "Fort Worth",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E26",
+        "description": "MULTI-TURN three turns gradual reveal",
+        "multi_turn": true,
+        "baseline_critical": 2,
+        "routing_critical": 2,
+        "baseline_fields": 4,
+        "routing_fields": 4,
+        "baseline_slots": {
+          "parent_key": "inv",
+          "intent": "refinance",
+          "city": "Houston",
+          "metro": "Houston",
+          "property_type": "Investor CRE",
+          "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most.",
+          "price_n": 7200000.0
+        },
+        "routing_slots": {
+          "intent": "refinance",
+          "parent_key": "inv",
+          "property_type": "Investor CRE",
+          "metro": "Other Texas",
+          "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most.",
+          "city": "Houston",
+          "price_n": 7200000.0
+        },
+        "routing_disagreements": 2,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E27",
+        "description": "Agricultural production loan",
+        "multi_turn": false,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 3,
+        "routing_fields": 3,
+        "baseline_slots": {
+          "parent_key": "oth",
+          "intent": "acquire",
+          "city": "Lubbock",
+          "metro": "Lubbock",
+          "price_n": 400000.0,
+          "property_type": "Ag & farmland",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "oth",
+          "price_n": 400000.0,
+          "property_type": "Ag & farmland",
+          "metro": "Lubbock",
+          "city": "Lubbock",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+        },
+        "routing_disagreements": 0,
+        "routing_clarifications": 0
+      },
+      {
+        "id": "E28",
+        "description": "MULTI-TURN bridge then units",
+        "multi_turn": true,
+        "baseline_critical": 1,
+        "routing_critical": 1,
+        "baseline_fields": 4,
+        "routing_fields": 4,
+        "baseline_slots": {
+          "parent_key": "mf",
+          "intent": "value_add",
+          "city": "Dallas",
+          "metro": "Dallas\u2013Fort Worth",
+          "property_type": "Multifamily",
+          "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+          "price_n": 5500000.0,
+          "units": 52
+        },
+        "routing_slots": {
+          "intent": "acquire",
+          "parent_key": "mf",
+          "property_type": "Multifamily",
+          "metro": "Other Texas",
+          "city": "Dallas",
+          "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+          "price_n": 5500000.0,
+          "units": 52
+        },
+        "routing_disagreements": 3,
+        "routing_clarifications": 1
+      }
+    ]
+  },
+  "baseline_results": [
+    {
+      "id": "E01",
+      "description": "MF value-add bridge Fort Worth",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "value_add",
+        "city": "Fort Worth",
+        "metro": "Dallas\u2013Fort Worth",
+        "price_n": 4200000.0,
+        "units": 40,
+        "property_type": "Multifamily",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Fort Worth",
+          "actual": "Fort Worth",
+          "match": true
+        },
+        "units": {
+          "expected": 40,
+          "actual": 40,
+          "match": true
+        },
+        "price_n": {
+          "expected": 4200000,
+          "actual": 4200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "40-unit apartment value-add bridge in Fort Worth $4.2 million",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "value_add",
+            "city": "Fort Worth",
+            "metro": "Dallas\u2013Fort Worth",
+            "price_n": 4200000.0,
+            "units": 40,
+            "property_type": "Multifamily",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 1.05
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 1.05,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E02",
+      "description": "Land hold Brenham",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "con",
+        "intent": "hold",
+        "city": "Brenham",
+        "metro": "College Station",
+        "price_n": 849000.0,
+        "acres": 12.4,
+        "property_type": "Land / lot",
+        "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "con",
+          "match": true
+        },
+        "intent": {
+          "expected": "hold",
+          "actual": "hold",
+          "match": true
+        },
+        "city": {
+          "expected": "Brenham",
+          "actual": "Brenham",
+          "match": true
+        },
+        "acres": {
+          "expected": 12.4,
+          "actual": 12.4,
+          "match": true
+        },
+        "price_n": {
+          "expected": 849000,
+          "actual": 849000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Land development & lot loans",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "12.4 acre land near Brenham TX $849k holding for investment",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "hold",
+            "city": "Brenham",
+            "metro": "College Station",
+            "price_n": 849000.0,
+            "acres": 12.4,
+            "property_type": "Land / lot",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.33
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.33,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E03",
+      "description": "C&I working capital Houston",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "ci",
+        "intent": "acquire",
+        "city": "Houston",
+        "metro": "Houston",
+        "price_n": 2000000.0,
+        "property_type": "C&I / Business",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "ci",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        },
+        "price_n": {
+          "expected": 2000000,
+          "actual": 2000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Working capital line of credit",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "working capital line for manufacturing business in Houston $2M",
+          "slots_after": {
+            "parent_key": "ci",
+            "intent": "acquire",
+            "city": "Houston",
+            "metro": "Houston",
+            "price_n": 2000000.0,
+            "property_type": "C&I / Business",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.13
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.13,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E04",
+      "description": "Owner-occupied Waco manufacturer",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "own",
+        "intent": "acquire",
+        "city": "Waco",
+        "metro": "Waco",
+        "price_n": 3100000.0,
+        "property_type": "Owner-occupied CRE",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "own",
+          "actual": "own",
+          "match": true
+        },
+        "intent": {
+          "expected": "owner_occupy",
+          "actual": "acquire",
+          "match": false
+        },
+        "city": {
+          "expected": "Waco",
+          "actual": "Waco",
+          "match": true
+        },
+        "price_n": {
+          "expected": 3100000,
+          "actual": 3100000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Owner-occupied property purchase",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "buy the building my manufacturing business operates out of in Waco for $3.1 million",
+          "slots_after": {
+            "parent_key": "own",
+            "intent": "acquire",
+            "city": "Waco",
+            "metro": "Waco",
+            "price_n": 3100000.0,
+            "property_type": "Owner-occupied CRE",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.05
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.05,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E05",
+      "description": "Industrial investor refinance Houston",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "inv",
+        "intent": "refinance",
+        "city": "Houston",
+        "metro": "Houston",
+        "price_n": 8500000.0,
+        "property_type": "Investor CRE",
+        "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "refinance",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        },
+        "price_n": {
+          "expected": 8500000,
+          "actual": 8500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 4,
+      "product_title": "Investor industrial / warehouse loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "refinance my 120000 SF warehouse in Houston, NNN lease, want cash out $8.5M",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "refinance",
+            "city": "Houston",
+            "metro": "Houston",
+            "price_n": 8500000.0,
+            "property_type": "Investor CRE",
+            "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E06",
+      "description": "Multifamily acquisition Austin stabilized",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "acquire",
+        "city": "Austin",
+        "metro": "Austin",
+        "price_n": 2800000.0,
+        "units": 24,
+        "property_type": "Multifamily",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "acquire",
+          "match": true
+        },
+        "city": {
+          "expected": "Austin",
+          "actual": "Austin",
+          "match": true
+        },
+        "units": {
+          "expected": 24,
+          "actual": 24,
+          "match": true
+        },
+        "price_n": {
+          "expected": 2800000,
+          "actual": 2800000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment acquisition loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "buying a stabilized 24-unit apartment in Austin for $2.8 million",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "acquire",
+            "city": "Austin",
+            "metro": "Austin",
+            "price_n": 2800000.0,
+            "units": 24,
+            "property_type": "Multifamily",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E07",
+      "description": "Ground-up construction Dallas",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "inv",
+        "intent": "build",
+        "city": "Dallas",
+        "metro": "Dallas\u2013Fort Worth",
+        "price_n": 5000000.0,
+        "property_type": "Investor CRE",
+        "summary": "This reads as a construction project. Expect equity in first and a clear takeout plan."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "inv",
+          "match": false
+        },
+        "intent": {
+          "expected": "build",
+          "actual": "build",
+          "match": true
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "price_n": {
+          "expected": 5000000,
+          "actual": 5000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Investor retail / strip center loan",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "ground up construction loan for retail strip center in Dallas $5M",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "build",
+            "city": "Dallas",
+            "metro": "Dallas\u2013Fort Worth",
+            "price_n": 5000000.0,
+            "property_type": "Investor CRE",
+            "summary": "This reads as a construction project. Expect equity in first and a clear takeout plan."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E08",
+      "description": "Farmland ranch purchase",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "con",
+        "intent": "acquire",
+        "city": "Amarillo",
+        "metro": "Amarillo",
+        "price_n": 2200000.0,
+        "acres": 500.0,
+        "property_type": "Land / lot",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "oth",
+          "actual": "con",
+          "match": false
+        },
+        "city": {
+          "expected": "Amarillo",
+          "actual": "Amarillo",
+          "match": true
+        },
+        "price_n": {
+          "expected": 2200000,
+          "actual": 2200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.6666666666666666,
+      "critical_hits": 0,
+      "critical_total": 1,
+      "field_hits": 2,
+      "field_total": 3,
+      "product_title": "Land development & lot loans",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "500 acre ranch near Amarillo for $2.2 million, ag operation",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "acquire",
+            "city": "Amarillo",
+            "metro": "Amarillo",
+            "price_n": 2200000.0,
+            "acres": 500.0,
+            "property_type": "Land / lot",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E09",
+      "description": "Duplex residential (1-4)",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "acquire",
+        "city": "San Antonio",
+        "metro": "San Antonio",
+        "price_n": 425000.0,
+        "property_type": "Multifamily",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "res",
+          "actual": "mf",
+          "match": false
+        },
+        "city": {
+          "expected": "San Antonio",
+          "actual": "San Antonio",
+          "match": true
+        },
+        "price_n": {
+          "expected": 425000,
+          "actual": 425000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.6666666666666666,
+      "critical_hits": 0,
+      "critical_total": 1,
+      "field_hits": 2,
+      "field_total": 3,
+      "product_title": "Apartment acquisition loan",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "duplex in San Antonio $425k home loan",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "acquire",
+            "city": "San Antonio",
+            "metro": "San Antonio",
+            "price_n": 425000.0,
+            "property_type": "Multifamily",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.03
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.03,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E10",
+      "description": "SBA business loan Dallas",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "ci",
+        "intent": "acquire",
+        "city": "Dallas",
+        "metro": "Dallas\u2013Fort Worth",
+        "price_n": 750000.0,
+        "property_type": "C&I / Business",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "ci",
+          "match": true
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "price_n": {
+          "expected": 750000,
+          "actual": 750000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Equipment financing",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "SBA 504 loan to buy equipment for my restaurant in Dallas $750k",
+          "slots_after": {
+            "parent_key": "ci",
+            "intent": "acquire",
+            "city": "Dallas",
+            "metro": "Dallas\u2013Fort Worth",
+            "price_n": 750000.0,
+            "property_type": "C&I / Business",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E11",
+      "description": "Multifamily refinance San Antonio",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "acquire",
+        "city": "San Antonio",
+        "metro": "San Antonio",
+        "price_n": 6500000.0,
+        "units": 60,
+        "property_type": "Multifamily",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "acquire",
+          "match": false
+        },
+        "city": {
+          "expected": "San Antonio",
+          "actual": "San Antonio",
+          "match": true
+        },
+        "units": {
+          "expected": 60,
+          "actual": 60,
+          "match": true
+        },
+        "price_n": {
+          "expected": 6500000,
+          "actual": 6500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.8,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 5,
+      "product_title": "Apartment acquisition loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "refinance 60-unit apartment San Antonio rate and term $6.5M",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "acquire",
+            "city": "San Antonio",
+            "metro": "San Antonio",
+            "price_n": 6500000.0,
+            "units": 60,
+            "property_type": "Multifamily",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.13
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.13,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E12",
+      "description": "Land development College Station",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "con",
+        "intent": "develop",
+        "city": "College Station",
+        "metro": "College Station",
+        "acres": 40.0,
+        "property_type": "Land / lot",
+        "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "con",
+          "match": true
+        },
+        "intent": {
+          "expected": "develop",
+          "actual": "develop",
+          "match": true
+        },
+        "acres": {
+          "expected": 40,
+          "actual": 40.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "",
+      "product_match_ok": null,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "develop 40 acres into lots near College Station, land development loan",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "develop",
+            "city": "College Station",
+            "metro": "College Station",
+            "acres": 40.0,
+            "property_type": "Land / lot",
+            "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.27
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.27,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E13",
+      "description": "Office NNN investor El Paso",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "inv",
+        "intent": "hold",
+        "city": "El Paso",
+        "metro": "El Paso",
+        "price_n": 3400000.0,
+        "property_type": "Investor CRE",
+        "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "hold",
+          "match": false
+        },
+        "city": {
+          "expected": "El Paso",
+          "actual": "El Paso",
+          "match": true
+        },
+        "price_n": {
+          "expected": 3400000,
+          "actual": 3400000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Investor office building loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "NNN office building investment in El Paso $3.4 million cap rate deal",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "hold",
+            "city": "El Paso",
+            "metro": "El Paso",
+            "price_n": 3400000.0,
+            "property_type": "Investor CRE",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E14",
+      "description": "Bridge transitional MF Dallas",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "bridge",
+        "city": "Dallas",
+        "metro": "Dallas\u2013Fort Worth",
+        "price_n": 4200000.0,
+        "units": 48,
+        "property_type": "Multifamily",
+        "summary": "This reads as transitional \u2014 short-term financing until stabilization or sale."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "bridge",
+          "actual": "bridge",
+          "match": true
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "units": {
+          "expected": 48,
+          "actual": 48,
+          "match": true
+        },
+        "price_n": {
+          "expected": 4200000,
+          "actual": 4200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "48-unit transitional bridge loan Oak Cliff Dallas $4.2M lease-up",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "bridge",
+            "city": "Dallas",
+            "metro": "Dallas\u2013Fort Worth",
+            "price_n": 4200000.0,
+            "units": 48,
+            "property_type": "Multifamily",
+            "summary": "This reads as transitional \u2014 short-term financing until stabilization or sale."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E15",
+      "description": "Owner occupied purchase Tyler",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "inv",
+        "intent": "acquire",
+        "city": "Tyler",
+        "metro": "East Texas",
+        "price_n": 1900000.0,
+        "property_type": "Investor CRE",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "own",
+          "actual": "inv",
+          "match": false
+        },
+        "intent": {
+          "expected": "owner_occupy",
+          "actual": "acquire",
+          "match": false
+        },
+        "city": {
+          "expected": "Tyler",
+          "actual": "Tyler",
+          "match": true
+        },
+        "price_n": {
+          "expected": 1900000,
+          "actual": 1900000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.5,
+      "critical_hits": 0,
+      "critical_total": 2,
+      "field_hits": 2,
+      "field_total": 4,
+      "product_title": "Investor industrial / warehouse loan",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "owner occupied warehouse for my logistics company Tyler TX $1.9M",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "acquire",
+            "city": "Tyler",
+            "metro": "East Texas",
+            "price_n": 1900000.0,
+            "property_type": "Investor CRE",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.05
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.05,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E16",
+      "description": "MULTI-TURN correction land to MF",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "value_add",
+        "city": "Fort Worth",
+        "metro": "Dallas\u2013Fort Worth",
+        "price_n": 849000.0,
+        "acres": 12.0,
+        "property_type": "Multifamily",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "units": 40
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Fort Worth",
+          "actual": "Fort Worth",
+          "match": true
+        },
+        "units": {
+          "expected": 40,
+          "actual": 40,
+          "match": true
+        },
+        "price_n": {
+          "expected": 4200000,
+          "actual": 849000.0,
+          "match": false
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 0.8,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "12 acres land Brenham $849k holding",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "hold",
+            "city": "Brenham",
+            "metro": "College Station",
+            "price_n": 849000.0,
+            "acres": 12.0,
+            "property_type": "Land / lot",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        },
+        {
+          "turn": 2,
+          "message": "Actually it's a 40-unit apartment in Fort Worth $4.2M value-add bridge",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "value_add",
+            "city": "Fort Worth",
+            "metro": "Dallas\u2013Fort Worth",
+            "price_n": 849000.0,
+            "acres": 12.0,
+            "property_type": "Multifamily",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "units": 40
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.03
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.07,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E17",
+      "description": "MULTI-TURN add location then price",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "value_add",
+        "metro": "Lubbock",
+        "units": 32,
+        "property_type": "Multifamily",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "city": "Lubbock",
+        "price_n": 2100000.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Lubbock",
+          "actual": "Lubbock",
+          "match": true
+        },
+        "units": {
+          "expected": 32,
+          "actual": 32,
+          "match": true
+        },
+        "price_n": {
+          "expected": 2100000,
+          "actual": 2100000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Multifamily value-add / rehab",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "I want to buy an apartment building, 32 units",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "acquire",
+            "metro": "Other Texas",
+            "units": 32,
+            "property_type": "Multifamily",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.06
+        },
+        {
+          "turn": 2,
+          "message": "It's in Lubbock, asking $2.1 million, light value-add",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "value_add",
+            "metro": "Lubbock",
+            "units": 32,
+            "property_type": "Multifamily",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "city": "Lubbock",
+            "price_n": 2100000.0
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.19
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.25,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E18",
+      "description": "MULTI-TURN CI then clarify amount",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "ci",
+        "intent": "acquire",
+        "city": "Austin",
+        "metro": "Austin",
+        "property_type": "C&I / Business",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+        "price_n": 1500000.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "ci",
+          "match": true
+        },
+        "city": {
+          "expected": "Austin",
+          "actual": "Austin",
+          "match": true
+        },
+        "price_n": {
+          "expected": 1500000,
+          "actual": 1500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Working capital line of credit",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "line of credit for my SaaS company in Austin",
+          "slots_after": {
+            "parent_key": "ci",
+            "intent": "acquire",
+            "city": "Austin",
+            "metro": "Austin",
+            "property_type": "C&I / Business",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.05
+        },
+        {
+          "turn": 2,
+          "message": "need about $1.5 million revolver for payroll",
+          "slots_after": {
+            "parent_key": "ci",
+            "intent": "acquire",
+            "city": "Austin",
+            "metro": "Austin",
+            "property_type": "C&I / Business",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "price_n": 1500000.0
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.05
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.1,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E19",
+      "description": "MULTI-TURN intent change acquire to refinance",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "inv",
+        "intent": "refinance",
+        "city": "Houston",
+        "metro": "Houston",
+        "price_n": 5000000.0,
+        "property_type": "Investor CRE",
+        "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "refinance",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Investor industrial / warehouse loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "buy industrial warehouse Houston $5M",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "acquire",
+            "city": "Houston",
+            "metro": "Houston",
+            "price_n": 5000000.0,
+            "property_type": "Investor CRE",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        },
+        {
+          "turn": 2,
+          "message": "wait, I already own it \u2014 want to refinance and pull $2M cash out",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "refinance",
+            "city": "Houston",
+            "metro": "Houston",
+            "price_n": 5000000.0,
+            "property_type": "Investor CRE",
+            "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.05
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.09,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E20",
+      "description": "MULTI-TURN owner-occupy clarification",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "own",
+        "intent": "hold",
+        "city": "Waco",
+        "metro": "Waco",
+        "price_n": 2000000.0,
+        "property_type": "Owner-occupied CRE",
+        "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "own",
+          "actual": "own",
+          "match": true
+        },
+        "intent": {
+          "expected": "owner_occupy",
+          "actual": "hold",
+          "match": false
+        },
+        "city": {
+          "expected": "Waco",
+          "actual": "Waco",
+          "match": true
+        },
+        "price_n": {
+          "expected": 2000000,
+          "actual": 2000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Owner-occupied property purchase",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "commercial building in Waco $2M",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "acquire",
+            "city": "Waco",
+            "metro": "Waco",
+            "price_n": 2000000.0,
+            "property_type": "Land / lot",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.03
+        },
+        {
+          "turn": 2,
+          "message": "my business will operate out of it, not an investment property",
+          "slots_after": {
+            "parent_key": "own",
+            "intent": "hold",
+            "city": "Waco",
+            "metro": "Waco",
+            "price_n": 2000000.0,
+            "property_type": "Owner-occupied CRE",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.07,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E21",
+      "description": "Raw land lot loan Midland",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "con",
+        "intent": "acquire",
+        "city": "Midland",
+        "metro": "Midland\u2013Odessa",
+        "price_n": 320000.0,
+        "acres": 5.0,
+        "property_type": "Land / lot",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "con",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "acquire",
+          "match": true
+        },
+        "city": {
+          "expected": "Midland",
+          "actual": "Midland",
+          "match": true
+        },
+        "acres": {
+          "expected": 5,
+          "actual": 5.0,
+          "match": true
+        },
+        "price_n": {
+          "expected": 320000,
+          "actual": 320000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Land development & lot loans",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "raw unimproved 5 acre lot Midland TX $320k lot loan",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "acquire",
+            "city": "Midland",
+            "metro": "Midland\u2013Odessa",
+            "price_n": 320000.0,
+            "acres": 5.0,
+            "property_type": "Land / lot",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E22",
+      "description": "Multifamily perm takeout",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "acquire",
+        "metro": "Other Texas",
+        "price_n": 11000000.0,
+        "units": 80,
+        "property_type": "Multifamily",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "acquire",
+          "match": false
+        },
+        "units": {
+          "expected": 80,
+          "actual": 80,
+          "match": true
+        },
+        "price_n": {
+          "expected": 11000000,
+          "actual": 11000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Multifamily permanent takeout",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "permanent takeout refinance 80-unit garden style Arlington $11M",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "acquire",
+            "metro": "Other Texas",
+            "price_n": 11000000.0,
+            "units": 80,
+            "property_type": "Multifamily",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.05
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.05,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E23",
+      "description": "Retail strip investor CRE",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "inv",
+        "intent": "acquire",
+        "city": "Plano",
+        "metro": "Dallas\u2013Fort Worth",
+        "price_n": 6200000.0,
+        "property_type": "Investor CRE",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "acquire",
+          "match": true
+        },
+        "city": {
+          "expected": "Plano",
+          "actual": "Plano",
+          "match": true
+        },
+        "price_n": {
+          "expected": 6200000,
+          "actual": 6200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 4,
+      "product_title": "Investor retail / strip center loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "strip retail center investor property Plano $6.2M acquisition",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "acquire",
+            "city": "Plano",
+            "metro": "Dallas\u2013Fort Worth",
+            "price_n": 6200000.0,
+            "property_type": "Investor CRE",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.05
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.05,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E24",
+      "description": "MULTI-TURN conflicting signals (should clarify or resolve to latest)",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "value_add",
+        "city": "Bryan",
+        "metro": "College Station",
+        "acres": 20.0,
+        "property_type": "Multifamily",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "price_n": 1800000.0,
+        "units": 16
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Bryan",
+          "actual": "Bryan",
+          "match": true
+        },
+        "units": {
+          "expected": 16,
+          "actual": 16,
+          "match": true
+        },
+        "price_n": {
+          "expected": 1800000,
+          "actual": 1800000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "land deal 20 acres Bryan TX develop",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "develop",
+            "city": "Bryan",
+            "metro": "College Station",
+            "acres": 20.0,
+            "property_type": "Land / lot",
+            "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        },
+        {
+          "turn": 2,
+          "message": "sorry, multifamily \u2014 16-unit value add in Bryan $1.8M",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "value_add",
+            "city": "Bryan",
+            "metro": "College Station",
+            "acres": 20.0,
+            "property_type": "Multifamily",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "price_n": 1800000.0,
+            "units": 16
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.03
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.07,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E25",
+      "description": "Equipment term loan C&I",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "con",
+        "intent": "acquire",
+        "city": "Fort Worth",
+        "metro": "Dallas\u2013Fort Worth",
+        "price_n": 900000.0,
+        "property_type": "Construction / land",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "con",
+          "match": false
+        },
+        "city": {
+          "expected": "Fort Worth",
+          "actual": "Fort Worth",
+          "match": true
+        },
+        "price_n": {
+          "expected": 900000,
+          "actual": 900000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.6666666666666666,
+      "critical_hits": 0,
+      "critical_total": 1,
+      "field_hits": 2,
+      "field_total": 3,
+      "product_title": "Ground-up commercial construction",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "equipment term loan for construction company in Fort Worth $900k",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "acquire",
+            "city": "Fort Worth",
+            "metro": "Dallas\u2013Fort Worth",
+            "price_n": 900000.0,
+            "property_type": "Construction / land",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E26",
+      "description": "MULTI-TURN three turns gradual reveal",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "inv",
+        "intent": "refinance",
+        "city": "Houston",
+        "metro": "Houston",
+        "property_type": "Investor CRE",
+        "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most.",
+        "price_n": 7200000.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "refinance",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        },
+        "price_n": {
+          "expected": 7200000,
+          "actual": 7200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 4,
+      "product_title": "NNN / single-tenant net lease loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "looking for financing in Houston",
+          "slots_after": {
+            "parent_key": "con",
+            "intent": "acquire",
+            "city": "Houston",
+            "metro": "Houston",
+            "property_type": "Land / lot",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.03
+        },
+        {
+          "turn": 2,
+          "message": "it's a warehouse I want to refinance",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "acquire",
+            "city": "Houston",
+            "metro": "Houston",
+            "property_type": "Investor CRE",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        },
+        {
+          "turn": 3,
+          "message": "single tenant NNN, about $7.2 million, cash out for next deal",
+          "slots_after": {
+            "parent_key": "inv",
+            "intent": "refinance",
+            "city": "Houston",
+            "metro": "Houston",
+            "property_type": "Investor CRE",
+            "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most.",
+            "price_n": 7200000.0
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.11000000000000001,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E27",
+      "description": "Agricultural production loan",
+      "routing": false,
+      "multi_turn": false,
+      "final_slots": {
+        "parent_key": "oth",
+        "intent": "acquire",
+        "city": "Lubbock",
+        "metro": "Lubbock",
+        "price_n": 400000.0,
+        "property_type": "Ag & farmland",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "oth",
+          "actual": "oth",
+          "match": true
+        },
+        "city": {
+          "expected": "Lubbock",
+          "actual": "Lubbock",
+          "match": true
+        },
+        "price_n": {
+          "expected": 400000,
+          "actual": 400000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Farmland purchase loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "farm production operating line for cotton farm near Lubbock $400k",
+          "slots_after": {
+            "parent_key": "oth",
+            "intent": "acquire",
+            "city": "Lubbock",
+            "metro": "Lubbock",
+            "price_n": 400000.0,
+            "property_type": "Ag & farmland",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.04
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.04,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    },
+    {
+      "id": "E28",
+      "description": "MULTI-TURN bridge then units",
+      "routing": false,
+      "multi_turn": true,
+      "final_slots": {
+        "parent_key": "mf",
+        "intent": "value_add",
+        "city": "Dallas",
+        "metro": "Dallas\u2013Fort Worth",
+        "property_type": "Multifamily",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "price_n": 5500000.0,
+        "units": 52
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "bridge",
+          "actual": "value_add",
+          "match": false
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "units": {
+          "expected": 52,
+          "actual": 52,
+          "match": true
+        },
+        "price_n": {
+          "expected": 5500000,
+          "actual": 5500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.8,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "bridge loan Dallas apartment value add",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "value_add",
+            "city": "Dallas",
+            "metro": "Dallas\u2013Fort Worth",
+            "property_type": "Multifamily",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.03
+        },
+        {
+          "turn": 2,
+          "message": "52 units, $5.5 million purchase",
+          "slots_after": {
+            "parent_key": "mf",
+            "intent": "value_add",
+            "city": "Dallas",
+            "metro": "Dallas\u2013Fort Worth",
+            "property_type": "Multifamily",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "price_n": 5500000.0,
+            "units": 52
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.03
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.06,
+      "last_extraction": {
+        "routing_enabled": false,
+        "provider": "rules",
+        "turn_provider": "",
+        "context_provider": ""
+      }
+    }
+  ],
+  "routing_results": [
+    {
+      "id": "E01",
+      "description": "MF value-add bridge Fort Worth",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "value_add",
+        "city": "Fort Worth",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "parent_key": "mf",
+        "price_n": 4200000.0,
+        "property_type": "Multifamily",
+        "units": 40,
+        "metro": "Dallas\u2013Fort Worth"
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Fort Worth",
+          "actual": "Fort Worth",
+          "match": true
+        },
+        "units": {
+          "expected": 40,
+          "actual": 40,
+          "match": true
+        },
+        "price_n": {
+          "expected": 4200000,
+          "actual": 4200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "40-unit apartment value-add bridge in Fort Worth $4.2 million",
+          "slots_after": {
+            "intent": "value_add",
+            "city": "Fort Worth",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "parent_key": "mf",
+            "price_n": 4200000.0,
+            "property_type": "Multifamily",
+            "units": 40,
+            "metro": "Dallas\u2013Fort Worth"
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.18
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.18,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E02",
+      "description": "Land hold Brenham",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "hold",
+        "city": "Brenham",
+        "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building.",
+        "parent_key": "con",
+        "price_n": 849000.0,
+        "property_type": "Land / lot",
+        "metro": "College Station",
+        "acres": 12.4
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "con",
+          "match": true
+        },
+        "intent": {
+          "expected": "hold",
+          "actual": "hold",
+          "match": true
+        },
+        "city": {
+          "expected": "Brenham",
+          "actual": "Brenham",
+          "match": true
+        },
+        "acres": {
+          "expected": 12.4,
+          "actual": 12.4,
+          "match": true
+        },
+        "price_n": {
+          "expected": 849000,
+          "actual": 849000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Land development & lot loans",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "12.4 acre land near Brenham TX $849k holding for investment",
+          "slots_after": {
+            "intent": "hold",
+            "city": "Brenham",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building.",
+            "parent_key": "con",
+            "price_n": 849000.0,
+            "property_type": "Land / lot",
+            "metro": "College Station",
+            "acres": 12.4
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.16
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.16,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E03",
+      "description": "C&I working capital Houston",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "ci",
+        "price_n": 2000000.0,
+        "property_type": "C&I / Business",
+        "metro": "Houston",
+        "city": "Houston",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "ci",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        },
+        "price_n": {
+          "expected": 2000000,
+          "actual": 2000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Working capital line of credit",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "working capital line for manufacturing business in Houston $2M",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "ci",
+            "price_n": 2000000.0,
+            "property_type": "C&I / Business",
+            "metro": "Houston",
+            "city": "Houston",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.16
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.16,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E04",
+      "description": "Owner-occupied Waco manufacturer",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "own",
+        "price_n": 3100000.0,
+        "property_type": "Owner-occupied CRE",
+        "metro": "Waco",
+        "city": "Waco",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "own",
+          "actual": "own",
+          "match": true
+        },
+        "intent": {
+          "expected": "owner_occupy",
+          "actual": "acquire",
+          "match": false
+        },
+        "city": {
+          "expected": "Waco",
+          "actual": "Waco",
+          "match": true
+        },
+        "price_n": {
+          "expected": 3100000,
+          "actual": 3100000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Owner-occupied property purchase",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "buy the building my manufacturing business operates out of in Waco for $3.1 million",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "own",
+            "price_n": 3100000.0,
+            "property_type": "Owner-occupied CRE",
+            "metro": "Waco",
+            "city": "Waco",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.18
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.18,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E05",
+      "description": "Industrial investor refinance Houston",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "refinance",
+        "parent_key": "inv",
+        "price_n": 8500000.0,
+        "property_type": "Investor CRE",
+        "metro": "Houston",
+        "city": "Houston",
+        "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "refinance",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        },
+        "price_n": {
+          "expected": 8500000,
+          "actual": 8500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 4,
+      "product_title": "Investor industrial / warehouse loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "refinance my 120000 SF warehouse in Houston, NNN lease, want cash out $8.5M",
+          "slots_after": {
+            "intent": "refinance",
+            "parent_key": "inv",
+            "price_n": 8500000.0,
+            "property_type": "Investor CRE",
+            "metro": "Houston",
+            "city": "Houston",
+            "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.16
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.16,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E06",
+      "description": "Multifamily acquisition Austin stabilized",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "city": "Austin",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+        "parent_key": "mf",
+        "price_n": 2800000.0,
+        "property_type": "Multifamily",
+        "units": 24,
+        "metro": "Austin"
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "acquire",
+          "match": true
+        },
+        "city": {
+          "expected": "Austin",
+          "actual": "Austin",
+          "match": true
+        },
+        "units": {
+          "expected": 24,
+          "actual": 24,
+          "match": true
+        },
+        "price_n": {
+          "expected": 2800000,
+          "actual": 2800000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment acquisition loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "buying a stabilized 24-unit apartment in Austin for $2.8 million",
+          "slots_after": {
+            "intent": "acquire",
+            "city": "Austin",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "parent_key": "mf",
+            "price_n": 2800000.0,
+            "property_type": "Multifamily",
+            "units": 24,
+            "metro": "Austin"
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.08,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E07",
+      "description": "Ground-up construction Dallas",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "build",
+        "parent_key": "inv",
+        "price_n": 5000000.0,
+        "property_type": "Investor CRE",
+        "metro": "Dallas\u2013Fort Worth",
+        "city": "Dallas",
+        "summary": "This reads as a construction project. Expect equity in first and a clear takeout plan."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "inv",
+          "match": false
+        },
+        "intent": {
+          "expected": "build",
+          "actual": "build",
+          "match": true
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "price_n": {
+          "expected": 5000000,
+          "actual": 5000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Investor retail / strip center loan",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "ground up construction loan for retail strip center in Dallas $5M",
+          "slots_after": {
+            "intent": "build",
+            "parent_key": "inv",
+            "price_n": 5000000.0,
+            "property_type": "Investor CRE",
+            "metro": "Dallas\u2013Fort Worth",
+            "city": "Dallas",
+            "summary": "This reads as a construction project. Expect equity in first and a clear takeout plan."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.07,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E08",
+      "description": "Farmland ranch purchase",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+        "city": "Amarillo",
+        "parent_key": "con",
+        "price_n": 2200000.0,
+        "property_type": "Land / lot",
+        "metro": "Amarillo",
+        "acres": 500.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "oth",
+          "actual": "con",
+          "match": false
+        },
+        "city": {
+          "expected": "Amarillo",
+          "actual": "Amarillo",
+          "match": true
+        },
+        "price_n": {
+          "expected": 2200000,
+          "actual": 2200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.6666666666666666,
+      "critical_hits": 0,
+      "critical_total": 1,
+      "field_hits": 2,
+      "field_total": 3,
+      "product_title": "Land development & lot loans",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "500 acre ranch near Amarillo for $2.2 million, ag operation",
+          "slots_after": {
+            "intent": "acquire",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "city": "Amarillo",
+            "parent_key": "con",
+            "price_n": 2200000.0,
+            "property_type": "Land / lot",
+            "metro": "Amarillo",
+            "acres": 500.0
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.08,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E09",
+      "description": "Duplex residential (1-4)",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "mf",
+        "price_n": 425000.0,
+        "property_type": "Multifamily",
+        "metro": "San Antonio",
+        "city": "San Antonio",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "res",
+          "actual": "mf",
+          "match": false
+        },
+        "city": {
+          "expected": "San Antonio",
+          "actual": "San Antonio",
+          "match": true
+        },
+        "price_n": {
+          "expected": 425000,
+          "actual": 425000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.6666666666666666,
+      "critical_hits": 0,
+      "critical_total": 1,
+      "field_hits": 2,
+      "field_total": 3,
+      "product_title": "Apartment acquisition loan",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "duplex in San Antonio $425k home loan",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "mf",
+            "price_n": 425000.0,
+            "property_type": "Multifamily",
+            "metro": "San Antonio",
+            "city": "San Antonio",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.07,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E10",
+      "description": "SBA business loan Dallas",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "ci",
+        "price_n": 750000.0,
+        "property_type": "C&I / Business",
+        "metro": "Dallas\u2013Fort Worth",
+        "city": "Dallas",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "ci",
+          "match": true
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "price_n": {
+          "expected": 750000,
+          "actual": 750000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Equipment financing",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "SBA 504 loan to buy equipment for my restaurant in Dallas $750k",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "ci",
+            "price_n": 750000.0,
+            "property_type": "C&I / Business",
+            "metro": "Dallas\u2013Fort Worth",
+            "city": "Dallas",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.09
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.09,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E11",
+      "description": "Multifamily refinance San Antonio",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "city": "San Antonio",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+        "parent_key": "mf",
+        "price_n": 6500000.0,
+        "property_type": "Multifamily",
+        "units": 60,
+        "metro": "San Antonio"
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "acquire",
+          "match": false
+        },
+        "city": {
+          "expected": "San Antonio",
+          "actual": "San Antonio",
+          "match": true
+        },
+        "units": {
+          "expected": 60,
+          "actual": 60,
+          "match": true
+        },
+        "price_n": {
+          "expected": 6500000,
+          "actual": 6500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.8,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 5,
+      "product_title": "Apartment acquisition loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "refinance 60-unit apartment San Antonio rate and term $6.5M",
+          "slots_after": {
+            "intent": "acquire",
+            "city": "San Antonio",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "parent_key": "mf",
+            "price_n": 6500000.0,
+            "property_type": "Multifamily",
+            "units": 60,
+            "metro": "San Antonio"
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.08,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E12",
+      "description": "Land development College Station",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "develop",
+        "parent_key": "con",
+        "property_type": "Land / lot",
+        "metro": "College Station",
+        "city": "College Station",
+        "acres": 40.0,
+        "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "con",
+          "match": true
+        },
+        "intent": {
+          "expected": "develop",
+          "actual": "develop",
+          "match": true
+        },
+        "acres": {
+          "expected": 40,
+          "actual": 40.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "",
+      "product_match_ok": null,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "develop 40 acres into lots near College Station, land development loan",
+          "slots_after": {
+            "intent": "develop",
+            "parent_key": "con",
+            "property_type": "Land / lot",
+            "metro": "College Station",
+            "city": "College Station",
+            "acres": 40.0,
+            "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.08,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E13",
+      "description": "Office NNN investor El Paso",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "hold",
+        "parent_key": "inv",
+        "price_n": 3400000.0,
+        "property_type": "Investor CRE",
+        "metro": "El Paso",
+        "city": "El Paso",
+        "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "hold",
+          "match": false
+        },
+        "city": {
+          "expected": "El Paso",
+          "actual": "El Paso",
+          "match": true
+        },
+        "price_n": {
+          "expected": 3400000,
+          "actual": 3400000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Investor office building loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "NNN office building investment in El Paso $3.4 million cap rate deal",
+          "slots_after": {
+            "intent": "hold",
+            "parent_key": "inv",
+            "price_n": 3400000.0,
+            "property_type": "Investor CRE",
+            "metro": "El Paso",
+            "city": "El Paso",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.07,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E14",
+      "description": "Bridge transitional MF Dallas",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "bridge",
+        "city": "Dallas",
+        "summary": "This reads as transitional \u2014 short-term financing until stabilization or sale.",
+        "parent_key": "mf",
+        "price_n": 4200000.0,
+        "property_type": "Multifamily",
+        "units": 48,
+        "metro": "Dallas\u2013Fort Worth"
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "bridge",
+          "actual": "bridge",
+          "match": true
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "units": {
+          "expected": 48,
+          "actual": 48,
+          "match": true
+        },
+        "price_n": {
+          "expected": 4200000,
+          "actual": 4200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "48-unit transitional bridge loan Oak Cliff Dallas $4.2M lease-up",
+          "slots_after": {
+            "intent": "bridge",
+            "city": "Dallas",
+            "summary": "This reads as transitional \u2014 short-term financing until stabilization or sale.",
+            "parent_key": "mf",
+            "price_n": 4200000.0,
+            "property_type": "Multifamily",
+            "units": 48,
+            "metro": "Dallas\u2013Fort Worth"
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.07,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E15",
+      "description": "Owner occupied purchase Tyler",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "inv",
+        "price_n": 1900000.0,
+        "property_type": "Investor CRE",
+        "metro": "East Texas",
+        "city": "Tyler",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "own",
+          "actual": "inv",
+          "match": false
+        },
+        "intent": {
+          "expected": "owner_occupy",
+          "actual": "acquire",
+          "match": false
+        },
+        "city": {
+          "expected": "Tyler",
+          "actual": "Tyler",
+          "match": true
+        },
+        "price_n": {
+          "expected": 1900000,
+          "actual": 1900000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.5,
+      "critical_hits": 0,
+      "critical_total": 2,
+      "field_hits": 2,
+      "field_total": 4,
+      "product_title": "Investor industrial / warehouse loan",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "owner occupied warehouse for my logistics company Tyler TX $1.9M",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "inv",
+            "price_n": 1900000.0,
+            "property_type": "Investor CRE",
+            "metro": "East Texas",
+            "city": "Tyler",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.08,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E16",
+      "description": "MULTI-TURN correction land to MF",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "value_add",
+        "city": "Fort Worth",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "parent_key": "mf",
+        "price_n": 4200000.0,
+        "property_type": "Multifamily",
+        "metro": "Dallas\u2013Fort Worth",
+        "acres": 12.0,
+        "units": 40
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Fort Worth",
+          "actual": "Fort Worth",
+          "match": true
+        },
+        "units": {
+          "expected": 40,
+          "actual": 40,
+          "match": true
+        },
+        "price_n": {
+          "expected": 4200000,
+          "actual": 4200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "12 acres land Brenham $849k holding",
+          "slots_after": {
+            "intent": "hold",
+            "city": "Brenham",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building.",
+            "parent_key": "con",
+            "price_n": 849000.0,
+            "property_type": "Land / lot",
+            "metro": "College Station",
+            "acres": 12.0
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        },
+        {
+          "turn": 2,
+          "message": "Actually it's a 40-unit apartment in Fort Worth $4.2M value-add bridge",
+          "slots_after": {
+            "intent": "value_add",
+            "city": "Fort Worth",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "parent_key": "mf",
+            "price_n": 4200000.0,
+            "property_type": "Multifamily",
+            "metro": "Dallas\u2013Fort Worth",
+            "acres": 12.0,
+            "units": 40
+          },
+          "disagreements": [
+            {
+              "field": "price_n",
+              "turn_value": 4200000.0,
+              "context_value": 849000.0,
+              "resolved_to": 4200000.0,
+              "critical": false
+            }
+          ],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 1,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.14,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E17",
+      "description": "MULTI-TURN add location then price",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "value_add",
+        "parent_key": "mf",
+        "property_type": "Multifamily",
+        "units": 32,
+        "metro": "Lubbock",
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "city": "Lubbock",
+        "price_n": 2100000.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Lubbock",
+          "actual": "Lubbock",
+          "match": true
+        },
+        "units": {
+          "expected": 32,
+          "actual": 32,
+          "match": true
+        },
+        "price_n": {
+          "expected": 2100000,
+          "actual": 2100000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Multifamily value-add / rehab",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "I want to buy an apartment building, 32 units",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "mf",
+            "property_type": "Multifamily",
+            "units": 32,
+            "metro": "Other Texas",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        },
+        {
+          "turn": 2,
+          "message": "It's in Lubbock, asking $2.1 million, light value-add",
+          "slots_after": {
+            "intent": "value_add",
+            "parent_key": "mf",
+            "property_type": "Multifamily",
+            "units": 32,
+            "metro": "Lubbock",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "city": "Lubbock",
+            "price_n": 2100000.0
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.15000000000000002,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E18",
+      "description": "MULTI-TURN CI then clarify amount",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "ci",
+        "property_type": "C&I / Business",
+        "metro": "Other Texas",
+        "city": "Austin",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+        "price_n": 1500000.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "ci",
+          "match": true
+        },
+        "city": {
+          "expected": "Austin",
+          "actual": "Austin",
+          "match": true
+        },
+        "price_n": {
+          "expected": 1500000,
+          "actual": 1500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Working capital line of credit",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "line of credit for my SaaS company in Austin",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "ci",
+            "property_type": "C&I / Business",
+            "metro": "Austin",
+            "city": "Austin",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        },
+        {
+          "turn": 2,
+          "message": "need about $1.5 million revolver for payroll",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "ci",
+            "property_type": "C&I / Business",
+            "metro": "Other Texas",
+            "city": "Austin",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "price_n": 1500000.0
+          },
+          "disagreements": [
+            {
+              "field": "metro",
+              "turn_value": "Other Texas",
+              "context_value": "Austin",
+              "resolved_to": "Other Texas",
+              "critical": false
+            }
+          ],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 1,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.15000000000000002,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E19",
+      "description": "MULTI-TURN intent change acquire to refinance",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "refinance",
+        "parent_key": "inv",
+        "price_n": 2000000.0,
+        "property_type": "Investor CRE",
+        "metro": "Other Texas",
+        "city": "Houston",
+        "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "refinance",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Investor industrial / warehouse loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "buy industrial warehouse Houston $5M",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "inv",
+            "price_n": 5000000.0,
+            "property_type": "Investor CRE",
+            "metro": "Houston",
+            "city": "Houston",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.06
+        },
+        {
+          "turn": 2,
+          "message": "wait, I already own it \u2014 want to refinance and pull $2M cash out",
+          "slots_after": {
+            "intent": "refinance",
+            "parent_key": "inv",
+            "price_n": 2000000.0,
+            "property_type": "Investor CRE",
+            "metro": "Other Texas",
+            "city": "Houston",
+            "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most."
+          },
+          "disagreements": [
+            {
+              "field": "price_n",
+              "turn_value": 2000000.0,
+              "context_value": 5000000.0,
+              "resolved_to": 2000000.0,
+              "critical": false
+            },
+            {
+              "field": "metro",
+              "turn_value": "Other Texas",
+              "context_value": "Houston",
+              "resolved_to": "Other Texas",
+              "critical": false
+            }
+          ],
+          "needs_clarification": false,
+          "latency_ms": 0.09
+        }
+      ],
+      "total_disagreements": 2,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.15,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E20",
+      "description": "MULTI-TURN owner-occupy clarification",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "hold",
+        "parent_key": "own",
+        "price_n": 2000000.0,
+        "property_type": "Owner-occupied CRE",
+        "metro": "Other Texas",
+        "city": "Waco",
+        "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "own",
+          "actual": "own",
+          "match": true
+        },
+        "intent": {
+          "expected": "owner_occupy",
+          "actual": "hold",
+          "match": false
+        },
+        "city": {
+          "expected": "Waco",
+          "actual": "Waco",
+          "match": true
+        },
+        "price_n": {
+          "expected": 2000000,
+          "actual": 2000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Owner-occupied property purchase",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "commercial building in Waco $2M",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "con",
+            "price_n": 2000000.0,
+            "property_type": "Land / lot",
+            "metro": "Waco",
+            "city": "Waco",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.06
+        },
+        {
+          "turn": 2,
+          "message": "my business will operate out of it, not an investment property",
+          "slots_after": {
+            "intent": "hold",
+            "parent_key": "own",
+            "price_n": 2000000.0,
+            "property_type": "Owner-occupied CRE",
+            "metro": "Other Texas",
+            "city": "Waco",
+            "summary": "This reads as unimproved or hold land. The right loan depends on whether you're holding, developing, or building."
+          },
+          "disagreements": [
+            {
+              "field": "metro",
+              "turn_value": "Other Texas",
+              "context_value": "Waco",
+              "resolved_to": "Other Texas",
+              "critical": false
+            }
+          ],
+          "needs_clarification": false,
+          "latency_ms": 0.09
+        }
+      ],
+      "total_disagreements": 1,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.15,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E21",
+      "description": "Raw land lot loan Midland",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+        "city": "Midland",
+        "parent_key": "con",
+        "price_n": 320000.0,
+        "property_type": "Land / lot",
+        "metro": "Midland\u2013Odessa",
+        "acres": 5.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "con",
+          "actual": "con",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "acquire",
+          "match": true
+        },
+        "city": {
+          "expected": "Midland",
+          "actual": "Midland",
+          "match": true
+        },
+        "acres": {
+          "expected": 5,
+          "actual": 5.0,
+          "match": true
+        },
+        "price_n": {
+          "expected": 320000,
+          "actual": 320000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Land development & lot loans",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "raw unimproved 5 acre lot Midland TX $320k lot loan",
+          "slots_after": {
+            "intent": "acquire",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "city": "Midland",
+            "parent_key": "con",
+            "price_n": 320000.0,
+            "property_type": "Land / lot",
+            "metro": "Midland\u2013Odessa",
+            "acres": 5.0
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.08,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E22",
+      "description": "Multifamily perm takeout",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "mf",
+        "price_n": 11000000.0,
+        "property_type": "Multifamily",
+        "units": 80,
+        "metro": "Other Texas",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "acquire",
+          "match": false
+        },
+        "units": {
+          "expected": 80,
+          "actual": 80,
+          "match": true
+        },
+        "price_n": {
+          "expected": 11000000,
+          "actual": 11000000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.75,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 3,
+      "field_total": 4,
+      "product_title": "Multifamily permanent takeout",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "permanent takeout refinance 80-unit garden style Arlington $11M",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "mf",
+            "price_n": 11000000.0,
+            "property_type": "Multifamily",
+            "units": 80,
+            "metro": "Other Texas",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.08,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E23",
+      "description": "Retail strip investor CRE",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "inv",
+        "price_n": 6200000.0,
+        "property_type": "Investor CRE",
+        "metro": "Dallas\u2013Fort Worth",
+        "city": "Plano",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "acquire",
+          "actual": "acquire",
+          "match": true
+        },
+        "city": {
+          "expected": "Plano",
+          "actual": "Plano",
+          "match": true
+        },
+        "price_n": {
+          "expected": 6200000,
+          "actual": 6200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 4,
+      "product_title": "Investor retail / strip center loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "strip retail center investor property Plano $6.2M acquisition",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "inv",
+            "price_n": 6200000.0,
+            "property_type": "Investor CRE",
+            "metro": "Dallas\u2013Fort Worth",
+            "city": "Plano",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.09
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.09,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E24",
+      "description": "MULTI-TURN conflicting signals (should clarify or resolve to latest)",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "value_add",
+        "parent_key": "mf",
+        "property_type": "Multifamily",
+        "metro": "College Station",
+        "city": "Bryan",
+        "acres": 20.0,
+        "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+        "price_n": 1800000.0,
+        "units": 16
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "value_add",
+          "actual": "value_add",
+          "match": true
+        },
+        "city": {
+          "expected": "Bryan",
+          "actual": "Bryan",
+          "match": true
+        },
+        "units": {
+          "expected": 16,
+          "actual": 16,
+          "match": true
+        },
+        "price_n": {
+          "expected": 1800000,
+          "actual": 1800000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 5,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "land deal 20 acres Bryan TX develop",
+          "slots_after": {
+            "intent": "develop",
+            "parent_key": "con",
+            "property_type": "Land / lot",
+            "metro": "College Station",
+            "city": "Bryan",
+            "acres": 20.0,
+            "summary": "This reads as a development play. Banks will want to see entitlements, budget, and an exit."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        },
+        {
+          "turn": 2,
+          "message": "sorry, multifamily \u2014 16-unit value add in Bryan $1.8M",
+          "slots_after": {
+            "intent": "value_add",
+            "parent_key": "mf",
+            "property_type": "Multifamily",
+            "metro": "College Station",
+            "city": "Bryan",
+            "acres": 20.0,
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+            "price_n": 1800000.0,
+            "units": 16
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.14,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E25",
+      "description": "Equipment term loan C&I",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "con",
+        "price_n": 900000.0,
+        "property_type": "Construction / land",
+        "metro": "Dallas\u2013Fort Worth",
+        "city": "Fort Worth",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "ci",
+          "actual": "con",
+          "match": false
+        },
+        "city": {
+          "expected": "Fort Worth",
+          "actual": "Fort Worth",
+          "match": true
+        },
+        "price_n": {
+          "expected": 900000,
+          "actual": 900000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.0,
+      "field_accuracy": 0.6666666666666666,
+      "critical_hits": 0,
+      "critical_total": 1,
+      "field_hits": 2,
+      "field_total": 3,
+      "product_title": "Ground-up commercial construction",
+      "product_match_ok": false,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "equipment term loan for construction company in Fort Worth $900k",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "con",
+            "price_n": 900000.0,
+            "property_type": "Construction / land",
+            "metro": "Dallas\u2013Fort Worth",
+            "city": "Fort Worth",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.09
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.09,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E26",
+      "description": "MULTI-TURN three turns gradual reveal",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "refinance",
+        "parent_key": "inv",
+        "property_type": "Investor CRE",
+        "metro": "Other Texas",
+        "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most.",
+        "city": "Houston",
+        "price_n": 7200000.0
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "inv",
+          "actual": "inv",
+          "match": true
+        },
+        "intent": {
+          "expected": "refinance",
+          "actual": "refinance",
+          "match": true
+        },
+        "city": {
+          "expected": "Houston",
+          "actual": "Houston",
+          "match": true
+        },
+        "price_n": {
+          "expected": 7200000,
+          "actual": 7200000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 2,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 4,
+      "product_title": "NNN / single-tenant net lease loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "looking for financing in Houston",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "con",
+            "property_type": "Land / lot",
+            "metro": "Houston",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "city": "Houston"
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        },
+        {
+          "turn": 2,
+          "message": "it's a warehouse I want to refinance",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "inv",
+            "property_type": "Investor CRE",
+            "metro": "Other Texas",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "city": "Houston"
+          },
+          "disagreements": [
+            {
+              "field": "metro",
+              "turn_value": "Other Texas",
+              "context_value": "Houston",
+              "resolved_to": "Other Texas",
+              "critical": false
+            }
+          ],
+          "needs_clarification": false,
+          "latency_ms": 0.08
+        },
+        {
+          "turn": 3,
+          "message": "single tenant NNN, about $7.2 million, cash out for next deal",
+          "slots_after": {
+            "intent": "refinance",
+            "parent_key": "inv",
+            "property_type": "Investor CRE",
+            "metro": "Other Texas",
+            "summary": "This reads as a refinance \u2014 in-place cash flow and equity position matter most.",
+            "city": "Houston",
+            "price_n": 7200000.0
+          },
+          "disagreements": [
+            {
+              "field": "metro",
+              "turn_value": "Other Texas",
+              "context_value": "Houston",
+              "resolved_to": "Other Texas",
+              "critical": false
+            }
+          ],
+          "needs_clarification": false,
+          "latency_ms": 0.09
+        }
+      ],
+      "total_disagreements": 2,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.24000000000000002,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E27",
+      "description": "Agricultural production loan",
+      "routing": true,
+      "multi_turn": false,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "oth",
+        "price_n": 400000.0,
+        "property_type": "Ag & farmland",
+        "metro": "Lubbock",
+        "city": "Lubbock",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "oth",
+          "actual": "oth",
+          "match": true
+        },
+        "city": {
+          "expected": "Lubbock",
+          "actual": "Lubbock",
+          "match": true
+        },
+        "price_n": {
+          "expected": 400000,
+          "actual": 400000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 1.0,
+      "field_accuracy": 1.0,
+      "critical_hits": 1,
+      "critical_total": 1,
+      "field_hits": 3,
+      "field_total": 3,
+      "product_title": "Farmland purchase loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "farm production operating line for cotton farm near Lubbock $400k",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "oth",
+            "price_n": 400000.0,
+            "property_type": "Ag & farmland",
+            "metro": "Lubbock",
+            "city": "Lubbock",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.13
+        }
+      ],
+      "total_disagreements": 0,
+      "clarifications_triggered": 0,
+      "total_latency_ms": 0.13,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    },
+    {
+      "id": "E28",
+      "description": "MULTI-TURN bridge then units",
+      "routing": true,
+      "multi_turn": true,
+      "final_slots": {
+        "intent": "acquire",
+        "parent_key": "mf",
+        "property_type": "Multifamily",
+        "metro": "Other Texas",
+        "city": "Dallas",
+        "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+        "price_n": 5500000.0,
+        "units": 52
+      },
+      "field_results": {
+        "parent_key": {
+          "expected": "mf",
+          "actual": "mf",
+          "match": true
+        },
+        "intent": {
+          "expected": "bridge",
+          "actual": "acquire",
+          "match": false
+        },
+        "city": {
+          "expected": "Dallas",
+          "actual": "Dallas",
+          "match": true
+        },
+        "units": {
+          "expected": 52,
+          "actual": 52,
+          "match": true
+        },
+        "price_n": {
+          "expected": 5500000,
+          "actual": 5500000.0,
+          "match": true
+        }
+      },
+      "critical_accuracy": 0.5,
+      "field_accuracy": 0.8,
+      "critical_hits": 1,
+      "critical_total": 2,
+      "field_hits": 4,
+      "field_total": 5,
+      "product_title": "Apartment bridge loan",
+      "product_match_ok": true,
+      "turn_results": [
+        {
+          "turn": 1,
+          "message": "bridge loan Dallas apartment value add",
+          "slots_after": {
+            "intent": "value_add",
+            "parent_key": "mf",
+            "property_type": "Multifamily",
+            "metro": "Dallas\u2013Fort Worth",
+            "city": "Dallas",
+            "summary": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type."
+          },
+          "disagreements": [],
+          "needs_clarification": false,
+          "latency_ms": 0.07
+        },
+        {
+          "turn": 2,
+          "message": "52 units, $5.5 million purchase",
+          "slots_after": {
+            "intent": "acquire",
+            "parent_key": "mf",
+            "property_type": "Multifamily",
+            "metro": "Other Texas",
+            "city": "Dallas",
+            "summary": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+            "price_n": 5500000.0,
+            "units": 52
+          },
+          "disagreements": [
+            {
+              "field": "intent",
+              "turn_value": "acquire",
+              "context_value": "value_add",
+              "resolved_to": "acquire",
+              "critical": true
+            },
+            {
+              "field": "summary",
+              "turn_value": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+              "context_value": "This reads as value-add territory \u2014 occupancy and business plan drive the loan type.",
+              "resolved_to": "The right loan depends on what you're doing with the property \u2014 hold, operate, develop, or build.",
+              "critical": false
+            },
+            {
+              "field": "metro",
+              "turn_value": "Other Texas",
+              "context_value": "Dallas\u2013Fort Worth",
+              "resolved_to": "Other Texas",
+              "critical": false
+            }
+          ],
+          "needs_clarification": true,
+          "latency_ms": 0.07
+        }
+      ],
+      "total_disagreements": 3,
+      "clarifications_triggered": 1,
+      "total_latency_ms": 0.14,
+      "last_extraction": {
+        "routing_enabled": true,
+        "provider": "routing:rules:turn+rules:context",
+        "turn_provider": "rules:turn",
+        "context_provider": "rules:context"
+      }
+    }
+  ],
+  "elapsed_sec": 0.09
+}

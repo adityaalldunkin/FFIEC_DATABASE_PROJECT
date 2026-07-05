@@ -1,13 +1,53 @@
 # Lenni Texas Community Bank Index
-> 351 Texas banks · FFIEC 12/31/2025 · FDIC branches & websites
+> 351 Texas banks · FFIEC 12/31/2025 · Full borrower content index for search engines and LLMs
 
-## Main pages
-- index.html — interactive bank finder
-- guides/glossary.html — MDRM loan term definitions
+## Purpose
+Lenni helps Texas commercial borrowers find community banks by real FFIEC Call Report portfolio mix — not marketing copy.
+
+## Main entry points
+- index.html — interactive bank finder and deal workspace
+- market/texas-overview.html — Texas lending market statistics
+- market/product-availability.html — banks per loan product
+- market/icp-banks.html — $500M–$2B community banks (paginated)
+- insights/index.html — 12 documented borrower insights from EDA
+- scenarios/index.html — 12 Texas deal scenarios with action plans
+- guides/borrower-playbook.html — step-by-step outreach guide
+- guides/glossary.html — MDRM / RCON term definitions
 - guides/faq.html — borrower FAQ
-- guides/methodology.html — data sources
+- guides/methodology.html — data sources and limitations
+- data/banks.json — machine-readable bank records
+- data/market_insights.json — market stats and insight summaries
+- data/loan_products.json — loan taxonomy
 
-## Loan type pages
+## Borrower insights
+- insights/i-01-product-choice-breadth.html — I-01: Product choice breadth — how many banks can fund your deal?
+- insights/i-02-market-structure.html — I-02: Market structure — concentration and competition by product
+- insights/i-03-deal-size-fit.html — I-03: Deal size fit — is your loan material to the bank?
+- insights/i-04-specialist-targeting.html — I-04: Specialist targeting — the 8% portfolio rule
+- insights/i-05-bank-size-fit.html — I-05: Bank size fit — community banks vs regionals
+- insights/i-06-icp-opportunity.html — I-06: ICP opportunity — the $500M–$2B sweet spot
+- insights/i-07-geography.html — I-07: Geography — HQ city vs where banks actually lend
+- insights/i-08-market-momentum.html — I-08: Market momentum — growing or running off a product book?
+- insights/i-09-lender-diligence.html — I-09: Lender diligence — stress signals in public data
+- insights/i-10-bank-archetypes.html — I-10: Bank archetypes — filter consumer-heavy lenders
+- insights/i-11-cross-sell.html — I-11: Cross-sell — one bank for property debt and operating lines
+- insights/i-12-outreach-planning.html — I-12: Outreach planning — how many banks to call
+
+## Borrower scenarios
+- scenarios/dallas-multifamily-bridge.html — Dallas sponsor bridges a 48-unit value-add apartment
+- scenarios/houston-industrial-refinance.html — Houston logistics owner refinances a 120,000 SF warehouse
+- scenarios/austin-working-capital-line.html — Austin SaaS company secures a $2M revolving line for growth
+- scenarios/waco-owner-occupied-purchase.html — Waco manufacturer buys its headquarters building
+- scenarios/amarillo-farmland-expansion.html — Panhandle operator finances 1,200 acres of irrigated farmland
+- scenarios/san-antonio-restaurant-acquisition.html — San Antonio entrepreneur buys a multi-unit restaurant group
+- scenarios/el-paso-retail-strip-refinance.html — El Paso investor refinances a neighborhood retail strip
+- scenarios/midland-ground-up-industrial.html — Midland developer builds a spec industrial pad in Permian Basin
+- scenarios/tyler-medical-office-owner-occupied.html — Tyler physician group buys its clinic building
+- scenarios/dallas-cre-ci-bundle.html — Dallas sponsor bundles warehouse debt and operating line
+- scenarios/corpus-christi-hotel-refinance.html — Corpus Christi hotel owner refinances a 95-room beachfront property
+- scenarios/lubbock-equipment-fleet-finance.html — Lubbock contractor finances $1.2M equipment fleet
+
+## Loan type guides
 - loan-types/multifamily.html — Multifamily (5+ units)
 - loan-types/multifamily/acquisition.html — Apartment acquisition loan
 - loan-types/multifamily/refinance.html — Multifamily refinance
@@ -64,3 +104,17 @@
 - banks/913753-inwood-national-bank.html — INWOOD NATIONAL BANK, Dallas TX, $4.5B assets
 - banks/613950-first-national-bank-texas-dba-first-convenience-bank.html — FIRST NATIONAL BANK TEXAS DBA FIRST CONVENIENCE BANK, Killeen TX, $4.5B assets
 - banks/822556-texas-exchange-bank.html — TEXAS EXCHANGE BANK, Crowley TX, $4.5B assets
+- banks/575254-city-bank.html — CITY BANK, Lubbock TX, $4.5B assets
+- banks/56351-verabank-national-association.html — VERABANK, NATIONAL ASSOCIATION, Henderson TX, $4.4B assets
+- banks/230759-international-bank-of-commerce.html — INTERNATIONAL BANK OF COMMERCE, Brownsville TX, $4.4B assets
+- banks/949154-texas-bank-and-trust-company.html — TEXAS BANK AND TRUST COMPANY, Longview TX, $4.4B assets
+- banks/1176881-monet-bank.html — MONET BANK, Plano TX, $3.5B assets
+- banks/842460-lone-star-national-bank.html — LONE STAR NATIONAL BANK, Pharr TX, $3.3B assets
+- banks/548351-austin-bank-texas-national-association.html — AUSTIN BANK, TEXAS NATIONAL ASSOCIATION, Jacksonville TX, $3.2B assets
+- banks/1447639-weststar-bank.html — WESTSTAR BANK, El Paso TX, $3.1B assets
+- banks/45560-jefferson-bank.html — JEFFERSON BANK, San Antonio TX, $3.0B assets
+- banks/529958-tib-national-association.html — TIB, NATIONAL ASSOCIATION, Farmers Branch TX, $3.0B assets
+
+## Specialist methodology
+Banks with ≥8% of total loans in a category are labeled specialists.
+ICP = $500M–$2B total assets.

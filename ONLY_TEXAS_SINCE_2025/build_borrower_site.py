@@ -12,9 +12,13 @@ Outputs:
   borrower_site/loan-types/*.html           — parent loan type hubs
   borrower_site/loan-types/*/*.html         — sub-type guides (from content/loan_products.yaml)
   borrower_site/data/loan_products.json     — loan taxonomy for chat / integrations
-  borrower_site/guides/*.html       — glossary, FAQ, methodology
-  borrower_site/sitemap.xml
-  borrower_site/llms.txt
+  borrower_site/guides/*.html       — glossary, FAQ, methodology, playbook, checklist
+  borrower_site/market/*.html       — Texas market overview, product availability, ICP banks (paginated)
+  borrower_site/insights/*.html     — 12 EDA-backed borrower insights
+  borrower_site/scenarios/*.html    — 12 borrower deal scenario stories
+  borrower_site/robots.txt
+  borrower_site/llms.txt / llms-full.txt
+  borrower_site/data/market_insights.json
   ../2026-06-07-lenni-borrower-experience.html  — copy of index for S3 deploy
 """
 
@@ -31,7 +35,6 @@ import pandas as pd
 from build_borrower_website import (
     MAJOR_METROS,
     build_banks,
-    compute_mix,
     describe_bank,
     format_products_js,
     metro_for,
@@ -40,7 +43,23 @@ from build_borrower_website import (
     title_case_city,
     top_specialties,
 )
+from loan_mix import (
+    MIX_COLORS,
+    MIX_KEYS,
+    MIX_LABELS,
+    compute_mix,
+    enrich_profiles_with_supplemental,
+    mix_parts_usd,
+    mix_score,
+)
+from bank_enrichment import (
+    json_ld_for_bank,
+    load_enrichment_map,
+    merge_enrichment,
+    render_bank_enrichment_html,
+)
 from loan_product_loader import load_parents, loan_products_json, products_for_js
+from borrower_content_engine import write_expansion_pages, expansion_nav as site_nav
 
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
@@ -48,28 +67,10 @@ EXPORTS = ROOT / "exports"
 ANALYSIS = ROOT / "analysis"
 SITE = REPO / "borrower_site"
 OUT_LEGACY = REPO / "2026-06-07-lenni-borrower-experience.html"
+ENRICHMENT_DIR = ROOT / "enrichment"
 
-MIX_LABELS = {
-    "mf": "Multifamily",
-    "inv": "Investor CRE",
-    "own": "Owner-occupied CRE",
-    "con": "Construction",
-    "ci": "C&I / Business",
-    "res": "1–4 Residential",
-    "cons": "Consumer",
-    "oth": "Ag & other",
-}
-
-MIX_COLORS = {
-    "mf": "#1f9d76",
-    "inv": "#2f6fed",
-    "own": "#7c3aed",
-    "con": "#e08a2b",
-    "ci": "#db5461",
-    "res": "#58b3c7",
-    "cons": "#9aa6b2",
-    "oth": "#c4ccd6",
-}
+MIX_LABELS = MIX_LABELS
+MIX_COLORS = MIX_COLORS
 
 BKCLASS_LABELS = {
     "N": "National bank",
@@ -119,6 +120,8 @@ def load_enriched_banks() -> tuple[list[dict], str]:
     profiles = profiles.dropna(subset=["total_assets", "total_loans_gross"])
     profiles = profiles[profiles["total_loans_gross"] > 0].copy()
 
+    profiles = enrich_profiles_with_supplemental(profiles)
+
     fdic = pd.read_csv(REPO / "institutions.csv", low_memory=False)
     fdic_tx = fdic[(fdic["STALP"] == "TX") & (fdic["ACTIVE"] == 1)].copy()
     fdic_tx["FED_RSSD"] = pd.to_numeric(fdic_tx["FED_RSSD"], errors="coerce")
@@ -153,10 +156,12 @@ def load_enriched_banks() -> tuple[list[dict], str]:
         branch_cities[cert] = {b["city"] for b in branches if b["city"]}
 
     period = str(profiles["reporting_period"].iloc[0]) if len(profiles) else ""
+    enrichment_map = load_enrichment_map()
     banks: list[dict] = []
 
     for _, row in merged.iterrows():
         mix = compute_mix(row)
+        mix_usd = mix_parts_usd(row)
         city = str(row.get("city") or "").strip()
         metro = metro_for(city)
         assets_m = round(safe_num(row.get("total_assets")) / 1_000_000)
@@ -190,6 +195,7 @@ def load_enriched_banks() -> tuple[list[dict], str]:
             "icp": icp,
             "period": period,
             "mix": mix,
+            "mixUsd": {k: round(mix_usd.get(k, 0)) for k in MIX_KEYS},
             "specialties": [{"label": l, "pct": p} for l, p in top_specialties(mix, 4)],
             "desc": describe_bank(name, city, metro, mix, assets_m, icp),
             "cert": cert_int,
@@ -207,7 +213,7 @@ def load_enriched_banks() -> tuple[list[dict], str]:
             "cbsa": str(row.get("CBSA_METRO_NAME") or "").strip(),
             "pageUrl": f"banks/{int(row['id_rssd'])}-{slugify(name)}.html",
         }
-        banks.append(bank)
+        banks.append(merge_enrichment(bank, enrichment_map.get(int(row["id_rssd"]))))
 
     banks.sort(key=lambda b: -b["assets"])
     return banks, period
@@ -245,9 +251,14 @@ def load_glossary() -> list[dict]:
     return items
 
 
+SITE_BASE = "http://lenni-borrower.s3-website.us-east-2.amazonaws.com"
+
+
 def base_head(title: str, desc: str, canonical: str = "", depth: int = 0) -> str:
-    can = f'<link rel="canonical" href="{esc(canonical)}"/>' if canonical else ""
     prefix = "../" * depth
+    can_url = f"{SITE_BASE}/{canonical}" if canonical else ""
+    can = f'<link rel="canonical" href="{esc(can_url)}"/>' if can_url else ""
+    og_url = can_url or f"{SITE_BASE}/index.html"
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -255,6 +266,12 @@ def base_head(title: str, desc: str, canonical: str = "", depth: int = 0) -> str
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="{esc(title)}"/>
+<meta property="og:description" content="{esc(desc)}"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="{esc(og_url)}"/>
+<meta name="twitter:card" content="summary"/>
 {can}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
@@ -262,38 +279,46 @@ def base_head(title: str, desc: str, canonical: str = "", depth: int = 0) -> str
 </head>"""
 
 
-def site_nav(active: str = "", depth: int = 0) -> str:
-    prefix = "../" * depth
-    links = [
-        (f"{prefix}index.html", "Home", "home"),
-        (f"{prefix}index.html#loans", "Loan Types", "loans"),
-        (f"{prefix}index.html#banks", "Find Banks", "banks"),
-        (f"{prefix}guides/glossary.html", "Glossary", "glossary"),
-        (f"{prefix}guides/faq.html", "FAQ", "faq"),
-        (f"{prefix}guides/methodology.html", "Data", "methodology"),
-    ]
-    parts = []
-    for href, label, key in links:
-        cls = ' class="active"' if key == active else ""
-        parts.append(f'<a href="{href}"{cls}>{label}</a>')
-    return f'<header class="nav"><div class="wrap nav-row"><a href="{prefix}index.html" class="logo"><span class="dot"></span>Lenni<span>Borrower</span></a><nav class="nav-links">{"".join(parts)}</nav></div></header>'
-
-
-def render_mix_bars(mix: dict, highlight: str | None = None) -> str:
-    max_v = max(mix.values()) or 1
+def render_mix_bars(mix: dict, highlight: str | None = None, show_zero: bool = True) -> str:
+    max_v = max((mix.get(k, 0) for k in MIX_KEYS), default=1) or 1
     rows = []
-    for key, label in MIX_LABELS.items():
+    for key in MIX_KEYS:
+        label = MIX_LABELS[key]
         v = mix.get(key, 0)
-        if v < 1:
+        if not show_zero and v < 1:
             continue
         hl = " hl" if key == highlight else ""
+        zero = " zero" if v < 1 else ""
         color = MIX_COLORS[key]
+        width = max(v / max_v * 100, 2) if v > 0 else 0
         rows.append(
-            f'<div class="bar-row{hl}"><div class="lbl">{esc(label)}</div>'
-            f'<div class="bar-track"><div class="bar-fill" style="width:{v/max_v*100:.0f}%;background:{color}"></div></div>'
+            f'<div class="bar-row{hl}{zero}"><div class="lbl">{esc(label)}</div>'
+            f'<div class="bar-track"><div class="bar-fill" style="width:{width:.0f}%;background:{color}"></div></div>'
             f'<div class="val">{v}%</div></div>'
         )
     return "\n".join(rows)
+
+
+def render_mix_table(mix: dict, mix_usd: dict, total_loans_m: float) -> str:
+    rows = []
+    for key in MIX_KEYS:
+        pct = mix.get(key, 0)
+        usd = mix_usd.get(key, 0)
+        if usd >= 1_000_000:
+            amt = f"${usd / 1_000_000:.2f}M"
+        elif usd >= 1_000:
+            amt = f"${usd / 1_000:.0f}K"
+        else:
+            amt = f"${usd:,.0f}" if usd else "—"
+        rows.append(
+            f"<tr><td>{esc(MIX_LABELS[key])}</td><td><b>{pct}%</b></td><td>{amt}</td></tr>"
+        )
+    total_label = f"${total_loans_m:.1f}M" if total_loans_m < 1000 else f"${total_loans_m/1000:.2f}B"
+    return (
+        '<table class="data-table mix-table"><thead><tr><th>Category</th><th>Share</th><th>Reported balance</th></tr></thead>'
+        f"<tbody>{''.join(rows)}</tbody>"
+        f'<tfoot><tr><td><b>Total loans</b></td><td><b>100%</b></td><td><b>{total_label}</b></td></tr></tfoot></table>'
+    )
 
 
 def render_bank_page(bank: dict, period: str) -> str:
@@ -314,12 +339,22 @@ def render_bank_page(bank: dict, period: str) -> str:
     comm_badge = '<span class="pill live-badge">FDIC community bank</span>' if bank.get("communityBank") else ""
     good_fit = []
     for spec in bank.get("specialties", [])[:3]:
-        if spec["pct"] >= 15:
+        if spec["pct"] >= 15 and spec["label"] != "Unclassified":
             good_fit.append(f"<li>Strong in <b>{esc(spec['label'])}</b> ({spec['pct']}% of loan book)</li>")
+    if bank["mix"].get("uncat", 0) >= 20:
+        good_fit.append(
+            f"<li><b>{bank['mix']['uncat']}%</b> of loans are unclassified in the Call Report detail we map — "
+            "see full breakdown below</li>"
+        )
     if bank["icp"]:
         good_fit.append("<li>Mid-size Texas community bank — typical Lenni CLO prospect segment</li>")
     if bank.get("branchCount", 0) > 5:
         good_fit.append(f"<li>Multi-branch lender ({bank['branchCount']} Texas locations)</li>")
+
+    enrich_html = render_bank_enrichment_html(bank, esc=esc)
+    json_ld = ""
+    if bank.get("webEnrichment"):
+        json_ld = f'<script type="application/ld+json">{json_ld_for_bank(bank)}</script>\n'
 
     return f"""{base_head(
         f"{bank['name']} — Commercial Lending in {bank['city']}, TX | Lenni",
@@ -328,7 +363,7 @@ def render_bank_page(bank: dict, period: str) -> str:
         bank["pageUrl"],
         depth=1,
     )}
-<body>
+{json_ld}<body>
 {site_nav(depth=1)}
 <main class="wrap page">
 <nav class="breadcrumb"><a href="../index.html">Home</a> → <a href="../index.html#banks">Banks</a> → {esc(bank['name'])}</nav>
@@ -350,8 +385,9 @@ def render_bank_page(bank: dict, period: str) -> str:
 
 <section class="content-section">
   <h2 class="serif">Loan portfolio mix</h2>
-  <p class="muted">From FFIEC Call Report, period ending {esc(period)}. Percent of total loans in each category.</p>
+  <p class="muted">From FFIEC Call Report, period ending {esc(period)}. All categories shown — percent of total loans (RCON2122) in each bucket.</p>
   <div class="mix">{render_mix_bars(bank['mix'])}</div>
+  {render_mix_table(bank['mix'], bank.get('mixUsd', {}), bank['loans'])}
 </section>
 
 <section class="content-section">
@@ -372,6 +408,8 @@ def render_bank_page(bank: dict, period: str) -> str:
     <tr><th>Website</th><td>{f'<a href="{esc(bank["website"])}" target="_blank" rel="noopener">{esc(bank["website"])}</a>' if bank.get('website') else '—'}</td></tr>
   </table>
 </section>
+
+{enrich_html}
 
 <section class="content-section">
   <h2 class="serif">Branch locations ({bank.get('branchCount', 0)} in Texas)</h2>
@@ -439,21 +477,37 @@ def render_city_page(city: str, banks_hq: list[dict], banks_branch: list[dict], 
 
 def bank_rank_table_rows(key: str, banks: list[dict], limit: int = 30, depth: int = 1) -> str:
     prefix = "../" * depth
-    ranked = sorted(banks, key=lambda b: -b["mix"].get(key, 0))[:limit]
+    ranked = sorted(banks, key=lambda b: -mix_score(b["mix"], key))[:limit]
     rows = ""
     for i, b in enumerate(ranked, 1):
-        pct = b["mix"].get(key, 0)
+        pct = mix_score(b["mix"], key)
         if pct < 3:
             continue
+        mix_cols = "".join(
+            f"<td class='tiny'>{b['mix'].get(k, 0)}%</td>" for k in MIX_KEYS
+        )
         rows += (
             f'<tr><td>{i}</td><td><a href="{prefix}{esc(b["pageUrl"])}">{esc(b["name"])}</a></td>'
-            f'<td>{esc(b["city"])}</td><td><b>{pct}%</b></td><td>{fmt_money_m(b["assets"])}</td></tr>'
+            f'<td>{esc(b["city"])}</td><td><b>{pct}%</b></td>{mix_cols}'
+            f'<td>{fmt_money_m(b["assets"])}</td></tr>'
         )
     return rows
 
 
+def mix_table_header() -> str:
+    return "".join(f"<th class='tiny'>{esc(MIX_LABELS[k])}</th>" for k in MIX_KEYS)
+
+
 def specialist_count(key: str, banks: list[dict], threshold: int = 8) -> int:
-    return sum(1 for b in banks if b["mix"].get(key, 0) >= threshold)
+    return sum(1 for b in banks if mix_score(b["mix"], key) >= threshold)
+
+
+def render_mix_legend() -> str:
+    items = "".join(
+        f"<li><b>{esc(MIX_LABELS[k])}</b> — portfolio share from FFIEC Call Report loan schedules</li>"
+        for k in MIX_KEYS
+    )
+    return f"<ul class='mix-legend'>{items}</ul>"
 
 
 def render_faq_block(faq_items: list) -> str:
@@ -519,11 +573,17 @@ def render_parent_hub_page(parent: dict, banks: list[dict], period: str) -> str:
 
 <section class="content-section">
   <h2 class="serif">Texas banks that specialize ({count_8}+ with 8%+ portfolio share)</h2>
-  <table class="data-table">
-    <thead><tr><th>#</th><th>Bank</th><th>City</th><th>Portfolio %</th><th>Assets</th></tr></thead>
+  <table class="data-table mix-wide">
+    <thead><tr><th>#</th><th>Bank</th><th>City</th><th>{esc(parent['name'])} %</th>{mix_table_header()}<th>Assets</th></tr></thead>
     <tbody>{bank_rank_table_rows(key, banks)}</tbody>
   </table>
-  <p class="tiny muted">Higher % = more of the bank's loan book is in this category. Data: FFIEC {esc(period)}. Portfolio specialization is not a loan approval.</p>
+  <p class="tiny muted">Higher % in the highlighted column = more of the bank's loan book is in this category. Full portfolio mix columns shown for context. Data: FFIEC {esc(period)}.</p>
+</section>
+
+<section class="content-section">
+  <h2 class="serif">Portfolio categories</h2>
+  <p class="muted">Every bank profile shows all eleven loan buckets below. Agricultural categories use explicit farmland and ag-production lines only — unmapped balances appear as Unclassified.</p>
+  {render_mix_legend()}
 </section>
 
 <section class="content-section">
@@ -607,11 +667,11 @@ def render_subtype_page(parent: dict, st: dict, banks: list[dict], period: str) 
 
 <section class="content-section">
   <h2 class="serif">Texas banks that specialize in {esc(parent['name'].lower())} ({count_8}+ with 8%+ share)</h2>
-  <table class="data-table">
-    <thead><tr><th>#</th><th>Bank</th><th>City</th><th>Portfolio %</th><th>Assets</th></tr></thead>
+  <table class="data-table mix-wide">
+    <thead><tr><th>#</th><th>Bank</th><th>City</th><th>{esc(parent['name'])} %</th>{mix_table_header()}<th>Assets</th></tr></thead>
     <tbody>{bank_rank_table_rows(key, banks, depth=2)}</tbody>
   </table>
-  <p class="tiny muted">Portfolio % = share of the bank's total loans in this parent category (FFIEC {esc(period)}). Not a guarantee the bank will approve your deal.</p>
+  <p class="tiny muted">Portfolio % in the highlighted column; all mix columns shown for context (FFIEC {esc(period)}).</p>
 </section>
 
 {render_related_subtypes(parent, st)}
@@ -657,7 +717,7 @@ def render_faq_page() -> str:
         ("What is this site?", "A free Texas community bank finder built from public FFIEC Call Report and FDIC data. It shows which banks specialize in your loan type based on real portfolio data."),
         ("Where does the data come from?", "FFIEC Central Data Repository (quarterly Call Reports) for loan mix; FDIC BankFind for institution details, websites, and branch locations."),
         ("What is a Call Report?", "A quarterly regulatory filing every insured bank submits to the FFIEC. It includes balance sheet and loan portfolio detail by category."),
-        ("How is portfolio % calculated?", "Each category's reported loan balance divided by total loans (RCON2122) for the same bank and quarter."),
+        ("How is portfolio % calculated?", "Each category's reported loan balance divided by total loans (RCON2122) for the same bank and quarter. All eleven categories are shown on every bank profile; unmapped Call Report lines appear as Unclassified, not agriculture."),
         ("Does this show interest rates?", "No. Rates are negotiated with the bank. This site shows specialization and size, not pricing."),
         ("Can I apply for a loan here?", "Not yet — use bank websites (linked on profiles) or Lenni Convey when available to reach a lender."),
         ("What is a community bank?", "Typically a locally focused bank; FDIC flags institutions meeting community bank criteria. Lenni focuses on $500M–$2B Texas community banks."),
@@ -689,7 +749,7 @@ def render_methodology_page(period: str, bank_count: int) -> str:
 <ul>
 <li>No interest rates, underwriting policies, or online application status in FFIEC/FDIC core data.</li>
 <li>Portfolio % is a specialization signal, not a guarantee the bank will approve your deal.</li>
-<li>Call Report dollars may be reported in thousands — verify for precision use cases.</li>
+<li>Portfolio categories are mapped from Schedule RC-C and FFIEC 051 supplemental lines. Unmapped balances appear as <b>Unclassified</b>, not agriculture.</li>
 </ul>
 <p><b>Coverage:</b> {bank_count} Texas banks with complete loan and asset data in the latest quarter.</p>
 </main>
@@ -726,7 +786,11 @@ a{color:var(--accent-d)}.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 .mix{display:flex;flex-direction:column;gap:8px;margin-top:16px}
 .bar-row{display:grid;grid-template-columns:150px 1fr 48px;align-items:center;gap:10px;font-size:13px}
 .bar-track{height:10px;background:var(--soft);border-radius:6px;overflow:hidden}
-.bar-fill{height:100%;border-radius:6px}.bar-row.hl .lbl{font-weight:700;color:var(--accent-d)}
+.bar-fill{height:100%;border-radius:6px}.bar-row.zero .val{color:#a8b5c2}.bar-row.zero .bar-fill{background:#e8ecf0}
+.bar-row.hl .lbl{font-weight:700;color:var(--accent-d)}
+.mix-table{margin-top:20px;font-size:13px}.mix-table td,.mix-table th{padding:8px 10px}
+.mix-wide{font-size:12px}.mix-wide .tiny{white-space:nowrap;font-size:11px;color:var(--muted)}
+.mix-legend{font-size:14px;color:var(--ink-2);padding-left:20px}.mix-legend li{margin:6px 0}
 .data-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
 .data-table th,.data-table td{border:1px solid var(--line);padding:10px 12px;text-align:left}
 .data-table th{background:var(--soft);font-weight:600}
@@ -744,6 +808,17 @@ a{color:var(--accent-d)}.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 .related-links a{margin-right:12px;font-weight:600}
 .site-footer{background:var(--ink);color:#9fb0c2;padding:32px 0;margin-top:40px;font-size:13px}
 .site-footer a{color:#cdd7e2}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:20px}
+.content-card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:.15s;box-shadow:var(--shadow)}
+.content-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.content-card h3{font-size:17px;margin:10px 0 8px;color:var(--ink)}
+.insight-card .pill,.scenario-card .pill{margin-left:0;margin-bottom:8px}
+.pagination{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;align-items:center}
+.pagination a,.pagination span{padding:8px 14px;border-radius:8px;border:1px solid var(--line);text-decoration:none;font-size:14px}
+.pagination a:hover{background:var(--soft)}
+.pagination .page-current{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+.checklist-print li{margin-bottom:12px;list-style:none}
+.checklist-print label{display:flex;gap:10px;align-items:flex-start}
 """, encoding="utf-8")
 
 
@@ -754,31 +829,6 @@ def write_sitemap(urls: list[str]) -> None:
       lines.append(f"  <url><loc>{base}/{u}</loc></url>")
   lines.append("</urlset>")
   (SITE / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
-
-
-def write_llms_txt(banks: list[dict], period: str) -> None:
-    lines = [
-        "# Lenni Texas Community Bank Index",
-        f"> {len(banks)} Texas banks · FFIEC {period} · FDIC branches & websites",
-        "",
-        "## Main pages",
-        "- index.html — interactive bank finder",
-        "- guides/glossary.html — MDRM loan term definitions",
-        "- guides/faq.html — borrower FAQ",
-        "- guides/methodology.html — data sources",
-        "",
-        "## Loan type pages",
-    ]
-    for parent in load_parents():
-        lines.append(f"- loan-types/{parent['slug']}.html — {parent['name']}")
-        for st in parent.get("subtypes") or []:
-            lines.append(
-                f"- loan-types/{parent['slug']}/{st['slug']}.html — {st['title']}"
-            )
-    lines.append("\n## Top banks by assets")
-    for b in banks[:20]:
-        lines.append(f"- {b['pageUrl']} — {b['name']}, {b['city']} TX, {fmt_money_m(b['assets'])} assets")
-    (SITE / "llms.txt").write_text("\n".join(lines), encoding="utf-8")
 
 
 def patch_index_with_data(banks: list[dict], period: str, glossary: list[dict]) -> None:
@@ -795,14 +845,16 @@ def patch_index_with_data(banks: list[dict], period: str, glossary: list[dict]) 
     # Inject links to static pages in nav area & bank profile links
     extra_nav = (
         '<div class="proto-banner" style="padding:5px 12px;font-size:12px">'
-        '<a href="guides/glossary.html" style="color:#9fd4c4;margin:0 10px">Glossary</a>'
-        '<a href="guides/faq.html" style="color:#9fd4c4;margin:0 10px">FAQ</a>'
-        '<a href="guides/methodology.html" style="color:#9fd4c4;margin:0 10px">Methodology</a>'
-        '<a href="llms.txt" style="color:#9fd4c4;margin:0 10px">LLMs</a>'
-        '<a href="sitemap.xml" style="color:#9fd4c4;margin:0 10px">Sitemap</a>'
+        '<a href="market/texas-overview.html" style="color:#9fd4c4;margin:0 8px">Texas Market</a>'
+        '<a href="insights/index.html" style="color:#9fd4c4;margin:0 8px">Insights</a>'
+        '<a href="scenarios/index.html" style="color:#9fd4c4;margin:0 8px">Stories</a>'
+        '<a href="guides/borrower-playbook.html" style="color:#9fd4c4;margin:0 8px">Playbook</a>'
+        '<a href="guides/glossary.html" style="color:#9fd4c4;margin:0 8px">Glossary</a>'
+        '<a href="llms.txt" style="color:#9fd4c4;margin:0 8px">LLMs</a>'
+        '<a href="sitemap.xml" style="color:#9fd4c4;margin:0 8px">Sitemap</a>'
         '</div>'
     )
-    html = html.replace('<div class="proto-banner">', extra_nav + '<div class="proto-banner">', 1)
+    html = html.replace('<header class="nav">', extra_nav + '<header class="nav">', 1)
     # Link bank profiles to static pages
     html = html.replace(
         "function openBank(id){",
@@ -865,6 +917,10 @@ def main() -> int:
     (SITE / "data" / "loan_products.json").write_text(
         json.dumps(loan_products_json(), indent=2), encoding="utf-8"
     )
+    enrich_path = ENRICHMENT_DIR / "bank_website_enrichment.json"
+    if enrich_path.is_file():
+        import shutil
+        shutil.copy(enrich_path, SITE / "data" / "bank_website_enrichment.json")
 
     urls = ["index.html", "guides/glossary.html", "guides/faq.html", "guides/methodology.html"]
 
@@ -916,14 +972,35 @@ def main() -> int:
         render_methodology_page(period, len(banks)), encoding="utf-8"
     )
 
+    # Deal-matching JS (workspace + API client)
+    static_src = ROOT / "static"
+    js_dir = SITE / "js"
+    js_dir.mkdir(exist_ok=True)
+    for name in ("match-client.js", "workspace.js", "chat-client.js"):
+        src = static_src / name
+        if src.is_file():
+            import shutil
+            shutil.copy(src, js_dir / name)
+    chat_html = static_src / "chat.html"
+    if chat_html.is_file():
+        import shutil
+        shutil.copy(chat_html, SITE / "chat.html")
+
+    print("Writing market insights, scenarios, and playbook…")
+    stats = write_expansion_pages(SITE, banks, period, urls, load_parents)
+
     write_sitemap(urls)
-    write_llms_txt(banks, period)
     patch_index_with_data(banks, period, glossary)
 
+    enrich_count = sum(1 for b in banks if b.get("webEnrichment"))
+    expansion_count = len(urls) - len(banks) - len(top_cities) - subtype_count - len(load_parents()) - 4
     print(f"\nDone — {SITE}")
+    print(f"  Website enrichment: {enrich_count} banks")
     print(f"  Banks: {len(banks)} pages")
     print(f"  Cities: {len(top_cities)} pages")
     print(f"  Loan types: {len(load_parents())} parent + {subtype_count} sub-type pages")
+    print(f"  Expansion: insights, scenarios, market pages, playbook")
+    print(f"  ICP banks: {stats['icp_count']} · Portfolio-style lenders: {stats['portfolio_style_count']}")
     print(f"  Total URLs in sitemap: {len(urls)}")
     print(f"\nDeploy: upload entire borrower_site/ folder to S3 (index.html at root)")
     return 0

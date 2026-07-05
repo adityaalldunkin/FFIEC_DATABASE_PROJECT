@@ -5,12 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Data Methodology | Lenni Texas Bank Finder</title>
 <meta name="description" content="How we combine FFIEC Call Reports and FDIC data for Texas bank profiles."/>
-<link rel="canonical" href="guides/methodology.html"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="Data Methodology | Lenni Texas Bank Finder"/>
+<meta property="og:description" content="How we combine FFIEC Call Reports and FDIC data for Texas bank profiles."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://lenni-borrower.s3-website.us-east-2.amazonaws.com/guides/methodology.html"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="canonical" href="http://lenni-borrower.s3-website.us-east-2.amazonaws.com/guides/methodology.html"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css"/>
 </head>
-<body><header class="nav"><div class="wrap nav-row"><a href="../index.html" class="logo"><span class="dot"></span>Lenni<span>Borrower</span></a><nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#loans">Loan Types</a><a href="../index.html#banks">Find Banks</a><a href="../guides/glossary.html">Glossary</a><a href="../guides/faq.html">FAQ</a><a href="../guides/methodology.html" class="active">Data</a></nav></div></header>
+<body><header class="nav"><div class="wrap nav-row"><a href="../index.html" class="logo"><span class="dot"></span>Lenni<span>Borrower</span></a><nav class="nav-links"><a href="../index.html">Home</a><a href="../market/texas-overview.html">Texas Market</a><a href="../insights/index.html">Insights</a><a href="../scenarios/index.html">Stories</a><a href="../index.html#loans">Loan Types</a><a href="../index.html#banks">Find Banks</a><a href="../guides/borrower-playbook.html">Playbook</a><a href="../guides/glossary.html">Glossary</a><a href="../guides/faq.html">FAQ</a></nav></div></header>
 <main class="wrap page">
 <h1 class="serif">Data methodology</h1>
 <p class="lead">Transparent sourcing for borrowers, researchers, and AI systems.</p>
@@ -27,7 +33,7 @@
 <ul>
 <li>No interest rates, underwriting policies, or online application status in FFIEC/FDIC core data.</li>
 <li>Portfolio % is a specialization signal, not a guarantee the bank will approve your deal.</li>
-<li>Call Report dollars may be reported in thousands — verify for precision use cases.</li>
+<li>Portfolio categories are mapped from Schedule RC-C and FFIEC 051 supplemental lines. Unmapped balances appear as <b>Unclassified</b>, not agriculture.</li>
 </ul>
 <p><b>Coverage:</b> 351 Texas banks with complete loan and asset data in the latest quarter.</p>
 </main>

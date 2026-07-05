@@ -27,7 +27,11 @@ a{color:var(--accent-d)}.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 .mix{display:flex;flex-direction:column;gap:8px;margin-top:16px}
 .bar-row{display:grid;grid-template-columns:150px 1fr 48px;align-items:center;gap:10px;font-size:13px}
 .bar-track{height:10px;background:var(--soft);border-radius:6px;overflow:hidden}
-.bar-fill{height:100%;border-radius:6px}.bar-row.hl .lbl{font-weight:700;color:var(--accent-d)}
+.bar-fill{height:100%;border-radius:6px}.bar-row.zero .val{color:#a8b5c2}.bar-row.zero .bar-fill{background:#e8ecf0}
+.bar-row.hl .lbl{font-weight:700;color:var(--accent-d)}
+.mix-table{margin-top:20px;font-size:13px}.mix-table td,.mix-table th{padding:8px 10px}
+.mix-wide{font-size:12px}.mix-wide .tiny{white-space:nowrap;font-size:11px;color:var(--muted)}
+.mix-legend{font-size:14px;color:var(--ink-2);padding-left:20px}.mix-legend li{margin:6px 0}
 .data-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
 .data-table th,.data-table td{border:1px solid var(--line);padding:10px 12px;text-align:left}
 .data-table th{background:var(--soft);font-weight:600}
@@ -45,3 +49,14 @@ a{color:var(--accent-d)}.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
 .related-links a{margin-right:12px;font-weight:600}
 .site-footer{background:var(--ink);color:#9fb0c2;padding:32px 0;margin-top:40px;font-size:13px}
 .site-footer a{color:#cdd7e2}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:20px}
+.content-card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:.15s;box-shadow:var(--shadow)}
+.content-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.content-card h3{font-size:17px;margin:10px 0 8px;color:var(--ink)}
+.insight-card .pill,.scenario-card .pill{margin-left:0;margin-bottom:8px}
+.pagination{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap;align-items:center}
+.pagination a,.pagination span{padding:8px 14px;border-radius:8px;border:1px solid var(--line);text-decoration:none;font-size:14px}
+.pagination a:hover{background:var(--soft)}
+.pagination .page-current{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+.checklist-print li{margin-bottom:12px;list-style:none}
+.checklist-print label{display:flex;gap:10px;align-items:flex-start}

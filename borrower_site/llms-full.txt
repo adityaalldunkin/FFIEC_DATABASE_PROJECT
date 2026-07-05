@@ -1,0 +1,473 @@
+# Lenni Texas Community Bank Index
+> 351 Texas banks · FFIEC 12/31/2025 · Full borrower content index for search engines and LLMs
+
+## Purpose
+Lenni helps Texas commercial borrowers find community banks by real FFIEC Call Report portfolio mix — not marketing copy.
+
+## Main entry points
+- index.html — interactive bank finder and deal workspace
+- market/texas-overview.html — Texas lending market statistics
+- market/product-availability.html — banks per loan product
+- market/icp-banks.html — $500M–$2B community banks (paginated)
+- insights/index.html — 12 documented borrower insights from EDA
+- scenarios/index.html — 12 Texas deal scenarios with action plans
+- guides/borrower-playbook.html — step-by-step outreach guide
+- guides/glossary.html — MDRM / RCON term definitions
+- guides/faq.html — borrower FAQ
+- guides/methodology.html — data sources and limitations
+- data/banks.json — machine-readable bank records
+- data/market_insights.json — market stats and insight summaries
+- data/loan_products.json — loan taxonomy
+
+## Borrower insights
+- insights/i-01-product-choice-breadth.html — I-01: Product choice breadth — how many banks can fund your deal?
+- insights/i-02-market-structure.html — I-02: Market structure — concentration and competition by product
+- insights/i-03-deal-size-fit.html — I-03: Deal size fit — is your loan material to the bank?
+- insights/i-04-specialist-targeting.html — I-04: Specialist targeting — the 8% portfolio rule
+- insights/i-05-bank-size-fit.html — I-05: Bank size fit — community banks vs regionals
+- insights/i-06-icp-opportunity.html — I-06: ICP opportunity — the $500M–$2B sweet spot
+- insights/i-07-geography.html — I-07: Geography — HQ city vs where banks actually lend
+- insights/i-08-market-momentum.html — I-08: Market momentum — growing or running off a product book?
+- insights/i-09-lender-diligence.html — I-09: Lender diligence — stress signals in public data
+- insights/i-10-bank-archetypes.html — I-10: Bank archetypes — filter consumer-heavy lenders
+- insights/i-11-cross-sell.html — I-11: Cross-sell — one bank for property debt and operating lines
+- insights/i-12-outreach-planning.html — I-12: Outreach planning — how many banks to call
+
+## Borrower scenarios
+- scenarios/dallas-multifamily-bridge.html — Dallas sponsor bridges a 48-unit value-add apartment
+- scenarios/houston-industrial-refinance.html — Houston logistics owner refinances a 120,000 SF warehouse
+- scenarios/austin-working-capital-line.html — Austin SaaS company secures a $2M revolving line for growth
+- scenarios/waco-owner-occupied-purchase.html — Waco manufacturer buys its headquarters building
+- scenarios/amarillo-farmland-expansion.html — Panhandle operator finances 1,200 acres of irrigated farmland
+- scenarios/san-antonio-restaurant-acquisition.html — San Antonio entrepreneur buys a multi-unit restaurant group
+- scenarios/el-paso-retail-strip-refinance.html — El Paso investor refinances a neighborhood retail strip
+- scenarios/midland-ground-up-industrial.html — Midland developer builds a spec industrial pad in Permian Basin
+- scenarios/tyler-medical-office-owner-occupied.html — Tyler physician group buys its clinic building
+- scenarios/dallas-cre-ci-bundle.html — Dallas sponsor bundles warehouse debt and operating line
+- scenarios/corpus-christi-hotel-refinance.html — Corpus Christi hotel owner refinances a 95-room beachfront property
+- scenarios/lubbock-equipment-fleet-finance.html — Lubbock contractor finances $1.2M equipment fleet
+
+## Loan type guides
+- loan-types/multifamily.html — Multifamily (5+ units)
+- loan-types/multifamily/acquisition.html — Apartment acquisition loan
+- loan-types/multifamily/refinance.html — Multifamily refinance
+- loan-types/multifamily/bridge.html — Apartment bridge loan
+- loan-types/multifamily/value-add-rehab.html — Multifamily value-add / rehab
+- loan-types/multifamily/permanent-takeout.html — Multifamily permanent takeout
+- loan-types/investor-cre.html — Investor CRE (income property)
+- loan-types/investor-cre/office.html — Investor office building loan
+- loan-types/investor-cre/retail.html — Investor retail / strip center loan
+- loan-types/investor-cre/industrial.html — Investor industrial / warehouse loan
+- loan-types/investor-cre/mixed-use.html — Mixed-use income property loan
+- loan-types/investor-cre/nnn.html — NNN / single-tenant net lease loan
+- loan-types/owner-occupied-cre.html — Owner-Occupied CRE
+- loan-types/owner-occupied-cre/purchase.html — Owner-occupied property purchase
+- loan-types/owner-occupied-cre/refinance.html — Owner-occupied refinance
+- loan-types/owner-occupied-cre/sba-504-paired.html — Owner-occupied + SBA 504
+- loan-types/commercial-construction.html — Commercial Construction
+- loan-types/commercial-construction/ground-up.html — Ground-up commercial construction
+- loan-types/commercial-construction/major-rehab.html — Major commercial renovation
+- loan-types/commercial-construction/land-development.html — Land development & lot loans
+- loan-types/commercial-construction/lot-loans.html — Residential / commercial lot loans
+- loan-types/ci-business.html — Commercial & Industrial (C&I)
+- loan-types/ci-business/working-capital-line.html — Working capital line of credit
+- loan-types/ci-business/equipment.html — Equipment financing
+- loan-types/ci-business/acquisition-finance.html — Business acquisition financing
+- loan-types/ci-business/abl.html — Asset-based lending (ABL)
+- loan-types/residential-14.html — 1–4 Family Residential
+- loan-types/residential-14/portfolio-rental.html — Residential rental portfolio loan
+- loan-types/residential-14/investor-flip.html — Investor fix-and-flip (1–4 unit)
+- loan-types/residential-14/second-lien.html — Residential second lien / HELOC (portfolio)
+- loan-types/ag-farmland.html — Agricultural & Farmland
+- loan-types/ag-farmland/farmland-purchase.html — Farmland purchase loan
+- loan-types/ag-farmland/operating-line.html — Agricultural operating line
+- loan-types/ag-farmland/ranch.html — Ranch & livestock financing
+
+## Top banks by assets
+- banks/682563-frost-bank.html — FROST BANK, San Antonio TX, $53.1B assets
+- banks/664756-prosperity-bank.html — PROSPERITY BANK, El Campo TX, $38.5B assets
+- banks/2618780-texas-capital-bank.html — TEXAS CAPITAL BANK, Dallas TX, $31.3B assets
+- banks/470050-first-financial-bank.html — FIRST FINANCIAL BANK, Abilene TX, $15.4B assets
+- banks/652874-nexbank.html — NEXBANK, Dallas TX, $13.9B assets
+- banks/637451-plainscapital-bank.html — PLAINSCAPITAL BANK, University Park TX, $12.8B assets
+- banks/3579589-stellar-bank.html — STELLAR BANK, Houston TX, $10.8B assets
+- banks/1001152-international-bank-of-commerce.html — INTERNATIONAL BANK OF COMMERCE, Laredo TX, $9.8B assets
+- banks/353555-amarillo-national-bank.html — AMARILLO NATIONAL BANK, Amarillo TX, $9.6B assets
+- banks/412751-woodforest-national-bank.html — WOODFOREST NATIONAL BANK, The Woodlands TX, $9.2B assets
+- banks/361167-southside-bank.html — SOUTHSIDE BANK, Tyler TX, $8.5B assets
+- banks/474759-sunflower-bank-national-association.html — SUNFLOWER BANK, NATIONAL ASSOCIATION, Dallas TX, $8.5B assets
+- banks/599764-american-national-bank-of-texas-the.html — AMERICAN NATIONAL BANK OF TEXAS, THE, Terrell TX, $6.9B assets
+- banks/766164-tbk-bank-ssb.html — TBK BANK, SSB, Dallas TX, $6.4B assets
+- banks/474254-broadway-national-bank.html — BROADWAY NATIONAL BANK, San Antonio TX, $5.9B assets
+- banks/3630323-third-coast-bank.html — THIRD COAST BANK, Humble TX, $5.3B assets
+- banks/26765-vantage-bank-texas.html — VANTAGE BANK TEXAS, San Antonio TX, $4.9B assets
+- banks/913753-inwood-national-bank.html — INWOOD NATIONAL BANK, Dallas TX, $4.5B assets
+- banks/613950-first-national-bank-texas-dba-first-convenience-bank.html — FIRST NATIONAL BANK TEXAS DBA FIRST CONVENIENCE BANK, Killeen TX, $4.5B assets
+- banks/822556-texas-exchange-bank.html — TEXAS EXCHANGE BANK, Crowley TX, $4.5B assets
+- banks/575254-city-bank.html — CITY BANK, Lubbock TX, $4.5B assets
+- banks/56351-verabank-national-association.html — VERABANK, NATIONAL ASSOCIATION, Henderson TX, $4.4B assets
+- banks/230759-international-bank-of-commerce.html — INTERNATIONAL BANK OF COMMERCE, Brownsville TX, $4.4B assets
+- banks/949154-texas-bank-and-trust-company.html — TEXAS BANK AND TRUST COMPANY, Longview TX, $4.4B assets
+- banks/1176881-monet-bank.html — MONET BANK, Plano TX, $3.5B assets
+- banks/842460-lone-star-national-bank.html — LONE STAR NATIONAL BANK, Pharr TX, $3.3B assets
+- banks/548351-austin-bank-texas-national-association.html — AUSTIN BANK, TEXAS NATIONAL ASSOCIATION, Jacksonville TX, $3.2B assets
+- banks/1447639-weststar-bank.html — WESTSTAR BANK, El Paso TX, $3.1B assets
+- banks/45560-jefferson-bank.html — JEFFERSON BANK, San Antonio TX, $3.0B assets
+- banks/529958-tib-national-association.html — TIB, NATIONAL ASSOCIATION, Farmers Branch TX, $3.0B assets
+
+## Specialist methodology
+Banks with ≥8% of total loans in a category are labeled specialists.
+ICP = $500M–$2B total assets.
+
+## All bank profile URLs (351)
+- banks/682563-frost-bank.html
+- banks/664756-prosperity-bank.html
+- banks/2618780-texas-capital-bank.html
+- banks/470050-first-financial-bank.html
+- banks/652874-nexbank.html
+- banks/637451-plainscapital-bank.html
+- banks/3579589-stellar-bank.html
+- banks/1001152-international-bank-of-commerce.html
+- banks/353555-amarillo-national-bank.html
+- banks/412751-woodforest-national-bank.html
+- banks/361167-southside-bank.html
+- banks/474759-sunflower-bank-national-association.html
+- banks/599764-american-national-bank-of-texas-the.html
+- banks/766164-tbk-bank-ssb.html
+- banks/474254-broadway-national-bank.html
+- banks/3630323-third-coast-bank.html
+- banks/26765-vantage-bank-texas.html
+- banks/913753-inwood-national-bank.html
+- banks/613950-first-national-bank-texas-dba-first-convenience-bank.html
+- banks/822556-texas-exchange-bank.html
+- banks/575254-city-bank.html
+- banks/56351-verabank-national-association.html
+- banks/230759-international-bank-of-commerce.html
+- banks/949154-texas-bank-and-trust-company.html
+- banks/1176881-monet-bank.html
+- banks/842460-lone-star-national-bank.html
+- banks/548351-austin-bank-texas-national-association.html
+- banks/1447639-weststar-bank.html
+- banks/45560-jefferson-bank.html
+- banks/529958-tib-national-association.html
+- banks/380458-texas-regional-bank.html
+- banks/2694681-american-first-national-bank.html
+- banks/965789-susser-bank.html
+- banks/237066-west-texas-national-bank.html
+- banks/3447576-american-momentum-bank.html
+- banks/1157415-state-bank-of-texas.html
+- banks/867650-pinnacle-bank.html
+- banks/293053-community-national-bank.html
+- banks/645465-vista-bank.html
+- banks/807955-american-bank-national-association.html
+- banks/537560-extraco-banks-national-association.html
+- banks/2891622-cornerstone-capital-bank-ssb.html
+- banks/578255-first-united-bank.html
+- banks/498362-american-national-bank-trust.html
+- banks/3548567-texas-partners-bank.html
+- banks/232856-texasbank.html
+- banks/473266-texas-first-bank.html
+- banks/703552-horizon-bank-ssb.html
+- banks/536059-golden-bank-national-association.html
+- banks/528960-texas-community-bank.html
+- banks/247355-security-state-bank-trust.html
+- banks/552161-citizens-national-bank-of-texas.html
+- banks/490450-north-dallas-bank-trust-co.html
+- banks/840363-firstbank-southwest.html
+- banks/435750-first-state-bank.html
+- banks/273662-first-state-bank-of-uvalde.html
+- banks/215662-american-bank-of-commerce.html
+- banks/885869-commercial-bank-of-texas-n-a.html
+- banks/738769-community-national-bank-trust-of-texas.html
+- banks/369659-first-national-bank-of-central-texas.html
+- banks/253356-moody-national-bank.html
+- banks/3465392-pegasus-bank.html
+- banks/980960-benchmark-bank.html
+- banks/428060-central-national-bank.html
+- banks/956750-rio-bank.html
+- banks/283867-wallis-bank.html
+- banks/2625724-southwestern-national-bank.html
+- banks/176464-alliance-bank.html
+- banks/596062-city-national-bank-of-sulphur-springs-the.html
+- banks/3619216-texas-security-bank.html
+- banks/31255-central-bank.html
+- banks/444350-first-texas-bank.html
+- banks/171768-southstar-bank-s-s-b.html
+- banks/601658-alliance-bank-central-texas.html
+- banks/100357-legend-bank-n-a.html
+- banks/261360-citizens-state-bank.html
+- banks/497954-texas-national-bank.html
+- banks/819855-peoples-bank.html
+- banks/375566-first-national-bank.html
+- banks/384652-dallas-capital-bank-national-association.html
+- banks/18050-first-national-bank-of-bastrop-the.html
+- banks/726953-united-texas-bank.html
+- banks/844567-pointbank.html
+- banks/2568063-first-command-bank.html
+- banks/3821037-r-bank.html
+- banks/3472046-frontier-bank-of-texas.html
+- banks/1429028-keystone-bank-ssb.html
+- banks/3166699-tolleson-private-bank.html
+- banks/895055-first-national-bank-of-mcgregor-the.html
+- banks/393953-hometown-bank-national-association.html
+- banks/329952-first-national-bank-of-granbury-the.html
+- banks/340751-clear-fork-bank-national-association.html
+- banks/3284445-t-bank-national-association.html
+- banks/614368-first-national-bank-and-trust-company-of-weatherford-dba-first-bank-texas.html
+- banks/327855-ciera-bank.html
+- banks/908861-transpecos-banks-ssb.html
+- banks/824653-texas-heritage-national-bank.html
+- banks/839068-security-state-bank.html
+- banks/938859-newfirst-national-bank.html
+- banks/665865-round-top-state-bank.html
+- banks/414764-texas-bank.html
+- banks/917555-ubank.html
+- banks/972862-plains-state-bank.html
+- banks/888552-first-state-bank-the.html
+- banks/629353-first-liberty-bank.html
+- banks/199463-western-bank.html
+- banks/3297490-harmony-bank.html
+- banks/739355-texas-national-bank-of-jacksonville.html
+- banks/859552-bank-of-the-west.html
+- banks/328357-titan-bank-n-a.html
+- banks/869663-citizens-1st-bank.html
+- banks/334264-first-community-bank.html
+- banks/583268-schertz-bank-trust.html
+- banks/264455-first-state-bank.html
+- banks/3690121-liberty-capital-bank.html
+- banks/583754-bank-of-houston.html
+- banks/448554-sage-capital-bank.html
+- banks/625159-commerce-bank.html
+- banks/556459-kleberg-bank-n-a.html
+- banks/911160-pilgrim-bank.html
+- banks/561864-southwest-bank.html
+- banks/514655-texas-gulf-bank-national-association.html
+- banks/884358-first-state-bank-of-livingston.html
+- banks/494654-american-bank-national-association.html
+- banks/333856-grandview-bank.html
+- banks/591366-first-national-bank-of-sonora-the.html
+- banks/239659-first-bank.html
+- banks/339072-colonial-savings-fa.html
+- banks/596156-capital-bank.html
+- banks/262358-american-state-bank.html
+- banks/404653-dominion-bank.html
+- banks/339456-first-community-bank.html
+- banks/59352-citizens-national-bank.html
+- banks/371362-wellington-state-bank.html
+- banks/77253-txn-bank.html
+- banks/182951-classic-bank-national-association.html
+- banks/549862-community-bank-trust-waco-texas.html
+- banks/307361-american-bank-national-association.html
+- banks/169354-state-national-bank-of-big-spring-the.html
+- banks/445955-first-national-bank-of-east-texas-the.html
+- banks/3150205-worthington-bank.html
+- banks/898579-first-federal-community-bank-ssb.html
+- banks/521158-southtrust-bank-n-a.html
+- banks/441050-falls-city-national-bank-the.html
+- banks/5382514-gulf-capital-bank.html
+- banks/583352-first-national-bank-of-huntsville.html
+- banks/406059-nbt-financial-bank.html
+- banks/623454-bank-and-trust-ssb-the.html
+- banks/400365-first-commercial-bank-national-association.html
+- banks/3185896-trinity-bank-national-association.html
+- banks/979759-karnes-county-national-bank-of-karnes-city-the.html
+- banks/1012251-first-state-bank-and-trust-company.html
+- banks/925653-bank-of-texas.html
+- banks/227357-brenham-national-bank-the.html
+- banks/744854-citizens-bank.html
+- banks/382069-international-bank-of-commerce.html
+- banks/735067-texas-republic-bank-national-association.html
+- banks/675079-fayette-savings-bank-ssb.html
+- banks/621357-state-bank-of-de-kalb.html
+- banks/500256-first-national-bank-of-mertzon-the.html
+- banks/610164-herring-bank.html
+- banks/3463875-austin-county-state-bank.html
+- banks/523161-citizens-state-bank.html
+- banks/5760439-texas-traditions-bank.html
+- banks/3347911-austin-capital-bank-ssb.html
+- banks/455459-maverick-bank.html
+- banks/1669-liberty-national-bank-in-paris-the.html
+- banks/625065-citizens-state-bank.html
+- banks/796152-first-state-bank.html
+- banks/522753-mcbank.html
+- banks/552974-shelby-savings-bank-ssb.html
+- banks/579364-texas-champion-bank.html
+- banks/799854-city-national-bank-of-colorado-city-the.html
+- banks/630658-first-national-bank-of-livingston-the.html
+- banks/435059-trinity-capital-bank-of-texas.html
+- banks/623052-lamesa-national-bank-the.html
+- banks/458665-first-national-bank-of-stanton-the.html
+- banks/748964-texas-state-bank.html
+- banks/279-broadstreet-bank-ssb.html
+- banks/875057-farmers-state-bank.html
+- banks/3821626-mint-national-bank-the.html
+- banks/631150-first-lockhart-bank.html
+- banks/530851-peoples-state-bank-of-hallettsville.html
+- banks/311265-yoakum-national-bank-the.html
+- banks/32766-lakeside-bank.html
+- banks/855264-first-national-bank-in-port-lavaca.html
+- banks/564463-crossroads-bank.html
+- banks/406666-west-texas-state-bank.html
+- banks/522669-homebank-texas.html
+- banks/2161-lamar-national-bank.html
+- banks/2759629-first-national-bank-of-hereford-the.html
+- banks/42354-commercial-national-bank-of-brady-the.html
+- banks/410560-first-state-bank.html
+- banks/190563-first-state-bank-of-texas.html
+- banks/539872-trusttexas-bank-s-s-b.html
+- banks/323651-gilmer-national-bank.html
+- banks/324153-first-national-bank-of-giddings.html
+- banks/389358-security-state-bank.html
+- banks/548267-waggoner-national-bank-of-vernon-the.html
+- banks/809650-texana-bank-national-association.html
+- banks/891253-columbus-state-bank.html
+- banks/794149-commercial-national-bank-of-texarkana.html
+- banks/780263-ozona-bank.html
+- banks/303653-first-state-bank-of-burnet.html
+- banks/488653-national-bank-of-andrews-the.html
+- banks/946555-llano-national-bank.html
+- banks/849357-first-national-bank-of-hughes-springs-the.html
+- banks/748357-global-one-bank.html
+- banks/572655-community-bank.html
+- banks/3296859-one-world-bank.html
+- banks/412667-sundown-state-bank.html
+- banks/233358-citizens-national-bank-at-brownwood.html
+- banks/742056-castroville-state-bank.html
+- banks/885252-citizens-bank.html
+- banks/432058-freedom-bank.html
+- banks/570558-arrowhead-bank.html
+- banks/964157-valuebank-texas.html
+- banks/5879201-integrity-bank-ssb.html
+- banks/396954-pecos-county-state-bank-the.html
+- banks/924058-jacksboro-national-bank-the.html
+- banks/216164-first-state-bank.html
+- banks/761954-coleman-county-state-bank.html
+- banks/814458-charter-bank.html
+- banks/3134399-primebank-of-texas.html
+- banks/424352-anahuac-national-bank.html
+- banks/791072-interstate-bank.html
+- banks/296755-citizens-state-bank.html
+- banks/160454-first-national-bank-of-ballinger-the.html
+- banks/414858-incommons-bank-national-association.html
+- banks/240954-first-national-bank-of-burleson.html
+- banks/638355-bank-of-desoto-national-association.html
+- banks/43959-bridge-city-state-bank.html
+- banks/304762-victory-bank.html
+- banks/457060-spring-hill-state-bank.html
+- banks/555256-farmers-and-merchants-bank.html
+- banks/411062-first-national-bank-of-sterling-city-the.html
+- banks/3635551-guadalupe-bank.html
+- banks/792659-national-bank-trust.html
+- banks/857455-tejas-bank.html
+- banks/181963-city-national-bank-of-taylor-the.html
+- banks/875758-first-texas-bank.html
+- banks/656658-texas-financial-bank-dba-the-eden-state-bank.html
+- banks/362155-first-national-bank-of-anderson-the.html
+- banks/184656-citizens-national-bank-of-hillsboro-the.html
+- banks/89957-cendera-bank.html
+- banks/853251-unity-national-bank-of-houston.html
+- banks/729178-cypress-bank-ssb.html
+- banks/336361-sanger-bank.html
+- banks/765662-muenster-state-bank.html
+- banks/88352-first-state-bank-of-bedias.html
+- banks/560353-first-national-bank-of-lake-jackson.html
+- banks/352651-boc-bank.html
+- banks/8462-perryton-national-bank-the.html
+- banks/393252-first-texas-national-bank.html
+- banks/776369-first-state-bank-of-odem.html
+- banks/3479018-community-bank-the.html
+- banks/3448162-lone-star-bank.html
+- banks/198961-first-national-bank-of-bosque-county.html
+- banks/379153-first-national-bank-of-evant-the.html
+- banks/899651-citizens-state-bank.html
+- banks/586960-peoples-state-bank.html
+- banks/819154-first-security-state-bank.html
+- banks/3485215-texas-advantage-community-bank-national-association.html
+- banks/31657-first-state-bank-of-ben-wheeler-texas.html
+- banks/461058-farmers-state-bank.html
+- banks/407168-first-state-bank.html
+- banks/518877-greater-state-bank.html
+- banks/1293078-peoples-bank.html
+- banks/719964-first-state-bank.html
+- banks/651952-first-national-bank-of-eagle-lake-the.html
+- banks/362856-big-bend-banks-n-a-dba-marfa-national-bank-the.html
+- banks/49858-bank-of-south-texas.html
+- banks/101952-brady-national-bank-the.html
+- banks/435666-security-bank-of-texas.html
+- banks/958763-normangee-state-bank.html
+- banks/741068-fidelity-bank-of-texas.html
+- banks/397456-first-national-bank-of-fort-stockton.html
+- banks/839974-graham-savings-and-loan-ssb.html
+- banks/644963-first-national-bank-of-quitaque-the.html
+- banks/501767-first-national-bank-of-winnsboro-the.html
+- banks/801654-first-state-bank-the.html
+- banks/193162-first-national-bank-of-tom-bean-the.html
+- banks/660066-peoples-state-bank.html
+- banks/377663-fannin-bank.html
+- banks/732954-carmine-state-bank.html
+- banks/484057-marion-state-bank.html
+- banks/524766-first-state-bank.html
+- banks/368054-mason-bank.html
+- banks/764067-american-national-bank-of-mount-pleasant-the.html
+- banks/977652-johnson-city-bank.html
+- banks/1435092-texas-national-bank.html
+- banks/229454-first-state-bank-of-brownsboro.html
+- banks/292467-pointwest-bank.html
+- banks/138257-first-national-bank-of-aspermont-the.html
+- banks/409265-spur-security-bank.html
+- banks/53051-buckholts-state-bank-the.html
+- banks/373553-first-bank-and-trust-of-memphis.html
+- banks/648550-first-national-bank-of-dublin.html
+- banks/5728916-agility-bank-n-a.html
+- banks/971070-dalhart-federal-savings-loan-association-ssb.html
+- banks/305059-first-state-bank-the.html
+- banks/818652-stockmens-national-bank-in-cotulla.html
+- banks/1017564-commercial-state-bank.html
+- banks/849076-henderson-federal-savings-bank.html
+- banks/919568-first-capital-bank.html
+- banks/426057-spectra-bank.html
+- banks/491653-commercial-bank-the.html
+- banks/665258-lone-oak-bank-national-association.html
+- banks/370954-cowboy-bank-of-texas-the.html
+- banks/830252-lytle-state-bank-of-lytle-texas-the.html
+- banks/700252-citizens-national-bank.html
+- banks/173959-first-national-bank-of-hebbronville-the.html
+- banks/479567-first-national-bank-of-trinity-the.html
+- banks/366359-first-national-bank-of-anson-the.html
+- banks/741152-junction-national-bank.html
+- banks/2490285-first-national-bank.html
+- banks/442655-first-national-bank-in-falfurrias-the.html
+- banks/851060-atascosa-bank.html
+- banks/78157-bandera-bank.html
+- banks/375650-menard-bank.html
+- banks/660879-angelina-savings-bank-ssb.html
+- banks/218261-zapata-national-bank.html
+- banks/871956-first-bank-of-celeste-the.html
+- banks/714165-city-national-bank-of-san-saba-the.html
+- banks/489155-citizens-state-bank.html
+- banks/346566-first-national-bank-of-south-padre-island.html
+- banks/969956-zavala-county-bank.html
+- banks/901451-citizens-national-bank-of-crosbyton.html
+- banks/500658-pavillion-bank.html
+- banks/578862-first-state-bank-of-san-diego.html
+- banks/170257-haskell-national-bank.html
+- banks/14977-first-federal-bank-littlefield-texas-ssb.html
+- banks/697950-city-national-bank.html
+- banks/954653-citizens-state-bank-of-luling.html
+- banks/460556-state-national-bank-of-groom-the.html
+- banks/603755-first-state-bank.html
+- banks/174367-commerce-bank-texas.html
+- banks/995955-kress-national-bank.html
+- banks/767152-first-national-bank-in-cooper-the.html
+- banks/701857-crowell-state-bank.html
+- banks/764151-lovelady-state-bank.html
+- banks/30052-amistad-bank.html
+- banks/108269-first-national-bank-of-moody-the.html
+- banks/856869-producer-bank-of-texas.html
+- banks/272151-granger-national-bank-the.html
+- banks/753856-donley-county-state-bank-the.html
+- banks/803265-robert-lee-state-bank.html
+- banks/678052-bank-of-san-jacinto-county-coldspring-texas-the.html
+- banks/498456-avana-bank.html
+- banks/863362-brazos-national-bank.html
+- banks/811457-first-national-bank-of-lipan-the.html

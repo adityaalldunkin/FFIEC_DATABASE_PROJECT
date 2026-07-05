@@ -1,4 +1,6 @@
 .env
+.env.*
+!.env.example
 .venv/
 __pycache__/
 *.pyc
@@ -18,8 +20,16 @@ build/
 
 # Large raw data (keep locally or on SharePoint — do not push to GitHub)
 texas_loans_labeled.csv
+texas_loans_labeled.xlsx
+**/texas_loans_labeled.xlsx
 ONLY_TEXAS_SINCE_2025/exports/
 ONLY_TEXAS_SINCE_2025/data/
+ONLY_TEXAS_SINCE_2025/texas_csv_exports_2025_plus/texas_xbrl_facts.csv
+ONLY_TEXAS_SINCE_2025/texas_csv_exports_2025_plus/texas_xbrl_facts.xlsx
+
+# Installers / binaries (do not commit)
+*.pkg
+AWSCLIV2.pkg
 
 # Optional: uncomment if you host these CSVs outside git (SharePoint/S3)
 # locations.csv

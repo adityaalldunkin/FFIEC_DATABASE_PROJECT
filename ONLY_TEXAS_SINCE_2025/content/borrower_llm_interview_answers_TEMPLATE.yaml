@@ -1,0 +1,44 @@
+# Lenni Borrower AI — Interview answers (TEMPLATE)
+# Copy this file to borrower_llm_interview_answers.yaml and fill in during the interview.
+# One list item per completed question. Keep question IDs aligned with borrower_llm_interview_sheet.md
+
+interview_session:
+  date: "YYYY-MM-DD"
+  participants:
+    borrower_role: ""
+    expert_role: ""
+    recorder: ""
+  personas_used: []
+  questions_completed: []
+  questions_skipped: []
+  gaps_identified: []
+  priority_additions: []
+
+answers: []
+
+# ─── Paste filled blocks below (under answers:) ───
+# Example structure — delete this comment block when done.
+#
+# answers:
+#   - id: "Q-001"
+#     question_text: ""
+#     borrower_persona: ""
+#     interview_date: "YYYY-MM-DD"
+#     answered_by: ""
+#     answer:
+#       user_facing_reply: |
+#       tone: ""
+#       response_type: ""
+#       follow_up_questions: []
+#       slots_to_extract: []
+#       loan_product_keys: []
+#       loan_subtype_slugs: []
+#       bank_matching_signals: []
+#       documents_to_mention: []
+#       must_say_disclaimer: false
+#       disclaimer_text: ""
+#       must_not_say: []
+#       confidence: ""
+#       source_notes: |
+#       example_borrower_phrases: []
+#       tags: []

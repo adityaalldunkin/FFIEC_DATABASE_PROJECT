@@ -1,0 +1,415 @@
+# Borrower scenario stories — grounded in Texas FFIEC Call Report EDA insights.
+# Each scenario links to loan sub-types, cities, and specialist banks on the site.
+
+scenarios:
+  - slug: dallas-multifamily-bridge
+    title: "Dallas sponsor bridges a 48-unit value-add apartment"
+    persona: "Experienced multifamily operator"
+    location: Dallas
+    metro: Dallas-Fort Worth
+    loan_parent: multifamily
+    loan_subtype: bridge
+    deal_size: "$4.2M bridge"
+    summary: >
+      A Dallas-based sponsor buys a 48-unit 1980s garden-style community in Oak Cliff with
+      78% occupancy and a clear rent-gap to renovated comps. They need a 24-month bridge before
+      permanent agency or bank takeout.
+    situation: |
+      Texas has only about 19 banks with deep multifamily concentration (15%+ of loans). For a
+      $4M+ bridge, you cannot spray-and-pray — you need banks that already hold apartment paper
+      and understand value-add timelines. Dallas has the highest HQ density in the state, but HQ
+      city is only a starting point; branch footprint and portfolio mix matter more.
+    eda_insights: [I-01, I-04, I-06, I-07, I-12]
+    data_points:
+      - "Multifamily is a narrow lender pool vs C&I or investor CRE — target specialists"
+      - "Median Texas bank gross loans ~$251M; a $4M bridge is material to ICP community banks"
+      - "105 Texas banks sit in the $500M–$2B ICP band — ideal for mid-market apartment deals"
+    action_plan:
+      - "Build a shortlist of 8–10 Dallas-area and statewide multifamily specialists (8%+ portfolio share)"
+      - "Lead with rent roll, renovation budget, and stabilized NOI pro forma — not just purchase price"
+      - "Ask each bank their max hold on multifamily bridge and whether they offer mini-perm takeout"
+      - "Compare 3 term sheets; multifamily specialists often price better than generalist banks"
+    questions_to_ask:
+      - "What is your maximum multifamily bridge exposure per sponsor?"
+      - "Do you require pre-leasing or renovation completion milestones?"
+      - "Can you provide takeout on the same relationship after stabilization?"
+    related_guides:
+      - loan-types/multifamily/bridge.html
+      - loan-types/multifamily/value-add-rehab.html
+      - insights/i-04-specialist-targeting.html
+
+  - slug: houston-industrial-refinance
+    title: "Houston logistics owner refinances a 120,000 SF warehouse"
+    persona: "Industrial property investor"
+    location: Houston
+    metro: Houston
+    loan_parent: investor-cre
+    loan_subtype: industrial
+    deal_size: "$8.5M refinance"
+    summary: >
+      A Houston investor owns a single-tenant logistics warehouse on the North Belt with 7 years
+      remaining on a NNN lease. They want to pull equity for their next acquisition and extend
+      the loan term.
+    situation: |
+      Investor CRE (income property) has one of the widest lender pools in Texas — most banks
+      report non-zero balances. Houston is the second-largest banking HQ market. For an $8.5M
+      refi, both ICP community banks ($500M–$2B) and larger regionals can participate; the
+      question is who already likes industrial exposure.
+    eda_insights: [I-01, I-02, I-03, I-06]
+    data_points:
+      - "Investor CRE has high availability — competitive process with 10–15 banks is realistic"
+      - "Median active-lender investor CRE exposure ~$116M statewide — an $8.5M deal is meaningful"
+      - "Consumer lending is the most concentrated product; CRE is fragmented — shop broadly"
+    action_plan:
+      - "Prepare trailing-12 NOI, lease abstract, and tenant credit summary"
+      - "Shortlist Houston HQ banks plus statewide industrial-leaning specialists from portfolio mix"
+      - "Disclose desired cash-out amount early — some community banks cap proceeds"
+      - "Run parallel conversations with 3 ICP banks and 2 regionals for pricing leverage"
+    questions_to_ask:
+      - "What DSCR and LTV do you require on single-tenant industrial?"
+      - "Do you offer interest-only periods on refinance?"
+      - "What is your maximum hold per property type?"
+    related_guides:
+      - loan-types/investor-cre/industrial.html
+      - loan-types/investor-cre/nnn.html
+      - market/product-availability.html
+
+  - slug: austin-working-capital-line
+    title: "Austin SaaS company secures a $2M revolving line for growth"
+    persona: "Growing technology business"
+    location: Austin
+    metro: Austin
+    loan_parent: ci-business
+    loan_subtype: working-capital-line
+    deal_size: "$2M revolver"
+    summary: >
+      An Austin-based B2B software company with $12M revenue needs a working capital line to
+      fund payroll between enterprise contract payments. They have receivables, minimal hard
+      collateral, and a 3-year growth plan.
+    situation: |
+      C&I is among the most fragmented Texas lending markets — nearly every commercial bank
+      reports some business lending. The challenge is finding a bank whose C&I book is large
+      enough to care about a $2M line but small enough to offer relationship pricing. Austin
+      has growing bank HQ presence; many banks lend statewide from Dallas or San Antonio HQs.
+    eda_insights: [I-01, I-03, I-05, I-11]
+    data_points:
+      - "C&I median at active lenders ~$27M — a $2M line is relevant to community banks"
+      - "Portfolio-style community banks (CRE+C&I >50%) are best fit for relationship C&I"
+      - "CRE specialists often overlap C&I — one bank may do both property and operating line"
+    action_plan:
+      - "Target ICP banks with C&I share ≥8% and low consumer concentration"
+      - "Prepare 2 years financials, AR aging, customer concentration, and use-of-funds narrative"
+      - "Ask about borrowing base vs cash-flow underwriting — structure matters for SaaS"
+      - "Include 2 Austin-area banks and 3 statewide C&I specialists in your first wave"
+    questions_to_ask:
+      - "Do you underwrite on recurring revenue or traditional borrowing base?"
+      - "What covenant package do you use for asset-light businesses?"
+      - "Can this line grow with us without a full re-underwrite?"
+    related_guides:
+      - loan-types/ci-business/working-capital-line.html
+      - insights/i-05-bank-size-fit.html
+
+  - slug: waco-owner-occupied-purchase
+    title: "Waco manufacturer buys its headquarters building"
+    persona: "Owner-operator manufacturer"
+    location: Waco
+    metro: Waco
+    loan_parent: owner-occupied-cre
+    loan_subtype: purchase
+    deal_size: "$3.1M purchase + improvements"
+    summary: >
+      A precision machining company renting in Waco finds its 45,000 SF building for sale.
+      They want to own the facility, consolidate operations, and stop paying rent to a landlord
+      who may sell to a competitor.
+    situation: |
+      Waco has several strong ICP banks including some of the largest loan portfolios in the
+      $500M–$2B band statewide. Owner-occupied CRE is reported on RCONF160 — a distinct line
+      from investor CRE. Community banks in Central Texas often prefer user-occupied deals
+      because cash flow ties directly to the operating business.
+    eda_insights: [I-05, I-06, I-07]
+    data_points:
+      - "FIRST NATIONAL BANK OF CENTRAL TEXAS (Waco) ranks among top ICP loan books statewide"
+      - "Owner-occupied CRE is a separate Call Report bucket from investor income property"
+      - "Community banks (FFIEC 041) median portfolio ~$250M — $3M deals are committee material"
+    action_plan:
+      - "Start with Waco HQ banks and Central Texas branches of statewide community banks"
+      - "Combine business financials with property NOI — underwriters blend operating company and real estate"
+      - "Get environmental and property condition reports before term sheet — speeds community bank credit"
+      - "Ask about SBA 504 pairing if equity injection is tight"
+    questions_to_ask:
+      - "What LTV do you offer on owner-occupied manufacturing?"
+      - "Do you require the business to occupy 51%+ of the building?"
+      - "Can equipment financing be bundled in the same relationship?"
+    related_guides:
+      - loan-types/owner-occupied-cre/purchase.html
+      - cities/waco.html
+
+  - slug: amarillo-farmland-expansion
+    title: "Panhandle operator finances 1,200 acres of irrigated farmland"
+    persona: "Row-crop and cattle operator"
+    location: Amarillo
+    metro: Amarillo
+    loan_parent: ag-farmland
+    loan_subtype: farmland-purchase
+    deal_size: "$6.8M land + $400K operating line"
+    summary: >
+      A fourth-generation Panhandle operator acquires neighboring irrigated acreage to scale
+      production. They need a farmland term loan plus a seasonal operating line for inputs.
+    situation: |
+      Agricultural lending is a niche pool — fewer Texas banks report meaningful farmland or
+      ag production balances than CRE or C&I. Amarillo and West Texas have banks with deep
+      ag heritage; portfolio mix shows farm vs production split on RCON1420 and RCON1590.
+    eda_insights: [I-01, I-12]
+    data_points:
+      - "Farmland and ag production are among the narrowest lender pools in Texas"
+      - "Specialist threshold (8% portfolio share) identifies true ag banks vs incidental exposure"
+      - "FIRSTBANK SOUTHWEST (Amarillo) is among the largest ICP loan portfolios statewide"
+    action_plan:
+      - "Identify banks with farm + ag production >15% combined portfolio share"
+      - "Prepare 5-year production history, water rights documentation, and crop insurance"
+      - "Bundle operating line request — ag banks often prefer full-relationship structures"
+      - "Expect fewer term-sheet options than CRE — relationship depth matters"
+    questions_to_ask:
+      - "What advance rate do you use on irrigated vs dryland collateral?"
+      - "Do you offer combined land term and annual operating renewal?"
+      - "How do you stress commodity prices in underwriting?"
+    related_guides:
+      - loan-types/ag-farmland/farmland-purchase.html
+      - loan-types/ag-farmland/operating-line.html
+
+  - slug: san-antonio-restaurant-acquisition
+    title: "San Antonio entrepreneur buys a multi-unit restaurant group"
+    persona: "Food & beverage entrepreneur"
+    location: San Antonio
+    metro: San Antonio
+    loan_parent: ci-business
+    loan_subtype: acquisition-finance
+    deal_size: "$1.8M acquisition + $300K working capital"
+    summary: >
+      An experienced restaurant operator acquires three casual-dining locations from a retiring
+      owner. They need acquisition financing plus working capital for a rebrand and staffing ramp.
+    situation: |
+      Business acquisition loans sit in C&I buckets. San Antonio has major regional banks
+      (Frost, Broadway National) plus many community banks. For sub-$2M deals, ICP community
+      banks often move faster than regionals if the sponsor has relevant operating history.
+    eda_insights: [I-03, I-06, I-08]
+    data_points:
+      - "Median ICP bank loans ~$700M gross — a $1.8M acquisition is relationship-sized"
+      - "Disclose deal size early — below-median exposures may not clear committee thresholds at some banks"
+      - "Ask lenders if their restaurant/Hospitality book grew in the last 5 quarters"
+    action_plan:
+      - "Prepare quality-of-earnings summary, store-level P&Ls, and transition plan"
+      - "Target C&I specialists with low consumer concentration — avoid credit-card-heavy banks"
+      - "Pitch relationship value: deposits, merchant services, future real estate needs"
+      - "Contact 8–10 banks; acquisition finance is competitive in Texas C&I market"
+    questions_to_ask:
+      - "Have you financed restaurant acquisitions in the last 24 months?"
+      - "What seller note or equity injection do you require?"
+      - "Is working capital included in one facility or a separate line?"
+    related_guides:
+      - loan-types/ci-business/acquisition-finance.html
+      - loan-types/ci-business/working-capital-line.html
+
+  - slug: el-paso-retail-strip-refinance
+    title: "El Paso investor refinances a neighborhood retail strip"
+    persona: "Retail CRE investor"
+    location: El Paso
+    metro: El Paso
+    loan_parent: investor-cre
+    loan_subtype: retail
+    deal_size: "$2.4M refinance"
+    summary: >
+      A local investor owns a 12-unit neighborhood strip center with mixed local tenants and
+      one anchor grocer. Occupancy is 92%; they want to refinance out of a maturing loan and
+      fund facade improvements.
+    situation: |
+      Retail CRE competes in the broad investor CRE pool. El Paso has fewer HQ banks than
+      Dallas or Houston, but many Texas community banks lend statewide from branch networks.
+      Use branch city data, not just HQ city, when building your list.
+    eda_insights: [I-07, I-02]
+    data_points:
+      - "HQ city ≠ lending territory — FDIC branch data shows where banks actually operate"
+      - "Investor CRE market is fragmented — build an 8–10 bank competitive process"
+      - "Median CRE proxy at Texas banks ~$116M — $2.4M is material for community lenders"
+    action_plan:
+      - "Include El Paso branch banks plus statewide retail-leaning specialists"
+      - "Prepare tenant roster, lease expirations, and CAM reconciliation"
+      - "Highlight grocer anchor credit and local foot-traffic story"
+      - "Compare community bank vs regional pricing — both may participate at this size"
+    questions_to_ask:
+      - "What tenant concentration limits do you apply on retail strips?"
+      - "Will you finance TI reserves in the refinance?"
+      - "Do you lend in El Paso from a non-local HQ?"
+    related_guides:
+      - loan-types/investor-cre/retail.html
+      - insights/i-07-geography.html
+
+  - slug: midland-ground-up-industrial
+    title: "Midland developer builds a spec industrial pad in Permian Basin"
+    persona: "Commercial developer"
+    location: Midland
+    metro: Midland
+    loan_parent: commercial-construction
+    loan_subtype: ground-up
+    deal_size: "$5.5M construction loan"
+    summary: >
+      A Midland developer breaks ground on a 60,000 SF spec industrial building with pre-leasing
+      interest from oilfield services tenants. They need a construction loan with mini-perm option.
+    situation: |
+      Construction lending is reported on RCONF158/RCONF159 — a smaller specialist pool than
+      stabilized CRE. Permian Basin cycles matter: banks active in construction here often
+      have experience with energy-correlated tenant demand. Check 5-quarter trend — growing
+      construction books signal appetite.
+    eda_insights: [I-08, I-12, I-09]
+    data_points:
+      - "Construction is a narrower pool — expect 6–8 targeted calls, not 15-bank spray"
+      - "Review lender 90+ day past-due ratios — elevated stress warrants extra diligence questions"
+      - "Market momentum: ask if their construction book grew over the last 5 quarters"
+    action_plan:
+      - "Target banks with construction ≥8% and Midland/Odessa branch presence"
+      - "Prepare full construction budget, GC contract, and pre-leasing LOIs"
+      - "Stress tenant demand under lower oil price scenario in your narrative"
+      - "Negotiate extension options and takeout criteria upfront"
+    questions_to_ask:
+      - "What pre-leasing percentage do you require before funding?"
+      - "Do you offer construction-to-mini-perm in one approval?"
+      - "How do you handle cost overruns and draw inspections?"
+    related_guides:
+      - loan-types/commercial-construction/ground-up.html
+      - loan-types/investor-cre/industrial.html
+
+  - slug: tyler-medical-office-owner-occupied
+    title: "Tyler physician group buys its clinic building"
+    persona: "Medical practice partners"
+    location: Tyler
+    metro: Tyler
+    loan_parent: owner-occupied-cre
+    loan_subtype: purchase
+    deal_size: "$4.6M acquisition"
+    summary: >
+      A 6-physician orthopedic group wants to purchase their 28,000 SF clinic from a REIT landlord.
+      Stable patient volume and strong practice financials support the acquisition.
+    situation: |
+      Medical office can be owner-occupied or investor CRE depending on structure. For a
+      user-occupant practice, owner-occupied CRE underwriting ties to practice cash flow.
+      Tyler has community banks (Southside Bank HQ nearby) and East Texas lenders with
+      healthcare exposure.
+    eda_insights: [I-05, I-10]
+    data_points:
+      - "Filter out consumer-heavy banks — prioritize portfolio-style commercial lenders"
+      - "Community banks prefer user-occupied deals with strong operating entity financials"
+      - "Median Texas bank assets ~$433M — physician groups are prized deposit relationships"
+    action_plan:
+      - "Present practice financials, physician comp structure, and payer mix"
+      - "Target East Texas community banks with owner-occupied CRE share ≥8%"
+      - "Discuss deposit balances and treasury services — strengthens community bank proposals"
+      - "Get appraisal and Phase I early — medical sites may trigger environmental review"
+    questions_to_ask:
+      - "Do you have healthcare practice lending experience?"
+      - "What DSCR do you require on medical owner-occupied?"
+      - "Can tenant improvements for imaging equipment be financed?"
+    related_guides:
+      - loan-types/owner-occupied-cre/purchase.html
+      - loan-types/owner-occupied-cre/sba-504-paired.html
+
+  - slug: dallas-cre-ci-bundle
+    title: "Dallas sponsor bundles warehouse debt and operating line"
+    persona: "Diversified commercial sponsor"
+    location: Dallas
+    metro: Dallas-Fort Worth
+    loan_parent: investor-cre
+    loan_subtype: industrial
+    deal_size: "$6M CRE + $1.5M line"
+    summary: >
+      A Dallas sponsor owns two light-industrial properties and an operating company that
+      distributes building materials. They want to refinance both properties and upsize their
+      working capital line in one banking relationship.
+    situation: |
+      EDA co-occurrence analysis shows investor CRE specialists frequently overlap with C&I
+      specialists. Banks with both ≥8% investor CRE and ≥8% C&I are ideal for bundled requests.
+      One relationship can reduce legal cost and covenant complexity vs splitting across banks.
+    eda_insights: [I-11, I-04, I-06]
+    data_points:
+      - "CRE + C&I cross-sell: many full-relationship banks bundle property and operating credit"
+      - "Dallas has the deepest specialist bench — verify branch coverage, not just HQ"
+      - "105 ICP banks statewide — relationship bundling works best in $500M–$2B segment"
+    action_plan:
+      - "Filter banks where both investor CRE and C&I exceed 8% portfolio share"
+      - "Prepare consolidated sponsor financials plus property-level rent rolls"
+      - "Pitch total relationship: deposits, treasury, future acquisitions"
+      - "Negotiate cross-collateralization terms carefully — ask what's required vs optional"
+    questions_to_ask:
+      - "Can CRE and C&I be under one credit agreement or separate facilities?"
+      - "Do you offer relationship pricing for combined exposure?"
+      - "What reporting package do you require for consolidated sponsors?"
+    related_guides:
+      - insights/i-11-cross-sell.html
+      - loan-types/ci-business/working-capital-line.html
+      - loan-types/investor-cre/industrial.html
+
+  - slug: corpus-christi-hotel-refinance
+    title: "Corpus Christi hotel owner refinances a 95-room beachfront property"
+    persona: "Hospitality investor"
+    location: Corpus Christi
+    metro: Corpus Christi
+    loan_parent: investor-cre
+    loan_subtype: mixed-use
+    deal_size: "$11M refinance"
+    summary: >
+      An investor owns a 95-room hotel with ground-floor retail on Corpus Christi Bay. Tourism
+      recovery has stabilized RevPAR; they seek a 10-year fixed refinance with moderate cash-out.
+    situation: |
+      Hotels sit in investor CRE / income property buckets. At $11M, both larger ICP banks
+      and regionals may participate. Compare your deal size to median and P75 product exposure —
+      at this size you are above median for many community banks, which can be good for
+      engagement but may require regional participation.
+    eda_insights: [I-03, I-09]
+    data_points:
+      - "Deal size vs median exposure: $11M is large for many community banks — include regionals"
+      - "Perform lender diligence: ask about hospitality exposure and 90+ day past-due trends"
+      - "Hospitality is specialized — prioritize banks that already hold hotel or mixed-use CRE"
+    action_plan:
+      - "Prepare 3-year STR report, franchise agreement summary, and capital expenditure plan"
+      - "Mix community bank outreach with 2–3 regional players for capacity"
+      - "Ask specifically about hospitality concentration limits"
+      - "Disclose seasonality and hurricane insurance costs in first call"
+    questions_to_ask:
+      - "What is your maximum single-asset hospitality exposure?"
+      - "Do you require franchise approval for refinance?"
+      - "How do you underwrite insurance and wind coverage in coastal markets?"
+    related_guides:
+      - loan-types/investor-cre/mixed-use.html
+      - insights/i-03-deal-size-fit.html
+
+  - slug: lubbock-equipment-fleet-finance
+    title: "Lubbock contractor finances $1.2M equipment fleet"
+    persona: "Commercial contractor"
+    location: Lubbock
+    metro: Lubbock
+    loan_parent: ci-business
+    loan_subtype: equipment
+    deal_size: "$1.2M term + $500K line"
+    summary: >
+      A West Texas commercial contractor wins larger municipal contracts and needs to finance
+      excavators, trucks, and trailers plus a line for payroll between draws.
+    situation: |
+      Equipment finance appears in C&I and lease financing lines. West Texas community banks
+      often understand contractor cycles. For equipment + working capital, C&I specialists
+      with low consumer mix are the right target — not mortgage-heavy banks.
+    eda_insights: [I-01, I-05, I-10]
+    data_points:
+      - "C&I has the widest lender availability — competitive terms possible with 8–10 banks"
+      - "Portfolio-style community banks (not consumer-heavy) fit contractor relationships"
+      - "Lease financing (RCON1754) is a separate narrow pool — most deals sit in C&I term debt"
+    action_plan:
+      - "Prepare equipment quotes, contract backlog, and bonding capacity letter"
+      - "Target Lubbock and West Texas C&I banks with contractor experience"
+      - "Ask about UCC filings vs titled equipment loans — structure affects rate"
+      - "Bundle operating line in same credit request for efficiency"
+    questions_to_ask:
+      - "Do you finance new and used heavy equipment equally?"
+      - "What advance rates apply to fleet collateral?"
+      - "Can the line resize with contract awards?"
+    related_guides:
+      - loan-types/ci-business/equipment.html
+      - loan-types/ci-business/working-capital-line.html

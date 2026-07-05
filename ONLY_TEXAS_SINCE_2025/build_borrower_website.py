@@ -14,6 +14,16 @@ from pathlib import Path
 
 import pandas as pd
 
+from loan_mix import (
+    MIX_KEYS,
+    MIX_LABELS,
+    compute_mix,
+    describe_bank,
+    enrich_profiles_with_supplemental,
+    mix_score,
+    top_specialties,
+)
+
 ROOT = Path(__file__).resolve().parent
 EXPORTS = ROOT / "exports"
 OUT = ROOT.parent / "2026-06-07-lenni-borrower-experience.html"
@@ -134,68 +144,6 @@ def safe_num(v, default=0.0) -> float:
         return default
 
 
-def compute_mix(row: pd.Series) -> dict[str, int]:
-    total = safe_num(row.get("total_loans_gross"))
-    if total <= 0:
-        return {k: 0 for k in ("mf", "inv", "own", "con", "ci", "res", "cons", "oth")}
-
-    parts = {
-        "mf": safe_num(row.get("multifamily_re_loans")),
-        "inv": safe_num(row.get("other_nonfarm_nonres_re")) + safe_num(row.get("commercial_re_loans")),
-        "own": safe_num(row.get("owner_occupied_nonfarm_re")),
-        "con": safe_num(row.get("residential_construction")) + safe_num(row.get("other_construction_ld")),
-        "ci": safe_num(row.get("ci_loans")),
-        "res": safe_num(row.get("residential_1_4_family")),
-        "cons": safe_num(row.get("credit_card_plans")) + safe_num(row.get("other_consumer_loans")),
-        "oth": (
-            safe_num(row.get("farmland_loans"))
-            + safe_num(row.get("ag_production_loans"))
-            + safe_num(row.get("lease_financing"))
-        ),
-    }
-    accounted = sum(parts.values())
-    if accounted < total * 0.85:
-        parts["oth"] += max(0, total - accounted)
-
-    pcts = {k: round(100 * v / total) for k, v in parts.items()}
-    drift = 100 - sum(pcts.values())
-    if drift:
-        top = max(pcts, key=pcts.get)
-        pcts[top] += drift
-    return pcts
-
-
-def top_specialties(mix: dict[str, int], n: int = 3) -> list[tuple[str, int]]:
-    labels = {
-        "mf": "Multifamily",
-        "inv": "Investor CRE",
-        "own": "Owner-occupied CRE",
-        "con": "Construction",
-        "ci": "Business (C&I)",
-        "res": "Residential 1–4",
-        "cons": "Consumer",
-        "oth": "Ag & other",
-    }
-    ranked = sorted(mix.items(), key=lambda x: -x[1])
-    return [(labels[k], v) for k, v in ranked[:n] if v > 0]
-
-
-def describe_bank(name: str, city: str, metro: str, mix: dict, assets_m: float, icp: bool) -> str:
-    specs = top_specialties(mix, 2)
-    spec_txt = " and ".join(f"{v}% {k.lower()}" for k, v in specs) if specs else "diversified lending"
-    size = f"${assets_m/1000:.1f}B" if assets_m >= 1000 else f"${assets_m:.0f}M"
-    icp_note = (
-        " Community bank in Lenni's core $500M–$2B segment."
-        if icp
-        else ""
-    )
-    return (
-        f"{name.strip()} is headquartered in {title_case_city(city)}, Texas ({metro} market), "
-        f"with roughly {size} in total assets. Based on the latest FFIEC Call Report, "
-        f"its loan portfolio emphasizes {spec_txt}.{icp_note}"
-    )
-
-
 def build_banks(df: pd.DataFrame) -> list[dict]:
     banks = []
     for _, row in df.iterrows():
@@ -260,6 +208,7 @@ def main() -> int:
     df = pd.read_csv(EXPORTS / "texas_bank_profiles_latest.csv", dtype={"id_rssd": int})
     df = df.dropna(subset=["total_assets", "total_loans_gross"])
     df = df[df["total_loans_gross"] > 0].copy()
+    df = enrich_profiles_with_supplemental(df)
 
     banks = build_banks(df)
     period = banks[0]["period"] if banks else "3/31/2026"
@@ -305,7 +254,8 @@ def render_html(data: dict, products: list[dict] | None = None) -> str:
   --ink:#0E1B2A;--ink-2:#1c2e42;--paper:#F7F5F0;--surface:#ffffff;
   --accent:#1f9d76;--accent-d:#17795b;--gold:#C8932A;--gold-bg:#FBF1DC;
   --muted:#5b6b7b;--line:#e7e3d9;--soft:#f0ede5;
-  --mf:#1f9d76;--inv:#2f6fed;--own:#7c3aed;--con:#e08a2b;--ci:#db5461;--res:#58b3c7;--cons:#9aa6b2;--oth:#c4ccd6;
+  --mf:#1f9d76;--inv:#2f6fed;--own:#7c3aed;--con:#e08a2b;--ci:#db5461;--res:#58b3c7;--cons:#9aa6b2;
+  --farm:#8b6914;--ag:#6b8e23;--lease:#a78bfa;--uncat:#c4ccd6;
   --shadow:0 1px 2px rgba(14,27,42,.06),0 8px 24px rgba(14,27,42,.06);
   --shadow-lg:0 12px 40px rgba(14,27,42,.14);
 }}
@@ -375,6 +325,7 @@ header.nav{{position:sticky;top:0;z-index:50;background:rgba(247,245,240,.85);ba
 .bar-row{{display:grid;grid-template-columns:140px 1fr 52px;align-items:center;gap:12px;font-size:13px}}
 .bar-track{{height:10px;background:var(--soft);border-radius:6px;overflow:hidden}}
 .bar-fill{{height:100%;border-radius:6px}}
+.bar-row.zero .val{{color:#a8b5c2}}.bar-row.zero .bar-fill{{background:#e8ecf0}}
 .bar-row.hl .lbl{{color:var(--accent-d);font-weight:700}}
 .rank-row{{display:grid;grid-template-columns:34px 1fr 160px 120px;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:14px 16px;cursor:pointer;transition:.15s}}
 .rank-row:hover{{border-color:#d6d0c2;box-shadow:var(--shadow)}}
@@ -427,10 +378,26 @@ footer{{background:var(--ink);color:#9fb0c2;padding:46px 0 40px;margin-top:20px}
 .stat-grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}}
 .stat-grid .card{{text-align:center;padding:18px}}.stat-grid b{{display:block;font-size:28px;color:var(--accent-d)}}
 @media(max-width:720px){{.stat-grid{{grid-template-columns:repeat(2,1fr)}}}}
+.sess-shell{{background:#ECEEE8;min-height:100vh;padding-bottom:70px}}
+.sess-bar{{background:var(--ink);color:#fff}}
+.sess-bar .wrap{{display:flex;align-items:center;gap:14px;height:56px}}
+.sess-id{{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:rgba(255,255,255,.08);color:#9fd4c4;padding:3px 10px;border-radius:6px}}
+.sess-grid{{display:grid;grid-template-columns:225px 1fr;gap:26px;padding-top:26px;align-items:start}}
+.sess-help{{background:var(--gold-bg);border:1px solid #ecd9a8;border-radius:12px;padding:12px 14px;margin-top:14px;color:#8a6414}}
+.sess-panel{{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);margin-bottom:22px}}
+.sess-kpis{{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}}
+.sess-kpi{{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#fff}}
+.ws-side-head{{font-weight:800;letter-spacing:.08em;color:var(--muted);margin:2px 2px 8px;font-size:11px}}
+.ws-addr{{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;cursor:pointer;display:flex;flex-direction:column;gap:3px}}
+.ws-addr.on{{border-color:var(--accent);box-shadow:0 0 0 2px rgba(31,157,118,.18);background:#f4faf7}}
+.ws-x{{align-self:flex-end;color:var(--muted);font-size:11px;cursor:pointer}}
+.ws-add{{display:flex;gap:6px;margin:4px 0 10px}}
+.ws-add input{{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12.5px;font-family:inherit}}
+.ws-loan-on{{border-color:var(--accent)!important;box-shadow:0 0 0 2px rgba(31,157,118,.22)}}
+@media(max-width:880px){{.sess-grid{{grid-template-columns:1fr}}}}
 </style>
 </head>
 <body>
-<div class="proto-banner">✓ <b>Live data</b> · {data['bankCount']} Texas banks · FFIEC Call Report · period ending <b>{data['period']}</b> · {data['icpCount']} in $500M–$2B community bank range</div>
 
 <header class="nav"><div class="wrap nav-row">
   <div class="logo" onclick="go('home')"><span class="dot"></span>Lenni<span>Borrower</span></div>
@@ -449,12 +416,17 @@ footer{{background:var(--ink);color:#9fb0c2;padding:46px 0 40px;margin-top:20px}
 <div id="home" class="view active">
   <section class="hero"><div class="wrap">
     <div class="eyebrow">Texas Community Banks · Live FFIEC Data</div>
-    <h1 class="serif">Find the bank that <em>already lends like your deal.</em></h1>
-    <p class="sub">Browse {data['bankCount']} Texas banks ranked by real Call Report loan portfolios — multifamily, CRE, construction, business lending, and more. No signup required.</p>
+    <h1 class="serif">The prepared borrower gets <em>the best deal.</em></h1>
+    <p class="sub">Build your package once. Take it to the banks that actually do your loan. {data['bankCount']} Texas banks ranked by their real loan portfolios, from public FDIC data. No signup required.</p>
+    <div class="searchbar" style="max-width:720px;margin-bottom:12px">
+      <span class="ai">AI</span>
+      <input id="heroPaste" placeholder="Paste a listing link — Zillow, LoopNet, Crexi — or describe your deal" onkeydown="if(event.key==='Enter')heroAsk()"/>
+      <button class="btn btn-primary btn-sm" onclick="heroAsk()">Match my deal →</button>
+    </div>
+    <p class="tiny muted" style="margin:0 0 26px">Lenni reads the listing, builds your listing profile, and suggests the loan products that fit — then the Texas banks that actually do that loan.</p>
     <div class="hero-cta">
-      <button class="btn btn-primary" onclick="go('loans')">Browse loan types →</button>
+      <button class="btn btn-ghost" onclick="go('loans')">Browse loan types →</button>
       <button class="btn btn-ghost" onclick="go('banks')">See all banks</button>
-      <button class="btn btn-ghost" onclick="go('terminal')">⌘ AI terminal</button>
     </div>
     <div class="trust">
       <div><b>{data['bankCount']}</b> banks with portfolio data</div>
@@ -615,6 +587,28 @@ footer{{background:var(--ink);color:#9fb0c2;padding:46px 0 40px;margin-top:20px}
   </div></section>
 </div>
 
+<div id="session" class="view">
+  <div class="sess-shell">
+    <div class="sess-bar"><div class="wrap">
+      <div class="logo" style="color:#fff" onclick="go('home')"><span class="dot"></span>Lenni</div>
+      <span style="font-size:13px;color:#9fb0c2;font-weight:600">Borrower workspace</span>
+      <span class="sess-id" id="sId">SESSION —</span>
+    </div></div>
+    <div class="wrap sess-grid">
+      <aside class="ws-side">
+        <div id="wsSide"></div>
+        <div class="ws-add">
+          <input id="wsPaste" placeholder="Paste another listing link…" onkeydown="if(event.key==='Enter')wsAdd()"/>
+          <button class="btn btn-primary btn-sm" onclick="wsAdd()">+ Add</button>
+        </div>
+        <div class="sess-help tiny">Each address gets its own workspace — land info, loan info, and your info.</div>
+        <div style="margin-top:14px"><a class="btn btn-ghost btn-sm" onclick="go('home')">← Exit to home</a></div>
+      </aside>
+      <main id="wsMain"><div class="sess-panel"><p class="muted">Paste a listing to start…</p></div></main>
+    </div>
+  </div>
+</div>
+
 <footer><div class="wrap">
   <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px">
     <div style="max-width:300px"><div class="logo" style="color:#fff"><span class="dot"></span>Lenni<span style="color:#6f879c">Borrower</span></div>
@@ -638,7 +632,13 @@ var PRODUCTS = {products_js};
 
 var MIXMETA=[['mf','Multifamily','var(--mf)'],['inv','Investor CRE','var(--inv)'],['own','Owner-occupied CRE','var(--own)'],
  ['con','Construction','var(--con)'],['ci','C&I / Business','var(--ci)'],['res','1–4 Residential','var(--res)'],
- ['cons','Consumer','var(--cons)'],['oth','Ag & other','var(--oth)']];
+ ['cons','Consumer','var(--cons)'],['farm','Farmland','var(--farm)'],['ag','Ag production','var(--ag)'],
+ ['lease','Lease financing','var(--lease)'],['uncat','Unclassified','var(--uncat)']];
+
+function mixScore(b,key){{
+  if(key==='oth') return (b.mix.farm||0)+(b.mix.ag||0);
+  return b.mix[key]||0;
+}}
 
 function go(v){{
   document.querySelectorAll('.view').forEach(function(e){{e.classList.remove('active')}});
@@ -648,10 +648,10 @@ function go(v){{
 }}
 function setLoc(v){{LOC=v;renderLoans();if(CUR)renderRank();}}
 function assetStr(a){{return a>=1000?'$'+(a/1000).toFixed(1)+'B':'$'+a+'M'}}
-function lenderCount(key){{return BANKS.filter(function(b){{return b.mix[key]>=8}}).length}}
+function lenderCount(key){{return BANKS.filter(function(b){{return mixScore(b,key)>=8}}).length}}
 function banksNear(metro){{return BANKS.filter(function(b){{return !metro||b.markets.indexOf(metro)>-1||b.metro===metro}})}}
 function topBank(key,metro){{
-  var list=banksNear(metro).slice().sort(function(a,b){{return b.mix[key]-a.mix[key]}});
+  var list=banksNear(metro).slice().sort(function(a,b){{return mixScore(b,key)-mixScore(a,key)}});
   return list[0]||BANKS[0];
 }}
 function icpPill(b){{return b.icp?'<span class="pill icp-badge">Community $500M–$2B</span>':''}}
@@ -680,7 +680,7 @@ function renderLoans(){{
       '<div class="lc-cat">'+p.cat+'</div><h3 class="serif">'+p.name+'</h3><p>'+p.short+'</p>'+
       '<div class="lc-meta"><span class="muted"><b style="color:var(--ink)">'+cnt+'</b> banks (8%+ share)</span>'+
       '<span style="font-weight:600">'+tb.name.split(' ').slice(0,3).join(' ')+'</span></div>'+
-      '<div class="tiny muted" style="margin-top:8px">Top near '+LOC+': '+tb.mix[p.key]+'% portfolio'+
+      '<div class="tiny muted" style="margin-top:8px">Top near '+LOC+': '+mixScore(tb,p.key)+'% portfolio'+
       (subN?' · '+subN+' sub-types':'')+'</div>'+
       (p.pageUrl?'<div class="tiny" style="margin-top:6px"><a href="'+p.pageUrl+'" onclick="event.stopPropagation()">Full guide →</a></div>':'')+
       '</div>';
@@ -700,7 +700,7 @@ function openProduct(slug){{
   document.getElementById('pLines').textContent=CUR.lines;
   document.getElementById('pCount').textContent=lenderCount(CUR.key)+' Texas banks have 8%+ of loans in this category';
   var tb=topBank(CUR.key,LOC);
-  document.getElementById('pTop').textContent=tb.name+' ('+tb.mix[CUR.key]+'% near '+LOC+')';
+  document.getElementById('pTop').textContent=tb.name+' ('+mixScore(tb,CUR.key)+'% near '+LOC+')';
   var sl=document.getElementById('pStaticLink');
   if(CUR.pageUrl){{sl.innerHTML='<a href="'+CUR.pageUrl+'" class="btn btn-ghost btn-sm">Full guide page →</a>';}}else{{sl.innerHTML='';}}
   var stdiv=document.getElementById('pSubtypes');
@@ -717,16 +717,16 @@ function openProduct(slug){{
 
 function renderRank(){{
   document.getElementById('pLocLabel').textContent='filtered to '+LOC+' when possible';
-  var list=banksNear(LOC).slice().sort(function(a,b){{return b.mix[CUR.key]-a.mix[CUR.key]}}).slice(0,25);
-  if(list.length<5) list=BANKS.slice().sort(function(a,b){{return b.mix[CUR.key]-a.mix[CUR.key]}}).slice(0,25);
-  var max=list[0].mix[CUR.key]||1;
+  var list=banksNear(LOC).slice().sort(function(a,b){{return mixScore(b,CUR.key)-mixScore(a,CUR.key)}}).slice(0,25);
+  if(list.length<5) list=BANKS.slice().sort(function(a,b){{return mixScore(b,CUR.key)-mixScore(a,CUR.key)}}).slice(0,25);
+  var max=mixScore(list[0],CUR.key)||1;
   var r=document.getElementById('pRank');r.innerHTML='';
   list.forEach(function(b,i){{
-    var cap=Math.round(b.loans*b.mix[CUR.key]/100);
+    var cap=Math.round(b.loans*mixScore(b,CUR.key)/100);
     r.innerHTML+='<div class="rank-row" onclick="openBank('+b.id+')">'+
       '<div class="pos">'+(i+1)+'</div>'+
       '<div class="nm">'+b.name+' '+icpPill(b)+'<small>'+b.city+' · '+b.metro+' · '+assetStr(b.assets)+'</small></div>'+
-      '<div class="rank-pct"><div class="t"><div class="f" style="width:'+(b.mix[CUR.key]/max*100)+'%"></div></div><b>'+b.mix[CUR.key]+'%</b></div>'+
+      '<div class="rank-pct"><div class="t"><div class="f" style="width:'+(mixScore(b,CUR.key)/max*100)+'%"></div></div><b>'+mixScore(b,CUR.key)+'%</b></div>'+
       '<div class="cap tiny muted" style="text-align:right">~'+assetStr(cap)+'<br>est. in category</div></div>';
   }});
 }}
@@ -766,7 +766,7 @@ function renderBanks(){{
   }});
   if(sort==='assets') list.sort(function(a,b){{return b.assets-a.assets}});
   if(sort==='loans') list.sort(function(a,b){{return b.loans-a.loans}});
-  if(sort==='spec'&&key) list.sort(function(a,b){{return b.mix[key]-a.mix[key]}});
+  if(sort==='spec'&&key) list.sort(function(a,b){{return mixScore(b,key)-mixScore(a,key)}});
   document.getElementById('bankCount').textContent=list.length+' banks';
   var g=document.getElementById('bankGrid');g.innerHTML='';
   list.slice(0,60).forEach(function(b){{
@@ -777,7 +777,7 @@ function renderBanks(){{
       '<div class="bank-stats">'+
       '<div class="s"><b>'+assetStr(b.assets)+'</b><span>Assets</span></div>'+
       '<div class="s"><b>'+assetStr(b.loans)+'</b><span>Loans</span></div>'+
-      (key?'<div class="s"><b style="color:var(--accent-d)">'+b.mix[key]+'%</b><span>in type</span></div>':'')+
+      (key?'<div class="s"><b style="color:var(--accent-d)">'+mixScore(b,key)+'%</b><span>in type</span></div>':'')+
       '</div><div class="spec-tags">'+specs.map(function(m){{return '<span class="t">'+m[1]+' '+b.mix[m[0]]+'%</span>'}}).join('')+'</div></div>';
   }});
   if(list.length>60) g.innerHTML+='<p class="muted center tiny">Showing top 60 of '+list.length+' — narrow filters to see more.</p>';
@@ -797,21 +797,24 @@ function openBank(id){{
   document.getElementById('bRssd').textContent=b.id;
   document.getElementById('bMarket').textContent='Headquartered in '+b.city+', Texas. Primary market: '+b.metro+'. FFIEC panel city is HQ — branch footprint may extend beyond this city.';
   document.getElementById('bIntro').onclick=function(){{toast('Connect via Lenni Convey when live — bank: '+b.name)}};
-  var max=Math.max.apply(null,MIXMETA.map(function(m){{return b.mix[m[0]]}}));
+  var max=Math.max.apply(null,MIXMETA.map(function(m){{return b.mix[m[0]]||0}}));
   var hlKey=CUR?CUR.key:null;
+  if(hlKey==='oth') hlKey=null;
   var mix=document.getElementById('bMix');mix.innerHTML='';
   MIXMETA.forEach(function(m){{
-    var v=b.mix[m[0]]; if(v<1) return;
-    mix.innerHTML+='<div class="bar-row'+(m[0]===hlKey?' hl':'')+'"><div class="lbl">'+m[1]+'</div>'+
-      '<div class="bar-track"><div class="bar-fill" style="width:'+(v/max*100)+'%;background:'+m[2]+'"></div></div>'+
+    var v=b.mix[m[0]]||0;
+    var z=v<1?' zero':'';
+    mix.innerHTML+='<div class="bar-row'+z+(m[0]===hlKey?' hl':'')+'"><div class="lbl">'+m[1]+'</div>'+
+      '<div class="bar-track"><div class="bar-fill" style="width:'+(v>0?Math.max(v/max*100,2):0)+'%;background:'+m[2]+'"></div></div>'+
       '<div style="text-align:right;font-weight:700">'+v+'%</div></div>';
   }});
   go('bank');
 }}
 
 function aiRoute(){{
-  var q=document.getElementById('loanSearch').value.toLowerCase();
+  var q=document.getElementById('loanSearch').value;
   if(!q.trim()){{go('loans');return}}
+  if(typeof LenniWS!=='undefined'){{LenniWS.startSession(q);return}}
   var subHit=null, hit='mf';
   PRODUCTS.forEach(function(p){{
     (p.subtypes||[]).forEach(function(s){{
@@ -840,6 +843,20 @@ function termAsk(t){{
   if(!t||!t.trim()) return;
   var body=document.getElementById('termBody');
   body.innerHTML+='<div class="msg u"><div class="bub">'+t.replace(/</g,'&lt;')+'</div></div>';
+  body.scrollTop=body.scrollHeight;
+  if(typeof LenniMatch!=='undefined'){{
+    LenniMatch.matchDeal(t, LOC).then(function(match){{
+      var p=match.listing_profile;
+      var prod=match.primary_product;
+      var rows=(match.recommended_banks||[]).slice(0,5).map(function(b){{
+        return '<div class="r"><b>'+b.name+'</b><span style="color:var(--accent)">'+b.portfolio_pct+'%</span></div><div class="r"><span style="color:#8fa3b6">'+b.city+' · '+assetStr(b.assets_m)+'</span>'+(b.icp?'<span style="color:var(--gold)">Community bank</span>':'')+'</div>';
+      }}).join('');
+      var pname=prod?prod.title:(p.property_type||'Loan match');
+      body.innerHTML+='<div class="msg a"><div class="bub">Mapped to <b>'+pname+'</b> in <b>'+(p.metro||LOC)+'</b>. '+(p.summary||'')+'<div class="res">'+rows+'</div><div style="margin-top:10px;font-size:12.5px;color:#8fa3b6"><button class="btn btn-primary btn-sm" onclick="LenniWS.startSession(\\''+t.replace(/'/g,"\\\\'")+'\\')">Open workspace →</button></div></div></div>';
+      body.scrollTop=body.scrollHeight;
+    }});
+    return;
+  }}
   var q=t.toLowerCase(),key='mf',metro=null;
   DATA.metros.forEach(function(m){{if(q.indexOf(m.toLowerCase().split(' ')[0])>-1) metro=m}});
   if(/owner|operate|occupied/.test(q)) key='own';
@@ -849,10 +866,10 @@ function termAsk(t){{
   else if(/farm|ag |ranch/.test(q)) key='oth';
   else if(/home|1-4|residential/.test(q)) key='res';
   var pname=PRODUCTS.find(function(p){{return p.key===key}}).name;
-  var list=banksNear(metro).sort(function(a,b){{return b.mix[key]-a.mix[key]}}).slice(0,5);
-  if(!list.length) list=BANKS.slice().sort(function(a,b){{return b.mix[key]-a.mix[key]}}).slice(0,5);
+  var list=banksNear(metro).sort(function(a,b){{return mixScore(b,key)-mixScore(a,key)}}).slice(0,5);
+  if(!list.length) list=BANKS.slice().sort(function(a,b){{return mixScore(b,key)-mixScore(a,key)}}).slice(0,5);
   var rows=list.map(function(b){{
-    return '<div class="r"><b>'+b.name+'</b><span style="color:var(--accent)">'+b.mix[key]+'%</span></div><div class="r"><span style="color:#8fa3b6">'+b.city+' · '+assetStr(b.assets)+'</span>'+(b.icp?'<span style="color:var(--gold)">Community bank</span>':'')+'</div>';
+    return '<div class="r"><b>'+b.name+'</b><span style="color:var(--accent)">'+mixScore(b,key)+'%</span></div><div class="r"><span style="color:#8fa3b6">'+b.city+' · '+assetStr(b.assets)+'</span>'+(b.icp?'<span style="color:var(--gold)">Community bank</span>':'')+'</div>';
   }}).join('');
   setTimeout(function(){{
     body.innerHTML+='<div class="msg a"><div class="bub">Mapped to <b>'+pname+'</b>'+(metro?' in <b>'+metro+'</b>':'')+'. Top matches from FFIEC data:<div class="res">'+rows+'</div><div style="margin-top:10px;font-size:12.5px;color:#8fa3b6">Click a bank name in Find Banks for the full portfolio breakdown.</div></div></div>';
@@ -871,6 +888,9 @@ document.getElementById('termSugg').innerHTML=[
 
 initLoc();initStats();renderLoans();fillLoanFilter();renderBanks();calc();
 </script>
+<script>window.LENNI_API_BASE = window.LENNI_API_BASE || "http://127.0.0.1:8000";</script>
+<script src="js/match-client.js"></script>
+<script src="js/workspace.js"></script>
 </body>
 </html>"""
 

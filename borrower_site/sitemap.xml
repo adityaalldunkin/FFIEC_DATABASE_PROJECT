@@ -429,4 +429,45 @@
   <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/loan-types/ag-farmland/farmland-purchase.html</loc></url>
   <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/loan-types/ag-farmland/operating-line.html</loc></url>
   <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/loan-types/ag-farmland/ranch.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/texas-overview.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/product-availability.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/asset-bands.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/icp-banks.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/icp-banks/page-2.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/icp-banks/page-3.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/icp-banks/page-4.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/icp-banks/page-5.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/market/icp-banks/page-6.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/index.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-01-product-choice-breadth.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-02-market-structure.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-03-deal-size-fit.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-04-specialist-targeting.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-05-bank-size-fit.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-06-icp-opportunity.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-07-geography.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-08-market-momentum.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-09-lender-diligence.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-10-bank-archetypes.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-11-cross-sell.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/insights/i-12-outreach-planning.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/index.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/dallas-multifamily-bridge.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/houston-industrial-refinance.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/austin-working-capital-line.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/waco-owner-occupied-purchase.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/amarillo-farmland-expansion.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/san-antonio-restaurant-acquisition.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/el-paso-retail-strip-refinance.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/midland-ground-up-industrial.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/tyler-medical-office-owner-occupied.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/dallas-cre-ci-bundle.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/corpus-christi-hotel-refinance.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/scenarios/lubbock-equipment-fleet-finance.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/guides/borrower-playbook.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/guides/outreach-checklist.html</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/robots.txt</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/data/market_insights.json</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/llms.txt</loc></url>
+  <url><loc>http://lenni-borrower.s3-website.us-east-2.amazonaws.com/llms-full.txt</loc></url>
 </urlset>

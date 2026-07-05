@@ -47,6 +47,9 @@ LOAN_METRICS = {
     "RCON5368": "past_due_90_plus",
     "RCON1403": "residential_1_4_family",
     "RCON1590": "ag_production_loans",
+    "RCONS439": "residential_mortgage_exposures",
+    "RCONB562": "consumer_other_051",
+    "RCONB539": "consumer_revolving_051",
 }
 
 # Balance-sheet items from texas_xbrl_facts.csv (values in USD)
